@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ActionPlan from "./pages/ActionPlan";
 import AffiliatePrograms from "./pages/AffiliatePrograms";
+import AITools from "./pages/AITools";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/capture" element={<Capture />} />
           <Route path="/opportunities" element={<Opportunities />} />
           <Route path="/action-plan" element={<ActionPlan />} />
+          <Route path="/tools" element={<AITools />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/affiliate-programs" element={<AffiliatePrograms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
