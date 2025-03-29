@@ -11,12 +11,12 @@ const steps = [
   {
     number: '02',
     title: 'Explorez les opportunités',
-    description: 'Découvrez notre catalogue d'offres d'affiliation dans divers secteurs et niches.'
+    description: "Découvrez notre catalogue d'offres d'affiliation dans divers secteurs et niches."
   },
   {
     number: '03',
     title: 'Utilisez nos outils IA',
-    description: 'Optimisez vos campagnes avec nos outils d'intelligence artificielle exclusifs.'
+    description: "Optimisez vos campagnes avec nos outils d'intelligence artificielle exclusifs."
   },
   {
     number: '04',

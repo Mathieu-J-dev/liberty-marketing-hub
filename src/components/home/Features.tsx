@@ -6,22 +6,22 @@ const features = [
   {
     icon: <Lightbulb className="h-10 w-10 text-liberty-gold" />,
     title: 'Opportunités Exclusives',
-    description: 'Accédez à des programmes d'affiliation soigneusement sélectionnés avec les meilleures commissions du marché.'
+    description: "Accédez à des programmes d'affiliation soigneusement sélectionnés avec les meilleures commissions du marché."
   },
   {
     icon: <TrendingUp className="h-10 w-10 text-liberty-blue" />,
     title: 'Outils IA Avancés',
-    description: 'Utilisez nos outils d'intelligence artificielle pour optimiser vos campagnes et augmenter vos conversions.'
+    description: "Utilisez nos outils d'intelligence artificielle pour optimiser vos campagnes et augmenter vos conversions."
   },
   {
     icon: <Rocket className="h-10 w-10 text-liberty-gold" />,
     title: 'Formation Continue',
-    description: 'Bénéficiez de formations à jour sur les dernières stratégies de marketing d'affiliation qui fonctionnent.'
+    description: "Bénéficiez de formations à jour sur les dernières stratégies de marketing d'affiliation qui fonctionnent."
   },
   {
     icon: <Shield className="h-10 w-10 text-liberty-blue" />,
     title: 'Support Personnalisé',
-    description: 'Notre équipe d'experts vous accompagne à chaque étape pour garantir votre succès en affiliation.'
+    description: "Notre équipe d'experts vous accompagne à chaque étape pour garantir votre succès en affiliation."
   }
 ];
 

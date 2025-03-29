@@ -12,7 +12,7 @@ const stats = [
   },
   {
     value: '150+',
-    label: 'Programmes d'Affiliation'
+    label: "Programmes d'Affiliation"
   },
   {
     value: '24/7',

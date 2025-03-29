@@ -7,21 +7,21 @@ const testimonials = [
     name: 'Sophie Martin',
     role: 'Entrepreneure Web',
     avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-    content: 'Grâce à Affi-Liberty, j'ai pu multiplier mes revenus d'affiliation par 3 en seulement 2 mois. Les outils IA sont une vraie révolution pour mon business!',
+    content: "Grâce à Affi-Liberty, j'ai pu multiplier mes revenus d'affiliation par 3 en seulement 2 mois. Les outils IA sont une vraie révolution pour mon business!",
     rating: 5
   },
   {
     name: 'Thomas Dubois',
     role: 'Blogueur Finance',
     avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-    content: 'Je cherchais une solution complète pour mon activité d'affiliation. Affi-Liberty m'a fourni tous les outils nécessaires pour réussir et un support de qualité.',
+    content: "Je cherchais une solution complète pour mon activité d'affiliation. Affi-Liberty m'a fourni tous les outils nécessaires pour réussir et un support de qualité.",
     rating: 5
   },
   {
     name: 'Amélie Bernard',
     role: 'Consultante Marketing',
     avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
-    content: 'Les programmes d'affiliation proposés sont de haute qualité et vraiment rentables. J'apprécie particulièrement la transparence et l'accompagnement personnalisé.',
+    content: "Les programmes d'affiliation proposés sont de haute qualité et vraiment rentables. J'apprécie particulièrement la transparence et l'accompagnement personnalisé.",
     rating: 4
   }
 ];
