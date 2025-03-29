@@ -10,10 +10,10 @@ const Hero = () => {
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
         <div className="lg:w-1/2 space-y-6 animate-fade-in">
           <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
-            Libérez votre <span className="gradient-text">Potentiel Financier</span> avec l'Affiliation Marketing
+            Bienvenue chez <span className="gradient-text">Affi-Liberty</span>
           </h1>
           <p className="text-lg text-gray-600">
-            Découvrez les meilleures opportunités d'affiliation en 2025 et accédez à des outils IA exclusifs pour maximiser vos revenus en ligne.
+            L'affiliation marketing nouvelle génération – liberté, IA, résultats.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link to="/capture">
@@ -22,11 +22,11 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Link to="/opportunities">
+            <a href="#opportunites">
               <Button variant="outline" className="border-liberty-blue text-liberty-blue hover:bg-liberty-blue hover:text-white w-full sm:w-auto">
                 Découvrir les Opportunités
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
         <div className="lg:w-1/2 relative animate-fade-in">
