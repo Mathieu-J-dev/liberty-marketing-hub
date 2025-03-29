@@ -29,6 +29,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-6">
           <Link to="/" className="text-gray-600 hover:text-liberty-blue">Accueil</Link>
           <Link to="/opportunities" className="text-gray-600 hover:text-liberty-blue">Opportunités</Link>
+          <Link to="/action-plan" className="text-gray-600 hover:text-liberty-blue">Plan d'action</Link>
           <Link to="/tools" className="text-gray-600 hover:text-liberty-blue">Outils IA</Link>
           <Link to="/contact" className="text-gray-600 hover:text-liberty-blue">Contact</Link>
           <Link to="/login">
@@ -48,6 +49,7 @@ const Navbar = () => {
           <div className="absolute top-16 left-0 right-0 bg-white shadow-md p-4 flex flex-col gap-4 md:hidden animate-fade-in">
             <Link to="/" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Accueil</Link>
             <Link to="/opportunities" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Opportunités</Link>
+            <Link to="/action-plan" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Plan d'action</Link>
             <Link to="/tools" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Outils IA</Link>
             <Link to="/contact" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Contact</Link>
             <Link to="/login" className="w-full" onClick={toggleMenu}>
