@@ -151,7 +151,7 @@ const Opportunities = () => {
                 
                 <CardFooter>
                   <Button className="w-full bg-liberty-blue hover:bg-liberty-blue/90 text-white">
-                    Voir les détails
+                    Voir plus
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardFooter>
