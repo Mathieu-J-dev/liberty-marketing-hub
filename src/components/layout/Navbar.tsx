@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -33,11 +35,30 @@ const Navbar = () => {
           <Link to="/action-plan" className="text-gray-600 hover:text-liberty-blue">Plan d'action</Link>
           <Link to="/tools" className="text-gray-600 hover:text-liberty-blue">Outils IA</Link>
           <Link to="/contact" className="text-gray-600 hover:text-liberty-blue">Contact</Link>
-          <Link to="/login">
-            <Button variant="outline" className="border-liberty-blue text-liberty-blue hover:bg-liberty-blue hover:text-white">
-              Espace Membre
-            </Button>
-          </Link>
+          
+          {isAuthenticated ? (
+            <>
+              <Link to="/espace-membre">
+                <Button variant="outline" className="border-liberty-blue text-liberty-blue hover:bg-liberty-blue hover:text-white">
+                  <User className="mr-2 h-4 w-4" /> Espace Membre
+                </Button>
+              </Link>
+              <Button 
+                variant="ghost" 
+                className="text-gray-600 hover:text-liberty-blue"
+                onClick={logout}
+              >
+                <LogOut className="h-4 w-4" />
+              </Button>
+            </>
+          ) : (
+            <Link to="/login">
+              <Button variant="outline" className="border-liberty-blue text-liberty-blue hover:bg-liberty-blue hover:text-white">
+                Espace Membre
+              </Button>
+            </Link>
+          )}
+          
           <Link to="/capture">
             <Button className="bg-liberty-gold hover:bg-liberty-gold/90 text-white">
               Démarrer
@@ -54,11 +75,33 @@ const Navbar = () => {
             <Link to="/action-plan" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Plan d'action</Link>
             <Link to="/tools" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Outils IA</Link>
             <Link to="/contact" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Contact</Link>
-            <Link to="/login" className="w-full" onClick={toggleMenu}>
-              <Button variant="outline" className="w-full border-liberty-blue text-liberty-blue hover:bg-liberty-blue hover:text-white">
-                Espace Membre
-              </Button>
-            </Link>
+            
+            {isAuthenticated ? (
+              <>
+                <Link to="/espace-membre" className="w-full" onClick={toggleMenu}>
+                  <Button variant="outline" className="w-full border-liberty-blue text-liberty-blue hover:bg-liberty-blue hover:text-white">
+                    <User className="mr-2 h-4 w-4" /> Espace Membre
+                  </Button>
+                </Link>
+                <Button 
+                  variant="ghost" 
+                  className="w-full text-gray-600 hover:text-liberty-blue"
+                  onClick={() => {
+                    logout();
+                    toggleMenu();
+                  }}
+                >
+                  <LogOut className="mr-2 h-4 w-4" /> Se déconnecter
+                </Button>
+              </>
+            ) : (
+              <Link to="/login" className="w-full" onClick={toggleMenu}>
+                <Button variant="outline" className="w-full border-liberty-blue text-liberty-blue hover:bg-liberty-blue hover:text-white">
+                  Espace Membre
+                </Button>
+              </Link>
+            )}
+            
             <Link to="/capture" className="w-full" onClick={toggleMenu}>
               <Button className="w-full bg-liberty-gold hover:bg-liberty-gold/90 text-white">
                 Démarrer
