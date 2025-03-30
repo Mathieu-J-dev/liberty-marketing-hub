@@ -15,6 +15,7 @@ import AffiliatePrograms from "./pages/AffiliatePrograms";
 import AITools from "./pages/AITools";
 import Login from "./pages/Login";
 import MemberArea from "./pages/MemberArea";
+import FAQ from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/tools" element={<AITools />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/affiliate-programs" element={<AffiliatePrograms />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/login" element={<Login />} />
             <Route path="/espace-membre" element={<MemberArea />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
