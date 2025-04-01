@@ -4,7 +4,7 @@ import { User } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 
-type AuthUser = {
+export type AuthUser = {
   id: string;
   name: string;
   email: string;
