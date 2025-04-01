@@ -1,10 +1,10 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useToast } from '@/components/ui/use-toast';
-import { FileText, FileVideo, Book, Download, Lock, LogOut } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { FileText, FileVideo, Book, Download, LogOut } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -76,19 +76,19 @@ const memberContent: ContentItem[] = [
 ];
 
 const MemberArea = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
   // Rediriger si non connecté
-  React.useEffect(() => {
-    if (!user) {
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
       navigate('/login');
     }
-  }, [user, navigate]);
+  }, [isAuthenticated, loading, navigate]);
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     toast({
       title: "Déconnexion réussie",
       description: "À bientôt !",
@@ -100,6 +100,20 @@ const MemberArea = () => {
   const pdfContent = memberContent.filter(item => item.type === 'pdf');
   const videoContent = memberContent.filter(item => item.type === 'video');
   const courseContent = memberContent.filter(item => item.type === 'course');
+
+  // Afficher un message de chargement pendant la vérification de l'authentification
+  if (loading) {
+    return (
+      <Layout>
+        <div className="section py-16">
+          <div className="container mx-auto text-center">
+            <h2 className="text-2xl font-bold">Chargement de votre espace membre...</h2>
+            <p className="mt-2">Veuillez patienter pendant que nous vérifions votre identité.</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 
   // Si l'utilisateur n'est pas connecté, on ne render rien (la redirection se fera via useEffect)
   if (!user) return null;
