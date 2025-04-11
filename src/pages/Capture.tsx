@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import Layout from '@/components/layout/Layout';
-import { Play } from 'lucide-react';
+import { Play, Download, Mail } from 'lucide-react';
 
 const Capture = () => {
   const { toast } = useToast();
@@ -14,6 +14,7 @@ const Capture = () => {
   const [name, setName] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [deliveryMethod, setDeliveryMethod] = useState<'email' | 'download'>('email');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,8 +31,22 @@ const Capture = () => {
     // Simulate API call
     toast({
       title: "Inscription réussie!",
-      description: "Consultez votre email pour accéder à votre contenu exclusif.",
+      description: deliveryMethod === 'email' 
+        ? "Consultez votre email pour accéder à votre guide exclusif."
+        : "Téléchargement de votre guide exclusif en cours...",
     });
+    
+    if (deliveryMethod === 'download') {
+      // Simuler un téléchargement direct du PDF
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = "https://example.com/guide-affiliation-2025.pdf"; // Remplacez par le lien réel de votre PDF
+        link.download = "Guide-Affiliation-Affi-Liberty-2025.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 1000);
+    }
     
     // Reset form
     setEmail('');
@@ -117,6 +132,26 @@ const Capture = () => {
                     />
                   </div>
                   
+                  <div className="space-y-2">
+                    <Label>Comment souhaitez-vous recevoir votre guide?</Label>
+                    <div className="flex flex-col md:flex-row gap-4">
+                      <div 
+                        className={`flex items-center p-3 border rounded-md cursor-pointer transition-all ${deliveryMethod === 'email' ? 'border-liberty-gold bg-liberty-gold/10' : 'border-gray-200'}`}
+                        onClick={() => setDeliveryMethod('email')}
+                      >
+                        <Mail className={`h-5 w-5 mr-2 ${deliveryMethod === 'email' ? 'text-liberty-gold' : 'text-gray-500'}`} />
+                        <span>Par email</span>
+                      </div>
+                      <div 
+                        className={`flex items-center p-3 border rounded-md cursor-pointer transition-all ${deliveryMethod === 'download' ? 'border-liberty-gold bg-liberty-gold/10' : 'border-gray-200'}`}
+                        onClick={() => setDeliveryMethod('download')}
+                      >
+                        <Download className={`h-5 w-5 mr-2 ${deliveryMethod === 'download' ? 'text-liberty-gold' : 'text-gray-500'}`} />
+                        <span>Téléchargement direct</span>
+                      </div>
+                    </div>
+                  </div>
+                  
                   <div className="flex items-center space-x-2">
                     <Checkbox 
                       id="terms" 
@@ -132,7 +167,7 @@ const Capture = () => {
                   </div>
                   
                   <Button type="submit" className="w-full bg-liberty-gold hover:bg-liberty-gold/90 text-white py-6">
-                    Obtenir Mon Accès Gratuit
+                    {deliveryMethod === 'email' ? 'Recevoir par Email' : 'Télécharger Maintenant'} 
                   </Button>
                 </form>
                 
