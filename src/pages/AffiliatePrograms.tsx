@@ -149,14 +149,14 @@ const categories = [...new Set(affiliatePrograms.map(program => program.category
 
 const AffiliatePrograms = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showRecurringOnly, setShowRecurringOnly] = useState(false);
   
   // Filter programs based on search, category and recurring filter
   const filteredPrograms = affiliatePrograms.filter(program => {
     const matchesSearch = program.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           program.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory ? program.category === selectedCategory : true;
+    const matchesCategory = selectedCategory === 'all' ? true : program.category === selectedCategory;
     const matchesRecurring = showRecurringOnly ? program.recurring : true;
     
     return matchesSearch && matchesCategory && matchesRecurring;
@@ -191,7 +191,7 @@ const AffiliatePrograms = () => {
                     <SelectValue placeholder="Toutes les catégories" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Toutes les catégories</SelectItem>
+                    <SelectItem value="all">Toutes les catégories</SelectItem>
                     {categories.map((category) => (
                       <SelectItem key={category} value={category}>{category}</SelectItem>
                     ))}
@@ -277,7 +277,7 @@ const AffiliatePrograms = () => {
                 className="mt-4"
                 onClick={() => {
                   setSearchTerm('');
-                  setSelectedCategory('');
+                  setSelectedCategory('all');
                   setShowRecurringOnly(false);
                 }}
               >
