@@ -80,7 +80,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-liberty-gold mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-gray-600">correct</p>
+                    <p className="text-gray-600">contact@affi-liberty.com</p>
                   </div>
                 </div>
                 
@@ -97,7 +97,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Adresse</h3>
                     <p className="text-gray-600">
-                      Avenue centre Neufchâteau 88300<br />
+                      107 Av. Président Kennedy<br />
                       France
                     </p>
                   </div>
