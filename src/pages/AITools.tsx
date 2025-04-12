@@ -37,7 +37,7 @@ const aiTools = [
     description: 'Outil de design IA pour créer des visuels professionnels. Parfait pour concevoir des bannières publicitaires, des images de produits et du contenu visuel pour vos promotions d\'affiliation.',
     usage: 'Création d\'images, design graphique, visuels marketing',
     icon: <Zap className="h-12 w-12 text-liberty-blue" />,
-    link: 'https://www.bonzai.pro?am=t_ldoR_3165',
+    link: 'https://www.bonzai.pro/bonzaipremium?bp=t_ldoR_3165',
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const aiTools = [
     description: 'Plateforme tout-en-un pour les entrepreneurs en ligne avec fonctionnalités IA. Idéale pour créer des funnels de vente, gérer vos programmes d\'affiliation et automatiser vos campagnes marketing.',
     usage: 'Funnels de vente, automatisation, gestion d\'affiliation',
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
-    link: 'https://systeme.io/fr?sa=sa0129308614fe1920eb8b8dc034456ad0406693c3',
+    link: 'https://systeme.io',
   },
 ];
 
