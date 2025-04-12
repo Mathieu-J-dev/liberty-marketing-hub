@@ -81,7 +81,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-liberty-gold mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-gray-600">contact@affi-liberty.com</p
+                    <p className="text-gray-600">contact@affi-liberty.com</p>
                   </div>
                 </div>
                 
@@ -89,7 +89,7 @@ const Contact = () => {
                   <Phone className="h-6 w-6 text-liberty-gold mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Téléphone</h3>
-                    <p className="text-gray-600">+33 1 23 45 67 89</p>
+                    <p className="text-gray-600">0745055246</p>
                     <p className="text-gray-600">Lun - Ven, 9h - 18h</p>
                   </div>
                 </div>
@@ -99,8 +99,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Adresse</h3>
                     <p className="text-gray-600">
-                      123 Avenue de la Liberté<br />
-                      75000 Paris<br />
+                      107 Av. Président Kennedy<br />
+                      88300 Neufchâteau<br />
                       France
                     </p>
                   </div>
