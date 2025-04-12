@@ -65,7 +65,7 @@ const Capture = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Découvrez Comment Générer <span className="gradient-text">€5,000/mois</span> en Affiliation
+                Découvrez Comment Générer <span className="gradient-text">€3000/mois</span> en Affiliation grâce à notre Méthode V.I.B.E
               </h1>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Accédez à notre masterclass gratuite et recevez un guide exclusif sur les meilleures stratégies d'affiliation en 2025.
