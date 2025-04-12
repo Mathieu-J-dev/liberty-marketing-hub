@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
@@ -81,8 +80,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-liberty-gold mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-gray-600">contact@affi-liberty.com</p>
-                    <p className="text-gray-600">support@affi-liberty.com</p>
+                    <p className="text-gray-600">correct</p>
                   </div>
                 </div>
                 
@@ -90,8 +88,7 @@ const Contact = () => {
                   <Phone className="h-6 w-6 text-liberty-gold mt-1" />
                   <div>
                     <h3 className="font-semibold mb-1">Téléphone</h3>
-                    <p className="text-gray-600">+33 1 23 45 67 89</p>
-                    <p className="text-gray-600">Lun - Ven, 9h - 18h</p>
+                    <p className="text-gray-600">0745055246</p>
                   </div>
                 </div>
                 
@@ -100,8 +97,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Adresse</h3>
                     <p className="text-gray-600">
-                      123 Avenue de la Liberté<br />
-                      75000 Paris<br />
+                      Avenue centre Neufchâteau 88300<br />
                       France
                     </p>
                   </div>
@@ -110,7 +106,7 @@ const Contact = () => {
               
               <div className="rounded-lg overflow-hidden h-64 shadow-md">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.76457405996!2d2.2769946926222757!3d48.85894658138696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1696969022592!5m2!1sen!2sus" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.76457405996!2d2.2769946926222757!3d48.85894658138696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1696969022592!5m2!1sen!2sus!4v1696969022592!5m2!1sen!2sus" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
