@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
@@ -98,6 +99,7 @@ const Contact = () => {
                     <h3 className="font-semibold mb-1">Adresse</h3>
                     <p className="text-gray-600">
                       107 Av. Président Kennedy<br />
+                      88300 Neufchâteau<br />
                       France
                     </p>
                   </div>
