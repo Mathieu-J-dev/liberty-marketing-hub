@@ -37,7 +37,7 @@ const aiTools = [
     description: 'Outil de design IA pour créer des visuels professionnels. Parfait pour concevoir des bannières publicitaires, des images de produits et du contenu visuel pour vos promotions d\'affiliation.',
     usage: 'Création d\'images, design graphique, visuels marketing',
     icon: <Zap className="h-12 w-12 text-liberty-blue" />,
-    link: 'https://getbonsai.com',
+    link: 'https://www.bonzai.pro?am=t_ldoR_3165',
   },
   {
     id: 5,
