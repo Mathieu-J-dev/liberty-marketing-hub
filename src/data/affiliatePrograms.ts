@@ -1,4 +1,5 @@
 
+
 // Définir directement le type pour le programme d'affiliation
 export type AffiliateProgram = {
   id: string;
@@ -19,3 +20,4 @@ export const categories = [
   'IA', 'Éducation', 'Santé', 'Médias Sociaux', 
   'Business', 'Art & Création'
 ];
+
