@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
-import { AuthUser } from '@/contexts/AuthContext';
+import { AuthUser } from '@/auth'; // Import modifié
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 interface ProfileHeaderProps {

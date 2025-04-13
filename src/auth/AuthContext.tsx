@@ -1,55 +1,11 @@
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { User } from '@supabase/supabase-js';
+import React, { createContext, useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
-
-export type AuthUser = {
-  id: string;
-  name: string;
-  email: string;
-  membershipLevel: 'free' | 'premium' | 'vip';
-  xp: number;
-  level: number;
-  progression: number;
-};
-
-interface AuthContextType {
-  user: AuthUser | null;
-  isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
-  signup: (email: string, password: string) => Promise<boolean>;
-  logout: () => Promise<void>;
-  loading: boolean;
-}
+import { AuthContextType, AuthUser } from './types';
+import { formatUser, registerFirstLoginAction } from './utils';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-// Fonction pour convertir un utilisateur Supabase en notre format d'utilisateur
-const formatUser = async (user: User | null): Promise<AuthUser | null> => {
-  if (!user) return null;
-  
-  // Récupération des données de profil depuis notre table user_profiles
-  const { data: profile, error } = await supabase
-    .from('user_profiles')
-    .select('display_name, xp, level, progression')
-    .eq('id', user.id)
-    .single();
-  
-  if (error) {
-    console.error('Erreur lors de la récupération du profil:', error);
-  }
-  
-  return {
-    id: user.id,
-    name: profile?.display_name || user.email?.split('@')[0] || 'Utilisateur',
-    email: user.email || '',
-    membershipLevel: 'premium', // Par défaut, on considère tous les utilisateurs comme premium
-    xp: profile?.xp || 0,
-    level: profile?.level || 1,
-    progression: profile?.progression || 0
-  };
-};
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -104,39 +60,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return false;
       }
       
-      // Enregistrer l'action de première connexion (si applicable)
-      try {
-        // Vérifier si l'utilisateur a déjà effectué cette action
-        const userId = data.session?.user.id;
-        if (userId) {
-          const { data: existingAction } = await supabase
-            .from('completed_actions')
-            .select('id')
-            .eq('user_id', userId)
-            .eq('action_id', '00000000-0000-0000-0000-000000000002') // ID de l'action "Première connexion"
-            .maybeSingle();
-            
-          // Si l'action n'a pas déjà été complétée, l'enregistrer
-          if (!existingAction) {
-            const { data: actions } = await supabase
-              .from('actions')
-              .select('id')
-              .eq('title', 'Première connexion')
-              .single();
-              
-            if (actions) {
-              await supabase
-                .from('completed_actions')
-                .insert({
-                  user_id: userId,
-                  action_id: actions.id
-                });
-            }
-          }
-        }
-      } catch (actionError) {
-        console.error("Erreur lors de l'enregistrement de l'action:", actionError);
-        // Ne pas bloquer le processus si l'enregistrement de l'action échoue
+      // Enregistrer l'action de première connexion
+      const userId = data.session?.user.id;
+      if (userId) {
+        await registerFirstLoginAction(userId);
       }
       
       return true;
@@ -215,10 +142,4 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
+export default AuthContext;

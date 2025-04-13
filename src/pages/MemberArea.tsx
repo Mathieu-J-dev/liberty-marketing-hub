@@ -6,7 +6,7 @@ import { useToast } from '@/hooks/use-toast';
 import { FileText, FileVideo, Book, Award, Target, List } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import Layout from '@/components/layout/Layout';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/auth'; // Import modifié
 import ProfileHeader from '@/components/member/ProfileHeader';
 import ContentList from '@/components/member/ContentList';
 import { memberContent } from '@/types/memberTypes';
