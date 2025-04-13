@@ -1,33 +1,51 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
-import { affiliatePrograms, categories } from '@/data/affiliatePrograms';
+import { supabase } from "@/integrations/supabase/client";
+import { AffiliateProgram, categories } from '@/data/affiliatePrograms';
 import AffiliateFilters from '@/components/affiliate/AffiliateFilters';
 import AffiliateList from '@/components/affiliate/AffiliateList';
+import { toast } from "@/components/ui/sonner";
 
 const AffiliatePrograms = () => {
+  const [affiliatePrograms, setAffiliatePrograms] = useState<AffiliateProgram[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showRecurringOnly, setShowRecurringOnly] = useState(false);
   
-  // Filter programs based on search, category and recurring filter
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      const { data, error } = await supabase
+        .from('affiliate_tables')
+        .select('*');
+      
+      if (error) {
+        toast.error("Erreur de chargement des programmes", {
+          description: error.message
+        });
+      } else {
+        setAffiliatePrograms(data || []);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
+
   const filteredPrograms = affiliatePrograms.filter(program => {
-    const matchesSearch = program.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          program.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = program.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          program.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' ? true : program.category === selectedCategory;
     const matchesRecurring = showRecurringOnly ? program.recurring : true;
     
     return matchesSearch && matchesCategory && matchesRecurring;
   });
 
-  // Reset all filters
   const resetFilters = () => {
     setSearchTerm('');
     setSelectedCategory('all');
     setShowRecurringOnly(false);
   };
 
-  // Determine if filters are active
   const hasActiveFilters = searchTerm !== '' || selectedCategory !== 'all' || showRecurringOnly;
 
   return (

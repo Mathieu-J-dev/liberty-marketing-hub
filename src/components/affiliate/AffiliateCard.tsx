@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Link, Percent, Star, TrendingUp } from 'lucide-react';
+import { ExternalLink, Star, Percent, TrendingUp, Link as LinkIcon } from 'lucide-react';
 import { AffiliateProgram } from '@/data/affiliatePrograms';
 
 interface AffiliateCardProps {
@@ -15,7 +15,7 @@ const AffiliateCard: React.FC<AffiliateCardProps> = ({ program }) => {
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <CardHeader>
         <div className="flex justify-between items-start">
-          <CardTitle>{program.name}</CardTitle>
+          <CardTitle>{program.title}</CardTitle>
           <Badge className="bg-liberty-blue text-white">
             {program.category}
           </Badge>
@@ -24,7 +24,7 @@ const AffiliateCard: React.FC<AffiliateCardProps> = ({ program }) => {
           {[...Array(5)].map((_, i) => (
             <Star 
               key={i} 
-              className={`h-4 w-4 ${i < Math.floor(program.rating) ? 'text-liberty-gold fill-liberty-gold' : 'text-gray-300'}`} 
+              className={`h-4 w-4 ${i < Math.floor(Number(program.rating)) ? 'text-liberty-gold fill-liberty-gold' : 'text-gray-300'}`} 
             />
           ))}
           <span className="ml-1 text-sm">{program.rating}</span>
@@ -48,7 +48,7 @@ const AffiliateCard: React.FC<AffiliateCardProps> = ({ program }) => {
           </div>
           
           <div className="flex items-center">
-            <Link className="h-4 w-4 text-liberty-blue mr-2" />
+            <LinkIcon className="h-4 w-4 text-liberty-blue mr-2" />
             <span className="text-sm font-medium">Lien d'affiliation disponible</span>
           </div>
         </div>
