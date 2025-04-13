@@ -1,11 +1,19 @@
 
-// Importer le type de table depuis Supabase
-import { Tables } from '@/integrations/supabase/types';
+// Définir directement le type pour le programme d'affiliation
+export type AffiliateProgram = {
+  id: string;
+  title: string;
+  description: string | null;
+  category: string;
+  commission: string;
+  recurring: boolean;
+  earnings: string;
+  rating: number;
+  link: string;
+  created_at?: string;
+};
 
-// Définir le type pour garder la compatibilité
-export type AffiliateProgram = Tables<'affiliate_tables'>;
-
-// La fonction pour récupérer les programmes sera maintenant déplacée vers une requête Supabase
+// Liste des catégories disponibles
 export const categories = [
   'Marketing', 'Finance', 'E-commerce', 'SEO', 
   'IA', 'Éducation', 'Santé', 'Médias Sociaux', 

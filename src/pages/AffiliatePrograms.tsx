@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { AffiliateProgram, categories } from '@/data/affiliatePrograms';
 import AffiliateFilters from '@/components/affiliate/AffiliateFilters';
 import AffiliateList from '@/components/affiliate/AffiliateList';
-import { toast } from "@/components/ui/sonner";
+import { toast } from "@/hooks/use-toast";
 
 const AffiliatePrograms = () => {
   const [affiliatePrograms, setAffiliatePrograms] = useState<AffiliateProgram[]>([]);
@@ -20,11 +20,13 @@ const AffiliatePrograms = () => {
         .select('*');
       
       if (error) {
-        toast.error("Erreur de chargement des programmes", {
-          description: error.message
+        toast({
+          title: "Erreur de chargement",
+          description: error.message,
+          variant: "destructive"
         });
       } else {
-        setAffiliatePrograms(data || []);
+        setAffiliatePrograms(data as AffiliateProgram[] || []);
       }
     };
 
