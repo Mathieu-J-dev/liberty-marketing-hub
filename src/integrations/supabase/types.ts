@@ -9,6 +9,69 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      actions: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          title: string
+          type: string
+          xp_reward: number
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          title: string
+          type: string
+          xp_reward?: number
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          title?: string
+          type?: string
+          xp_reward?: number
+        }
+        Relationships: []
+      }
+      completed_actions: {
+        Row: {
+          action_id: string
+          completed_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          action_id: string
+          completed_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          action_id?: string
+          completed_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "completed_actions_action_id_fkey"
+            columns: ["action_id"]
+            isOneToOne: false
+            referencedRelation: "actions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "completed_actions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       "liberty-marketing-hub": {
         Row: {
           created_at: string
@@ -21,6 +84,36 @@ export type Database = {
         Update: {
           created_at?: string
           id?: number
+        }
+        Relationships: []
+      }
+      user_profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          level: number
+          progression: number
+          updated_at: string
+          xp: number
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id: string
+          level?: number
+          progression?: number
+          updated_at?: string
+          xp?: number
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          level?: number
+          progression?: number
+          updated_at?: string
+          xp?: number
         }
         Relationships: []
       }
