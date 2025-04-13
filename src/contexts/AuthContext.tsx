@@ -74,9 +74,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Ensuite, vérifier la session initiale
     const checkUser = async () => {
-      const { data } = await supabase.auth.getSession();
-      if (data.session?.user) {
-        const currentUser = await formatUser(data.session.user);
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        const currentUser = await formatUser(session.user);
         setUser(currentUser);
       }
       setLoading(false);
@@ -93,7 +93,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error, data } = await supabase.auth.signInWithPassword({ email, password });
       
       if (error) {
         toast({
@@ -107,12 +107,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Enregistrer l'action de première connexion (si applicable)
       try {
         // Vérifier si l'utilisateur a déjà effectué cette action
-        const { data: session } = await supabase.auth.getSession();
-        if (session?.user) {
+        const userId = data.session?.user.id;
+        if (userId) {
           const { data: existingAction } = await supabase
             .from('completed_actions')
             .select('id')
-            .eq('user_id', session.user.id)
+            .eq('user_id', userId)
             .eq('action_id', '00000000-0000-0000-0000-000000000002') // ID de l'action "Première connexion"
             .maybeSingle();
             
@@ -128,7 +128,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               await supabase
                 .from('completed_actions')
                 .insert({
-                  user_id: session.user.id,
+                  user_id: userId,
                   action_id: actions.id
                 });
             }
@@ -156,7 +156,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signup = async (email: string, password: string): Promise<boolean> => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signUp({ 
+      const { error, data } = await supabase.auth.signUp({ 
         email, 
         password,
         options: {
