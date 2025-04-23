@@ -38,7 +38,7 @@ const CaptureForm = () => {
       // Simuler un téléchargement direct du PDF
       setTimeout(() => {
         const link = document.createElement('a');
-        link.href = "https://example.com/guide-affiliation-2025.pdf"; // Remplacez par le lien réel de votre PDF
+        link.href = "/pdf/analyse_niche_2025.pdf"; // Remplacez par le lien réel de votre PDF
         link.download = "Guide-Affiliation-Affi-Liberty-2025.pdf";
         document.body.appendChild(link);
         link.click();
