@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -47,12 +46,14 @@ const aiTools = [
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
     link: 'https://systeme.io/fr?sa=sa0129308614fe1920eb8b8dc034456ad0406693c3',
   },
-  {id: ,
-    na6me: 'Optimisation SEO',
+  {
+    id: 6,
+    name: 'Optimisation SEO',
     description: 'Plateforme tout-en-un pour les entrepreneurs en ligne avec fonctionnalités IA. Idéale pour créer des funnels de vente, gérer vos programmes d\'affiliation et automatiser vos campagnes marketing.',
     usage: 'Marketing de contenu, descriptions de produits, SEO',
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
-    link: 'https://fspinhdk.genspark.space/',}
+    link: 'https://fspinhdk.genspark.space/',
+  }
 ];
 
 const AITools = () => {
