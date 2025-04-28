@@ -19,7 +19,7 @@ const CTA = () => {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
-          <Link to="/contact">
+          <Link to="jeanmaire.mathi@gmail.com">
             <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 py-3 px-8 text-lg">
               Nous Contacter
             </Button>
