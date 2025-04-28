@@ -10,7 +10,7 @@ const CTA = () => {
       <div className="container mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Prêt à transformer votre activité d'affiliation?</h2>
         <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-          Rejoignez des milliers d'entrepreneurs qui génèrent déjà des revenus passifs grâce à notre plateforme.
+          Rejoignez notre communauté d'entrepreneurs qui génèrent déjà des revenus passifs grâce à notre plateforme.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/capture">
