@@ -38,7 +38,7 @@ const Hero = () => {
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
-            <p className="text-liberty-blue font-bold">+200%</p>
+            <p className="text-liberty-blue font-bold">+30%</p>
             <p className="text-sm text-gray-600">Augmentation de revenus</p>
           </div>
         </div>
