@@ -3,15 +3,15 @@ import React from 'react';
 
 const stats = [
   {
-    value: '267+',
+    value: '150+',
     label: 'Utilisateurs Actifs'
   },
   {
-    value: '€7400',
+    value: '€7600',
     label: 'Commissions Générées'
   },
   {
-    value: '70+',
+    value: '50+',
     label: "Programmes d'Affiliation"
   },
   {
