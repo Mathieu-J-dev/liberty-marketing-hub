@@ -37,10 +37,10 @@ export const affiliatePrograms: AffiliateProgram[] = [
   },
   {
     id: 3,
-    name: 'E-commerce Shopify Builder',
+    name: 'E-commerce Elite Boutique Builder',
     commission: '40%',
     category: 'E-commerce',
-    link: 'https://accounts.shopify.com/signup',
+    link: 'https://elite-boutiques.com/euros',
     description: 'Plateforme de création de boutiques en ligne tout-en-un.',
     rating: 4.9,
     recurring: false,
