@@ -37,10 +37,10 @@ export const affiliatePrograms: AffiliateProgram[] = [
   },
   {
     id: 3,
-    name: 'E-commerce Builder',
+    name: 'E-commerce Shopify Builder',
     commission: '40%',
     category: 'E-commerce',
-    link: 'https://example.com/aff/9012',
+    link: 'https://accounts.shopify.com/signup',
     description: 'Plateforme de création de boutiques en ligne tout-en-un.',
     rating: 4.9,
     recurring: false,
