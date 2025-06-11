@@ -46,7 +46,7 @@ const ProfileEditModal = ({ user, isOpen, onClose, onProfileUpdate }: ProfileEdi
     setIsLoading(true);
     
     try {
-      let avatarUrl = '';
+      let avatarUrl = user.avatar_url;
       
       // Upload avatar if file is selected
       if (avatarFile) {
@@ -79,7 +79,7 @@ const ProfileEditModal = ({ user, isOpen, onClose, onProfileUpdate }: ProfileEdi
         display_name: displayName,
       };
       
-      if (avatarUrl) {
+      if (avatarUrl && avatarUrl !== user.avatar_url) {
         updateData.avatar_url = avatarUrl;
       }
       
@@ -102,6 +102,7 @@ const ProfileEditModal = ({ user, isOpen, onClose, onProfileUpdate }: ProfileEdi
       const updatedUser: AuthUser = {
         ...user,
         name: displayName,
+        avatar_url: avatarUrl,
       };
       
       onProfileUpdate(updatedUser);
@@ -148,7 +149,7 @@ const ProfileEditModal = ({ user, isOpen, onClose, onProfileUpdate }: ProfileEdi
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
               <Avatar className="h-24 w-24 bg-liberty-blue text-white">
-                <AvatarImage src={avatarPreview} />
+                <AvatarImage src={avatarPreview || user.avatar_url} />
                 <AvatarFallback>{getInitials(displayName)}</AvatarFallback>
               </Avatar>
               <Label htmlFor="avatar-upload" className="absolute bottom-0 right-0 p-1 bg-liberty-gold text-white rounded-full cursor-pointer hover:bg-liberty-gold/90">
