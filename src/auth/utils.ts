@@ -10,7 +10,7 @@ export const formatUser = async (user: User | null): Promise<AuthUser | null> =>
   // Récupération des données de profil depuis notre table user_profiles
   const { data: profile, error } = await supabase
     .from('user_profiles')
-    .select('display_name, xp, level, progression')
+    .select('display_name, xp, level, progression, avatar_url')
     .eq('id', user.id)
     .single();
   
@@ -25,7 +25,8 @@ export const formatUser = async (user: User | null): Promise<AuthUser | null> =>
     membershipLevel: 'premium', // Par défaut, on considère tous les utilisateurs comme premium
     xp: profile?.xp || 0,
     level: profile?.level || 1,
-    progression: profile?.progression || 0
+    progression: profile?.progression || 0,
+    avatar_url: profile?.avatar_url || undefined
   };
 };
 

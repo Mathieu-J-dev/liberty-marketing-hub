@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -6,7 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 import { FileText, FileVideo, Book, Award, Target, List } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import Layout from '@/components/layout/Layout';
-import { useAuth } from '@/auth'; // Import modifié
+import { useAuth } from '@/auth';
 import ProfileHeader from '@/components/member/ProfileHeader';
 import ContentList from '@/components/member/ContentList';
 import { memberContent } from '@/types/memberTypes';
@@ -28,7 +27,7 @@ type CompletedAction = {
 };
 
 const MemberArea = () => {
-  const { user, logout, loading, isAuthenticated } = useAuth();
+  const { user, logout, loading, isAuthenticated, setUser } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
   const [actions, setActions] = useState<Action[]>([]);
@@ -92,6 +91,12 @@ const MemberArea = () => {
     navigate('/');
   };
 
+  const handleProfileUpdate = (updatedUser: any) => {
+    if (setUser) {
+      setUser(updatedUser);
+    }
+  };
+
   // Calculer l'XP nécessaire pour le niveau suivant
   const calculateNextLevelXP = (level: number) => {
     return Math.pow((level), 2) * 100;
@@ -147,7 +152,11 @@ const MemberArea = () => {
     <Layout>
       <div className="section py-8">
         <div className="container mx-auto">
-          <ProfileHeader user={user} onLogout={handleLogout} />
+          <ProfileHeader 
+            user={user} 
+            onLogout={handleLogout} 
+            onProfileUpdate={handleProfileUpdate}
+          />
           
           {/* Section XP et Progression */}
           <div className="mb-10">

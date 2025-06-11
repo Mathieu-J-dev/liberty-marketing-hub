@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
@@ -8,10 +7,14 @@ import { formatUser, registerFirstLoginAction } from './utils';
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUserState] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
   
   const isAuthenticated = !!user;
+
+  const setUser = (updatedUser: AuthUser) => {
+    setUserState(updatedUser);
+  };
 
   // Vérifier l'état de l'authentification au chargement
   useEffect(() => {
@@ -136,7 +139,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, signup, logout, loading }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, signup, logout, loading, setUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -9,6 +9,7 @@ export type AuthUser = {
   xp: number;
   level: number;
   progression: number;
+  avatar_url?: string;
 };
 
 export interface AuthContextType {
@@ -18,4 +19,5 @@ export interface AuthContextType {
   signup: (email: string, password: string) => Promise<boolean>;
   logout: () => Promise<void>;
   loading: boolean;
+  setUser?: (user: AuthUser) => void;
 }
