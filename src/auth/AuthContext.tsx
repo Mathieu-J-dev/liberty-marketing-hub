@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
@@ -16,6 +17,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUserState(updatedUser);
   };
 
+  // Fonction pour vérifier l'abonnement
+  const checkSubscription = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('check-subscription');
+      if (error) {
+        console.error('Erreur lors de la vérification de l\'abonnement:', error);
+      } else {
+        console.log('Statut d\'abonnement vérifié:', data);
+      }
+    } catch (error) {
+      console.error('Erreur inattendue lors de la vérification de l\'abonnement:', error);
+    }
+  };
+
   // Vérifier l'état de l'authentification au chargement
   useEffect(() => {
     // D'abord, configurer l'écouteur d'événements d'authentification
@@ -24,6 +39,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (session?.user) {
           const currentUser = await formatUser(session.user);
           setUser(currentUser);
+          // Vérifier l'abonnement après l'authentification
+          checkSubscription();
         } else {
           setUser(null);
         }
@@ -37,6 +54,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (session?.user) {
         const currentUser = await formatUser(session.user);
         setUser(currentUser);
+        // Vérifier l'abonnement pour la session existante
+        checkSubscription();
       }
       setLoading(false);
     };
@@ -67,6 +86,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const userId = data.session?.user.id;
       if (userId) {
         await registerFirstLoginAction(userId);
+        // Vérifier l'abonnement après la connexion
+        setTimeout(checkSubscription, 1000);
       }
       
       return true;

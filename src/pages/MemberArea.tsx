@@ -1,13 +1,15 @@
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { FileText, FileVideo, Book, Award, Target, List } from 'lucide-react';
+import { FileText, FileVideo, Book, Award, Target, List, CreditCard } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import Layout from '@/components/layout/Layout';
 import { useAuth } from '@/auth';
 import ProfileHeader from '@/components/member/ProfileHeader';
 import ContentList from '@/components/member/ContentList';
+import SubscriptionCard from '@/components/subscription/SubscriptionCard';
 import { memberContent } from '@/types/memberTypes';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -188,8 +190,11 @@ const MemberArea = () => {
             </Card>
           </div>
 
-          <Tabs defaultValue="all" className="w-full">
+          <Tabs defaultValue="subscription" className="w-full">
             <TabsList className="mb-8">
+              <TabsTrigger value="subscription">
+                <CreditCard className="mr-2 h-4 w-4" /> Abonnement
+              </TabsTrigger>
               <TabsTrigger value="all">Tous les contenus</TabsTrigger>
               <TabsTrigger value="pdf">
                 <FileText className="mr-2 h-4 w-4" /> Documents PDF
@@ -204,6 +209,12 @@ const MemberArea = () => {
                 <Target className="mr-2 h-4 w-4" /> Actions
               </TabsTrigger>
             </TabsList>
+
+            <TabsContent value="subscription">
+              <div className="max-w-2xl mx-auto">
+                <SubscriptionCard />
+              </div>
+            </TabsContent>
 
             <TabsContent value="all">
               <ContentList items={memberContent} />
