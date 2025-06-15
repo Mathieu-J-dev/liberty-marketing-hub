@@ -5,7 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
-import { Mail, Download } from 'lucide-react';
+import { Mail, Download, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const CaptureForm = () => {
   const { toast } = useToast();
@@ -13,8 +14,9 @@ const CaptureForm = () => {
   const [name, setName] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState<'email' | 'download'>('email');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!email || !name || !acceptTerms) {
@@ -26,30 +28,58 @@ const CaptureForm = () => {
       return;
     }
     
-    // Simulate API call
-    toast({
-      title: "Inscription réussie!",
-      description: deliveryMethod === 'email' 
-        ? "Consultez votre email pour accéder à votre guide exclusif."
-        : "Téléchargement de votre guide exclusif en cours...",
-    });
-    
-    if (deliveryMethod === 'download') {
-      // Simuler un téléchargement direct du PDF
-      setTimeout(() => {
-        const link = document.createElement('a');
-        link.href = "/pdf/analyse_niche_2025.pdf"; // Remplacez par le lien réel de votre PDF
-        link.download = "Guide-Affiliation-Affi-Liberty-2025.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }, 1000);
+    setIsLoading(true);
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .insert([{ name, email, source: 'capture-page' }]);
+
+      if (error) {
+        if (error.code === '23505') { // Gère la violation de contrainte unique (email déjà existant)
+          toast({
+            variant: "destructive",
+            title: "Email déjà enregistré",
+            description: "Cet email est déjà dans notre liste. Essayez avec une autre adresse.",
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        // Succès de l'appel API
+        toast({
+          title: "Inscription réussie!",
+          description: deliveryMethod === 'email' 
+            ? "Consultez votre email pour accéder à votre guide exclusif."
+            : "Téléchargement de votre guide exclusif en cours...",
+        });
+        
+        if (deliveryMethod === 'download') {
+          // Simuler un téléchargement direct du PDF
+          setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = "/pdf/analyse_niche_2025.pdf";
+            link.download = "Guide-Affiliation-Affi-Liberty-2025.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }, 1000);
+        }
+        
+        // Réinitialiser le formulaire
+        setEmail('');
+        setName('');
+        setAcceptTerms(false);
+      }
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Une erreur est survenue",
+        description: "Impossible de traiter votre demande pour le moment. Veuillez réessayer.",
+      });
+      console.error("Erreur lors de l'insertion du prospect :", error);
+    } finally {
+      setIsLoading(false);
     }
-    
-    // Reset form
-    setEmail('');
-    setName('');
-    setAcceptTerms(false);
   };
 
   return (
@@ -65,6 +95,7 @@ const CaptureForm = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            disabled={isLoading}
           />
         </div>
         
@@ -77,6 +108,7 @@ const CaptureForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            disabled={isLoading}
           />
         </div>
         
@@ -84,15 +116,15 @@ const CaptureForm = () => {
           <Label>Comment souhaitez-vous recevoir votre guide?</Label>
           <div className="flex flex-col md:flex-row gap-4">
             <div 
-              className={`flex items-center p-3 border rounded-md cursor-pointer transition-all ${deliveryMethod === 'email' ? 'border-liberty-gold bg-liberty-gold/10' : 'border-gray-200'}`}
-              onClick={() => setDeliveryMethod('email')}
+              className={`flex items-center p-3 border rounded-md transition-all ${deliveryMethod === 'email' ? 'border-liberty-gold bg-liberty-gold/10' : 'border-gray-200'} ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+              onClick={() => !isLoading && setDeliveryMethod('email')}
             >
               <Mail className={`h-5 w-5 mr-2 ${deliveryMethod === 'email' ? 'text-liberty-gold' : 'text-gray-500'}`} />
               <span>Par email</span>
             </div>
             <div 
-              className={`flex items-center p-3 border rounded-md cursor-pointer transition-all ${deliveryMethod === 'download' ? 'border-liberty-gold bg-liberty-gold/10' : 'border-gray-200'}`}
-              onClick={() => setDeliveryMethod('download')}
+              className={`flex items-center p-3 border rounded-md transition-all ${deliveryMethod === 'download' ? 'border-liberty-gold bg-liberty-gold/10' : 'border-gray-200'} ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+              onClick={() => !isLoading && setDeliveryMethod('download')}
             >
               <Download className={`h-5 w-5 mr-2 ${deliveryMethod === 'download' ? 'text-liberty-gold' : 'text-gray-500'}`} />
               <span>Téléchargement direct</span>
@@ -105,6 +137,7 @@ const CaptureForm = () => {
             id="terms" 
             checked={acceptTerms}
             onCheckedChange={(checked) => setAcceptTerms(checked as boolean)}
+            disabled={isLoading}
           />
           <label
             htmlFor="terms"
@@ -114,8 +147,12 @@ const CaptureForm = () => {
           </label>
         </div>
         
-        <Button type="submit" className="w-full bg-liberty-gold hover:bg-liberty-gold/90 text-white py-6">
-          {deliveryMethod === 'email' ? 'Recevoir par Email' : 'Télécharger Maintenant'} 
+        <Button type="submit" className="w-full bg-liberty-gold hover:bg-liberty-gold/90 text-white py-6" disabled={isLoading}>
+          {isLoading ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            deliveryMethod === 'email' ? 'Recevoir par Email' : 'Télécharger Maintenant'
+          )}
         </Button>
       </form>
       
