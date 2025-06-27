@@ -54,6 +54,14 @@ const aiTools = [
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
     link: 'https://app.wisewand.ai/',
   }
+  {
+    id: 7,
+    name: 'GitHub',
+    description: 'Découvrez comment commencer à créer, à livrer et à gérer des logiciels avec GitHub. Explorez nos produits, inscrivez-vous pour obtenir un compte et connectez-vous à la plus grande communauté de développement du monde.',
+    usage: 'GitHub est une plateforme basée sur le cloud où vous pouvez stocker, partager et travailler avec d'autres pour écrire du code.',
+    icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
+    link: 'https://github.com/',
+  },
 ];
 
 const AITools = () => {
