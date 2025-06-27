@@ -48,11 +48,11 @@ const aiTools = [
   },
   {
     id: 6,
-    name: 'Optimisation SEO',
+    name: 'Wisewand 🦉 Optimisation SEO',
     description: 'Plateforme tout-en-un pour les entrepreneurs en ligne avec fonctionnalités IA. Idéale pour créer des funnels de vente, gérer vos programmes d\'affiliation et automatiser vos campagnes marketing.',
     usage: 'Marketing de contenu, descriptions de produits, SEO',
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
-    link: 'https://serper-local-builder.lovable.app/',
+    link: 'https://app.wisewand.ai/',
   }
 ];
 
