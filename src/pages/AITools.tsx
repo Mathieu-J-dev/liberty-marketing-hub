@@ -6,6 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { BrainCircuit, Zap, Sparkles, Bot, Lightbulb } from 'lucide-react';
 
+// Import des miniatures
+import chatgptThumbnail from '@/assets/chatgpt-thumbnail.jpg';
+import notionThumbnail from '@/assets/notion-thumbnail.jpg';
+import jasperThumbnail from '@/assets/jasper-thumbnail.jpg';
+import bonsaiThumbnail from '@/assets/bonsai-thumbnail.jpg';
+import systemeThumbnail from '@/assets/systeme-thumbnail.jpg';
+import wisewandThumbnail from '@/assets/wisewand-thumbnail.jpg';
+import githubThumbnail from '@/assets/github-thumbnail.jpg';
+
 const aiTools = [
   {
     id: 1,
@@ -13,6 +22,7 @@ const aiTools = [
     description: 'Modèle conversationnel IA avancé par OpenAI. Parfait pour la génération de contenu, les réponses aux questions et l\'assistance à la rédaction d\'e-mails ou d\'articles de blog pour promouvoir vos produits affiliés.',
     usage: 'Création de contenu, assistance rédactionnelle, idées marketing',
     icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: chatgptThumbnail,
     link: 'https://chat.openai.com',
   },
   {
@@ -21,6 +31,7 @@ const aiTools = [
     description: 'Assistant d\'écriture IA intégré à Notion. Idéal pour organiser vos campagnes marketing, gérer vos projets d\'affiliation et améliorer votre productivité globale.',
     usage: 'Gestion de projet, organisation, amélioration des textes',
     icon: <Lightbulb className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: notionThumbnail,
     link: 'https://notion.so',
   },
   {
@@ -29,6 +40,7 @@ const aiTools = [
     description: 'Plateforme d\'écriture IA spécialisée pour le marketing. Permet de créer rapidement des descriptions de produits convaincantes, des articles de blog SEO et du contenu pour les réseaux sociaux.',
     usage: 'Marketing de contenu, descriptions de produits, SEO',
     icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: jasperThumbnail,
     link: 'https://jasper.ai',
   },
   {
@@ -37,6 +49,7 @@ const aiTools = [
     description: 'Outil de design IA pour créer des visuels professionnels. Parfait pour concevoir des bannières publicitaires, des images de produits et du contenu visuel pour vos promotions d\'affiliation.',
     usage: 'Création d\'images, design graphique, visuels marketing',
     icon: <Zap className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: bonsaiThumbnail,
     link: 'https://www.bonzai.pro/bonzaipremium?bp=t_ldoR_3165',
   },
   {
@@ -45,6 +58,7 @@ const aiTools = [
     description: 'Plateforme tout-en-un pour les entrepreneurs en ligne avec fonctionnalités IA. Idéale pour créer des funnels de vente, gérer vos programmes d\'affiliation et automatiser vos campagnes marketing.',
     usage: 'Funnels de vente, automatisation, gestion d\'affiliation',
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: systemeThumbnail,
     link: 'https://systeme.io/fr?sa=sa0129308614fe1920eb8b8dc034456ad0406693c3',
   },
   {
@@ -53,6 +67,7 @@ const aiTools = [
     description: 'Plateforme tout-en-un pour les entrepreneurs en ligne avec fonctionnalités IA. Idéale pour créer des funnels de vente, gérer vos programmes d\'affiliation et automatiser vos campagnes marketing.',
     usage: 'Marketing de contenu, descriptions de produits, SEO',
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: wisewandThumbnail,
     link: 'https://app.wisewand.ai/',
   },
   {
@@ -61,6 +76,7 @@ const aiTools = [
     description: 'Découvrez comment commencer à créer, à livrer et à gérer des logiciels avec GitHub. Explorez nos produits, inscrivez-vous pour obtenir un compte et connectez-vous à la plus grande communauté de développement du monde.',
     usage: 'GitHub est une plateforme basée sur le cloud où vous pouvez stocker, partager et travailler avec d\'autres pour écrire du code.',
     icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: githubThumbnail,
     link: 'https://github.com/',
   },
 ];
@@ -80,19 +96,30 @@ const AITools = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {aiTools.map((tool) => (
-              <Card key={tool.id} className="flex flex-col h-full transition-all hover:shadow-md">
-                <CardHeader className="flex flex-row items-center gap-4">
-                  {tool.icon}
-                  <div>
-                    <CardTitle>{tool.name}</CardTitle>
-                    <CardDescription className="mt-2">
-                      {tool.usage}
-                    </CardDescription>
+              <Card key={tool.id} className="flex flex-col h-full transition-all hover:shadow-md overflow-hidden">
+                {/* Miniature en en-tête */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={tool.thumbnail} 
+                    alt={`Aperçu de ${tool.name}`}
+                    className="w-full h-full object-cover transition-transform hover:scale-105"
+                  />
+                  <div className="absolute top-4 right-4">
+                    {tool.icon}
                   </div>
+                </div>
+                
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-xl">{tool.name}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {tool.usage}
+                  </CardDescription>
                 </CardHeader>
+                
                 <CardContent className="flex-grow">
-                  <p className="text-gray-600">{tool.description}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{tool.description}</p>
                 </CardContent>
+                
                 <CardFooter className="pt-4 flex justify-between items-center">
                   <Badge variant="outline" className="bg-liberty-blue/10 text-liberty-blue">
                     Recommandé
