@@ -9,9 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold mb-4 gradient-text">Affi-Liberty</h3>
-            <p className="text-gray-300 mb-4">
-              Votre partenaire en web marketing et affiliation depuis 2025. Construisez votre indépendance financière avec nos solutions innovantes.
-            </p>
+            <p className="text-gray-300 mb-4">Votre partenaire en web marketing et affiliation depuis 2024. Construisez votre indépendance financière avec nos solutions innovantes.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-liberty-gold">
                 <Facebook size={20} />
