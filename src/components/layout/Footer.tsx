@@ -1,13 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-gray-900 text-white">
+  return <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -76,7 +72,7 @@ const Footer = () => {
           {/* Contact */}
           <div>
             <h3 className="text-xl font-bold mb-4">Contact</h3>
-            <p className="text-gray-300 mb-2">Email: contact@affi-liberty.com</p>
+            <p className="text-gray-300 mb-2">Email: contact@affi-liberty.co</p>
             <p className="text-gray-300 mb-4">Téléphone: +33 1 23 45 67 89</p>
             <p className="text-gray-300">
               Affi-Liberty S.A.S<br />
@@ -105,8 +101,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
