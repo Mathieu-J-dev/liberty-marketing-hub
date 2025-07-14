@@ -11,6 +11,7 @@ import CTA from '@/components/home/CTA';
 const Index = () => {
   return (
     <Layout>
+      <div id="top"></div>
       <Hero />
       <Stats />
       <Features />

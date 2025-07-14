@@ -7,6 +7,7 @@ import CaptureForm from '@/components/capture/CaptureForm';
 const Capture = () => {
   return (
     <Layout>
+      <div id="top"></div>
       <div className="section">
         <div className="container mx-auto">
           <div className="max-w-5xl mx-auto">

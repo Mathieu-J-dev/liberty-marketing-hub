@@ -32,6 +32,7 @@ const AffiliatePrograms = () => {
 
   return (
     <Layout>
+      <div id="top"></div>
       <section className="section bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-12">

@@ -96,8 +96,9 @@ const MemberArea = () => {
 
   // Afficher un message de chargement pendant la vérification de l'authentification
   if (loading) {
-    return (
-      <Layout>
+  return (
+    <Layout>
+      <div id="top"></div>
         <div className="section py-16">
           <div className="container mx-auto text-center">
             <h2 className="text-2xl font-bold">Chargement de votre espace membre...</h2>

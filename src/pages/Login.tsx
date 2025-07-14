@@ -58,6 +58,7 @@ const Login = () => {
 
   return (
     <Layout>
+      <div id="top"></div>
       <div className="section py-16">
         <div className="container mx-auto max-w-md">
           <Card>

@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const FAQ = () => {
   return (
     <Layout>
+      <div id="top"></div>
       <div className="section py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">

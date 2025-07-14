@@ -16,6 +16,7 @@ const LegalCard = ({ icon, title, children }: { icon: React.ReactNode; title: st
 const Privacy = () => {
   return (
     <Layout>
+      <div id="top"></div>
       <div className="container mx-auto px-4 py-12 md:py-16 text-center">
         <header className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4 gradient-text">

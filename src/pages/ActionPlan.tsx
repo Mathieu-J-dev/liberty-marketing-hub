@@ -36,6 +36,7 @@ const ActionPlan = () => {
 
   return (
     <Layout>
+      <div id="top"></div>
       <div className="py-20 bg-gradient-to-r from-liberty-blue/5 to-liberty-gold/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">

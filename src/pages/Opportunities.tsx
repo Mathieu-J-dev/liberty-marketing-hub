@@ -18,6 +18,7 @@ const Opportunities: React.FC = () => {
 
   return (
     <Layout>
+      <div id="top"></div>
       <div className="section bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
