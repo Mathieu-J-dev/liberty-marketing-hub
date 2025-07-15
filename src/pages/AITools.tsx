@@ -15,6 +15,7 @@ import systemeThumbnail from '@/assets/systeme-thumbnail.jpg';
 import wisewandThumbnail from '@/assets/wisewand-thumbnail.jpg';
 import githubThumbnail from '@/assets/github-thumbnail.jpg';
 import flowithThumbnail from '@/assets/flowith-thumbnail.jpg';
+import manusThumbnail from '@/assets/manus-thumbnail.jpg';
 
 const aiTools = [
   {
@@ -88,6 +89,15 @@ const aiTools = [
     icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
     thumbnail: flowithThumbnail,
     link: 'https://flowith.io',
+  },
+  {
+    id: 9,
+    name: 'Manus AI',
+    description: 'Agent IA général autonome révolutionnaire qui transforme vos pensées en actions concrètes. Excelle dans l\'analyse de données, la visualisation, le développement de code et l\'automatisation de tâches complexes. Parfait pour optimiser votre productivité d\'affiliation et automatiser vos processus marketing. Utilisez le code BRASTX4QCBWV pour recevoir 300 crédits gratuits !',
+    usage: 'Agent IA autonome, analyse de données, développement de code, automatisation',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: manusThumbnail,
+    link: 'https://manus.im/invitation/BRASTX4QCBWV',
   },
 ];
 
