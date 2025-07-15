@@ -14,6 +14,7 @@ import bonsaiThumbnail from '@/assets/bonsai-thumbnail.jpg';
 import systemeThumbnail from '@/assets/systeme-thumbnail.jpg';
 import wisewandThumbnail from '@/assets/wisewand-thumbnail.jpg';
 import githubThumbnail from '@/assets/github-thumbnail.jpg';
+import flowithThumbnail from '@/assets/flowith-thumbnail.jpg';
 
 const aiTools = [
   {
@@ -78,6 +79,15 @@ const aiTools = [
     icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
     thumbnail: githubThumbnail,
     link: 'https://github.com/',
+  },
+  {
+    id: 8,
+    name: 'Flowith.io',
+    description: 'Plateforme IA avancée pour la résolution de problèmes complexes et l\'automatisation intelligente. Idéale pour optimiser vos stratégies d\'affiliation et analyser vos performances marketing. Inscrivez-vous avec le code 5DTQ1EEH pour recevoir gratuitement 3000 crédits en plus !',
+    usage: 'Résolution de problèmes, automatisation IA, analyse de données',
+    icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: flowithThumbnail,
+    link: 'https://flowith.io',
   },
 ];
 
