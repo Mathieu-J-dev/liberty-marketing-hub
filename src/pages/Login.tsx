@@ -106,7 +106,7 @@ const Login = () => {
                     </div>
                     <Button 
                       type="submit" 
-                      className="w-full bg-liberty-blue hover:bg-liberty-blue/90"
+                      className="w-full bg-liberty-blue hover:bg-liberty-blue-light"
                       disabled={loading}
                     >
                       {loading ? 'Connexion...' : 'Se connecter'}
@@ -143,7 +143,7 @@ const Login = () => {
                     </div>
                     <Button 
                       type="submit" 
-                      className="w-full bg-liberty-gold hover:bg-liberty-gold/90"
+                      className="w-full bg-liberty-gold hover:bg-liberty-gold-light"
                       disabled={loading}
                     >
                       {loading ? 'Inscription...' : 'S\'inscrire'}
