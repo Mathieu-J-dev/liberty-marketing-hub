@@ -30,21 +30,6 @@ const Capture = () => {
               
               <CaptureForm />
             </div>
-            
-            <div className="mt-16 pt-16 border-t">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold mb-4">Formulaire de contact</h2>
-                <p className="text-gray-600">Avez-vous des questions ? Contactez-nous directement</p>
-              </div>
-              <iframe 
-                className="airtable-embed w-full rounded-lg shadow-lg"
-                src="https://airtable.com/embed/appYMx5GvmF4c7XAx/pagfSad5XLDIGvrWo/form" 
-                frameBorder="0" 
-                width="100%" 
-                height="533" 
-                style={{ background: 'transparent', border: '1px solid #ccc' }}
-              />
-            </div>
           </div>
         </div>
       </div>
