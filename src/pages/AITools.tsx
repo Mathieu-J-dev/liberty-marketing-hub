@@ -1,10 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { BrainCircuit, Zap, Sparkles, Bot, Lightbulb, Star } from 'lucide-react';
+import AIToolsFilters from '@/components/tools/AIToolsFilters';
 
 // Import des miniatures
 import chatgptThumbnail from '@/assets/chatgpt-thumbnail.jpg';
@@ -27,7 +28,8 @@ const aiTools = [
     thumbnail: chatgptThumbnail,
     link: 'https://chat.openai.com/',
     rating: 5,
-    price: 'Gratuit, ou 20$ pour ChatGPT Plus'
+    price: 'Gratuit, ou 20$ pour ChatGPT Plus',
+    category: 'ChatBot'
   },
   {
     id: 2,
@@ -38,7 +40,8 @@ const aiTools = [
     thumbnail: geminiThumbnail,
     link: 'https://bard.google.com/chat',
     rating: 5,
-    price: 'Gratuit, ou 20$ pour Gemini Pro 1.5'
+    price: 'Gratuit, ou 20$ pour Gemini Pro 1.5',
+    category: 'ChatBot'
   },
   {
     id: 3,
@@ -49,7 +52,8 @@ const aiTools = [
     thumbnail: claudeThumbnail,
     link: 'https://claude.ai/',
     rating: 4,
-    price: 'Gratuit, ou 20$ pour Claude Opus Pro'
+    price: 'Gratuit, ou 20$ pour Claude Opus Pro',
+    category: 'ChatBot'
   },
   {
     id: 4,
@@ -60,7 +64,8 @@ const aiTools = [
     thumbnail: copilotThumbnail,
     link: 'https://copilot.microsoft.com/',
     rating: 3,
-    price: 'Gratuit'
+    price: 'Gratuit',
+    category: 'ChatBot'
   },
   {
     id: 5,
@@ -71,7 +76,8 @@ const aiTools = [
     thumbnail: copilotThumbnail,
     link: 'https://adoption.microsoft.com/fr-fr/copilot/',
     rating: 4,
-    price: '30$/mois'
+    price: '30$/mois',
+    category: 'ChatBot'
   },
   {
     id: 6,
@@ -82,7 +88,8 @@ const aiTools = [
     thumbnail: perplexityThumbnail,
     link: 'https://www.perplexity.ai/',
     rating: 5,
-    price: 'Gratuit, 20$/mois pour plus d\'options'
+    price: 'Gratuit, 20$/mois pour plus d\'options',
+    category: 'ChatBot'
   },
   {
     id: 7,
@@ -93,7 +100,8 @@ const aiTools = [
     thumbnail: mistralThumbnail,
     link: 'https://chat.mistral.ai/',
     rating: 4,
-    price: 'Gratuit'
+    price: 'Gratuit',
+    category: 'ChatBot'
   },
   {
     id: 8,
@@ -104,7 +112,8 @@ const aiTools = [
     thumbnail: characterThumbnail,
     link: 'https://beta.character.ai/',
     rating: 4,
-    price: 'Gratuit / 10$/mois pour plus d\'options'
+    price: 'Gratuit / 10$/mois pour plus d\'options',
+    category: 'ChatBot'
   },
   {
     id: 9,
@@ -115,7 +124,8 @@ const aiTools = [
     thumbnail: flowithThumbnail,
     link: 'https://flowith.io',
     rating: 5,
-    price: 'Freemium avec code 5DTQ1EEH'
+    price: 'Freemium avec code 5DTQ1EEH',
+    category: 'Automatisation'
   },
   {
     id: 10,
@@ -126,11 +136,40 @@ const aiTools = [
     thumbnail: manusThumbnail,
     link: 'https://manus.im/invitation/BRASTX4QCBWV',
     rating: 5,
-    price: 'Freemium avec code BRASTX4QCBWV'
+    price: 'Freemium avec code BRASTX4QCBWV',
+    category: 'Automatisation'
   },
 ];
 
 const AITools = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedRating, setSelectedRating] = useState(0);
+
+  // Extraire les catégories uniques
+  const categories = [...new Set(aiTools.map(tool => tool.category))];
+
+  // Filtrer les outils selon les critères
+  const filteredTools = aiTools.filter(tool => {
+    const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          tool.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          tool.usage.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' ? true : tool.category === selectedCategory;
+    const matchesRating = selectedRating === 0 ? true : tool.rating >= selectedRating;
+    
+    return matchesSearch && matchesCategory && matchesRating;
+  });
+
+  // Réinitialiser les filtres
+  const resetFilters = () => {
+    setSearchTerm('');
+    setSelectedCategory('all');
+    setSelectedRating(0);
+  };
+
+  // Vérifier si des filtres sont actifs
+  const hasActiveFilters = searchTerm !== '' || selectedCategory !== 'all' || selectedRating !== 0;
+
   return (
     <Layout>
       <div id="top"></div>
@@ -144,8 +183,21 @@ const AITools = () => {
             </p>
           </div>
 
+          <AIToolsFilters
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            selectedRating={selectedRating}
+            onRatingChange={setSelectedRating}
+            categories={categories}
+            count={filteredTools.length}
+            onResetFilters={resetFilters}
+            hasActiveFilters={hasActiveFilters}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            {aiTools.map((tool) => (
+            {filteredTools.map((tool) => (
               <Card key={tool.id} className="flex flex-col h-full transition-all hover:shadow-md overflow-hidden">
                 {/* Miniature en en-tête */}
                 <div className="relative h-48 overflow-hidden">
