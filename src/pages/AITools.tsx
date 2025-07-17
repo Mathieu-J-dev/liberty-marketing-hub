@@ -16,15 +16,24 @@ import perplexityThumbnail from '@/assets/perplexity-thumbnail.jpg';
 import mistralThumbnail from '@/assets/mistral-thumbnail.jpg';
 import characterThumbnail from '@/assets/character-thumbnail.jpg';
 import flowithThumbnail from '@/assets/flowith-thumbnail.jpg';
-import manusThumbnail from '@/assets/manus-thumbnail.jpg';
 import dalleThumbnail from '@/assets/dalle-thumbnail.jpg';
 import midjourneyThumbnail from '@/assets/midjourney-thumbnail.jpg';
 import runwayThumbnail from '@/assets/runway-thumbnail.jpg';
 import fireflyThumbnail from '@/assets/firefly-thumbnail.jpg';
 import leonardoThumbnail from '@/assets/leonardo-thumbnail.jpg';
 import klingThumbnail from '@/assets/kling-thumbnail.jpg';
+import ideogramThumbnail from '@/assets/ideogram-thumbnail.jpg';
+import nightcafeThumbnail from '@/assets/nightcafe-thumbnail.jpg';
+import stableDiffusionThumbnail from '@/assets/stablediffusion-thumbnail.jpg';
+import blueWillowThumbnail from '@/assets/bluewillow-thumbnail.jpg';
+import msDesignerThumbnail from '@/assets/msdesigner-thumbnail.jpg';
+import pikaThumbnail from '@/assets/pika-thumbnail.jpg';
+import minimaxThumbnail from '@/assets/minimax-thumbnail.jpg';
+import pictoryThumbnail from '@/assets/pictory-thumbnail.jpg';
+import invideoThumbnail from '@/assets/invideo-thumbnail.jpg';
 
 const aiTools = [
+  // Image Generation Tools
   {
     id: 1,
     name: 'ChatGPT 4o/o1',
@@ -203,6 +212,114 @@ const aiTools = [
     link: 'https://klingai.com/',
     rating: 4,
     price: 'Essai gratuit, puis 10-30$/mois',
+    category: 'Génération de vidéos'
+  },
+  {
+    id: 17,
+    name: 'Ideogram',
+    description: 'Facile à utiliser et excellent niveau de génération d\'images. Si vous trouvez MidJourney et Leonardo trop complexes, Ideogram est une excellente alternative plus accessible.',
+    usage: 'Génération d\'images simple, illustrations',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: ideogramThumbnail,
+    link: 'https://ideogram.ai/login',
+    rating: 4,
+    price: 'Essai gratuit, puis 8$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 18,
+    name: 'NightCafe',
+    description: 'Version moins performante de MidJourney aux mêmes conditions tarifaires. Les résultats sont corrects mais manquent de finesse comparé à la concurrence.',
+    usage: 'Génération d\'images artistiques',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: nightcafeThumbnail,
+    link: 'https://creator.nightcafe.studio/',
+    rating: 2,
+    price: 'Essai gratuit, puis 5-10$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 19,
+    name: 'Stable Diffusion',
+    description: 'Plus ouvert et paramétrable que ses concurrents, mais également plus complexe à utiliser. Les résultats sont similaires à MidJourney mais demandent plus d\'expertise technique.',
+    usage: 'Génération d\'images avancée, personnalisation',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: stableDiffusionThumbnail,
+    link: 'https://stability.ai/',
+    rating: 3,
+    price: 'Gratuit',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 20,
+    name: 'BlueWillow',
+    description: 'Un outil de génération d\'images basique qui peine à se démarquer face à la concurrence. Les résultats manquent souvent de qualité et d\'originalité.',
+    usage: 'Génération d\'images simple',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: blueWillowThumbnail,
+    link: 'https://www.bluewillow.ai/',
+    rating: 2,
+    price: 'Essai gratuit, puis 5-10$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 21,
+    name: 'Microsoft Designer',
+    description: 'Outil gratuit pour créer des images et des présentations, mais les résultats manquent de modernité. Préférez MidJourney pour les images ou Gamma pour les présentations.',
+    usage: 'Design simple, présentations basiques',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: msDesignerThumbnail,
+    link: 'https://designer.microsoft.com/',
+    rating: 2,
+    price: 'Gratuit',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 22,
+    name: 'Pika Labs',
+    description: 'Les vidéos générées à partir de texte sont moyennes, mais l\'outil se distingue par sa capacité à animer des images statiques de manière intéressante.',
+    usage: 'Animation d\'images, vidéos basiques',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: pikaThumbnail,
+    link: 'https://pika.art/',
+    rating: 3,
+    price: 'Essai gratuit, puis 8$/mois',
+    category: 'Génération de vidéos'
+  },
+  {
+    id: 23,
+    name: 'Minimax',
+    description: 'Un autre concurrent chinois prometteur dans la génération de vidéos par IA, complétant le trio de tête avec Runway et Kling. Chacun a ses points forts selon le type de contenu souhaité.',
+    usage: 'Création de vidéos IA, effets spéciaux',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: minimaxThumbnail,
+    link: 'https://hailuoai.video/create',
+    rating: 4,
+    price: 'Essai gratuit, puis 15$/mois',
+    category: 'Génération de vidéos'
+  },
+  {
+    id: 24,
+    name: 'Pictory',
+    description: 'Un outil qui tente de combiner génération de vidéo, texte et voix, mais avec des résultats moyens dans chaque domaine. Le rendu final manque souvent d\'authenticité.',
+    usage: 'Création de contenu multimédia',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: pictoryThumbnail,
+    link: 'https://pictory.ai/',
+    rating: 2,
+    price: 'Essai gratuit puis 19$/mois',
+    category: 'Génération de vidéos'
+  },
+  {
+    id: 25,
+    name: 'InVideo',
+    description: 'Similaire à Pictory avec des résultats légèrement meilleurs, mais qui restent en deçà des attentes pour le prix demandé. L\'aspect artificiel des contenus générés est trop visible.',
+    usage: 'Édition vidéo assistée par IA',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: invideoThumbnail,
+    link: 'https://invideo.io/',
+    rating: 2,
+    price: 'Essai gratuit puis 20$/mois',
     category: 'Génération de vidéos'
   }
 ];
