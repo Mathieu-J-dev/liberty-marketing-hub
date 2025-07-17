@@ -17,6 +17,12 @@ import mistralThumbnail from '@/assets/mistral-thumbnail.jpg';
 import characterThumbnail from '@/assets/character-thumbnail.jpg';
 import flowithThumbnail from '@/assets/flowith-thumbnail.jpg';
 import manusThumbnail from '@/assets/manus-thumbnail.jpg';
+import dalleThumbnail from '@/assets/dalle-thumbnail.jpg';
+import midjourneyThumbnail from '@/assets/midjourney-thumbnail.jpg';
+import runwayThumbnail from '@/assets/runway-thumbnail.jpg';
+import fireflyThumbnail from '@/assets/firefly-thumbnail.jpg';
+import leonardoThumbnail from '@/assets/leonardo-thumbnail.jpg';
+import klingThumbnail from '@/assets/kling-thumbnail.jpg';
 
 const aiTools = [
   {
@@ -128,17 +134,77 @@ const aiTools = [
     category: 'Automatisation'
   },
   {
-    id: 10,
-    name: 'Manus AI',
-    description: 'Agent IA général autonome révolutionnaire qui transforme vos pensées en actions concrètes. Excelle dans l\'analyse de données, la visualisation, le développement de code et l\'automatisation de tâches complexes. Parfait pour optimiser votre productivité d\'affiliation et automatiser vos processus marketing. Utilisez le code BRASTX4QCBWV pour recevoir 300 crédits gratuits !',
-    usage: 'Agent IA autonome, analyse de données, développement de code, automatisation',
-    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
-    thumbnail: manusThumbnail,
-    link: 'https://manus.im/invitation/BRASTX4QCBWV',
-    rating: 5,
-    price: 'Freemium avec code BRASTX4QCBWV',
-    category: 'Automatisation'
+    id: 11,
+    name: 'DALL-E',
+    description: 'Bonne IA pour la génération d\'images, particulièrement performante pour les images contenant du texte. On peut presque tout faire avec DALL-E, même si les résultats manquent parfois d\'âme comparé à MidJourney.',
+    usage: 'Génération d\'images, illustrations, logos',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: dalleThumbnail,
+    link: 'https://openai.com/dall-e-3',
+    rating: 3,
+    price: 'Inclus à ChatGPT+ (20$/mois)',
+    category: 'Génération d\'images'
   },
+  {
+    id: 12,
+    name: 'MidJourney',
+    description: 'L\'outil de référence pour la génération d\'images. Les résultats sont beaux, élégants et fins. Aucun autre outil n\'a cette qualité artistique dans les images générées. Il faut noter que l\'utilisation se fait via Discord.',
+    usage: 'Art digital, illustrations créatives, design',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: midjourneyThumbnail,
+    link: 'https://discord.com/invite/midjourney',
+    rating: 5,
+    price: 'Essai gratuit, puis 10$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 13,
+    name: 'Adobe Firefly',
+    description: 'Un outil très efficace pour la création d\'images réalistes, particulièrement les visages et les paysages. Moins performant pour les illustrations artistiques mais excellent pour le contenu réaliste.',
+    usage: 'Images réalistes, retouche photo, design commercial',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: fireflyThumbnail,
+    link: 'https://www.adobe.com/ch_fr/products/firefly.html',
+    rating: 4,
+    price: 'Essai gratuit, puis 5-10$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 14,
+    name: 'Leonardo AI',
+    description: 'Un outil prometteur qui se distingue par sa fonction de dessin en live améliorée par IA. Bien qu\'il ne soit pas encore au niveau de MidJourney pour la génération pure, ses fonctionnalités innovantes en font un choix intéressant.',
+    usage: 'Dessin assisté par IA, génération d\'images, édition',
+    icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: leonardoThumbnail,
+    link: 'https://leonardo.ai/',
+    rating: 5,
+    price: 'Essai gratuit, puis 10$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 15,
+    name: 'Runway',
+    description: 'Leader actuel de la génération de vidéos par IA, même si la technologie est encore en développement. Les résultats sont prometteurs et l\'interface est intuitive.',
+    usage: 'Génération et édition de vidéos, effets spéciaux',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: runwayThumbnail,
+    link: 'https://runwayml.com/',
+    rating: 4,
+    price: 'Essai gratuit, puis 12$/mois',
+    category: 'Génération de vidéos'
+  },
+  {
+    id: 16,
+    name: 'Kling',
+    description: 'Un concurrent sérieux de Runway dans le domaine de la génération de vidéos par IA. Les performances sont similaires et le choix entre les deux dépendra souvent du type de rendu souhaité.',
+    usage: 'Création de vidéos IA, animation, effets visuels',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: klingThumbnail,
+    link: 'https://klingai.com/',
+    rating: 4,
+    price: 'Essai gratuit, puis 10-30$/mois',
+    category: 'Génération de vidéos'
+  }
 ];
 
 const AITools = () => {
