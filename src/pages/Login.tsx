@@ -13,11 +13,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Login = () => {
   const { toast } = useToast();
-  const { login, signup, isAuthenticated, loading } = useAuth();
+  const { login, signup, resetPassword, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSigningUp, setIsSigningUp] = useState(false);
+  const [showResetPassword, setShowResetPassword] = useState(false);
 
   // Si déjà authentifié, rediriger vers l'espace membre
   React.useEffect(() => {
@@ -48,11 +49,27 @@ const Login = () => {
     e.preventDefault();
     
     try {
-      await signup(email, password);
-      setEmail('');
-      setPassword('');
+      const success = await signup(email, password);
+      if (success) {
+        setEmail('');
+        setPassword('');
+      }
     } catch (error) {
       console.error('Erreur d\'inscription:', error);
+    }
+  };
+
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const success = await resetPassword(email);
+      if (success) {
+        setEmail('');
+        setShowResetPassword(false);
+      }
+    } catch (error) {
+      console.error('Erreur de récupération:', error);
     }
   };
 
@@ -91,9 +108,13 @@ const Login = () => {
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <Label htmlFor="password-login">Mot de passe</Label>
-                        <a href="#" className="text-sm text-liberty-blue hover:underline">
+                        <button 
+                          type="button"
+                          onClick={() => setShowResetPassword(true)}
+                          className="text-sm text-liberty-blue hover:underline"
+                        >
                           Mot de passe oublié?
-                        </a>
+                        </button>
                       </div>
                       <Input 
                         id="password-login" 
@@ -151,6 +172,41 @@ const Login = () => {
                     </Button>
                   </form>
                 </TabsContent>
+                
+                {showResetPassword && (
+                  <div className="mt-6 p-4 border rounded-lg bg-gray-50">
+                    <h3 className="font-semibold mb-3">Réinitialiser le mot de passe</h3>
+                    <form onSubmit={handleResetPassword} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="email-reset">Email</Label>
+                        <Input 
+                          id="email-reset" 
+                          type="email" 
+                          placeholder="votre@email.com"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div className="flex gap-2">
+                        <Button 
+                          type="submit" 
+                          className="flex-1"
+                          disabled={loading}
+                        >
+                          {loading ? 'Envoi...' : 'Envoyer le lien'}
+                        </Button>
+                        <Button 
+                          type="button" 
+                          variant="outline"
+                          onClick={() => setShowResetPassword(false)}
+                        >
+                          Annuler
+                        </Button>
+                      </div>
+                    </form>
+                  </div>
+                )}
               </Tabs>
             </CardContent>
             <CardFooter>

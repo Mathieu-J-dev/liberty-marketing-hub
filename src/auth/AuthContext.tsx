@@ -107,11 +107,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signup = async (email: string, password: string): Promise<boolean> => {
     try {
       setLoading(true);
+      const redirectUrl = `${window.location.origin}/`;
+      
       const { error, data } = await supabase.auth.signUp({ 
         email, 
         password,
         options: {
-          emailRedirectTo: window.location.origin + '/espace-membre'
+          emailRedirectTo: redirectUrl
         }
       });
       
@@ -124,10 +126,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return false;
       }
       
-      toast({
-        title: "Vérifiez votre email",
-        description: "Un lien de confirmation a été envoyé à votre adresse email.",
-      });
+      if (data.user && !data.user.email_confirmed_at) {
+        toast({
+          title: "Vérifiez votre email",
+          description: "Un lien de confirmation a été envoyé à votre adresse email.",
+        });
+      } else {
+        toast({
+          title: "Inscription réussie!",
+          description: "Vous pouvez maintenant vous connecter.",
+        });
+      }
       
       return true;
     } catch (error) {
@@ -159,8 +168,45 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Fonction de récupération de mot de passe
+  const resetPassword = async (email: string): Promise<boolean> => {
+    try {
+      setLoading(true);
+      const redirectUrl = `${window.location.origin}/login?reset=true`;
+      
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: redirectUrl,
+      });
+      
+      if (error) {
+        toast({
+          variant: "destructive",
+          title: "Erreur",
+          description: error.message,
+        });
+        return false;
+      }
+      
+      toast({
+        title: "Email envoyé",
+        description: "Vérifiez votre boîte email pour réinitialiser votre mot de passe.",
+      });
+      
+      return true;
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Erreur",
+        description: "Une erreur inattendue s'est produite",
+      });
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, signup, logout, loading, setUser }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, signup, logout, resetPassword, loading, setUser }}>
       {children}
     </AuthContext.Provider>
   );
