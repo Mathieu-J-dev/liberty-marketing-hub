@@ -77,6 +77,41 @@ export type Database = {
           },
         ]
       }
+      content_downloads: {
+        Row: {
+          content_id: string
+          downloaded_at: string
+          id: string
+          ip_address: unknown | null
+          user_agent: string | null
+          user_id: string
+        }
+        Insert: {
+          content_id: string
+          downloaded_at?: string
+          id?: string
+          ip_address?: unknown | null
+          user_agent?: string | null
+          user_id: string
+        }
+        Update: {
+          content_id?: string
+          downloaded_at?: string
+          id?: string
+          ip_address?: unknown | null
+          user_agent?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_downloads_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "member_content"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           created_at: string
@@ -113,6 +148,63 @@ export type Database = {
         Update: {
           created_at?: string
           id?: number
+        }
+        Relationships: []
+      }
+      member_content: {
+        Row: {
+          affiliate_link: string | null
+          content_type: string
+          created_at: string
+          created_by: string | null
+          description: string
+          download_count: number | null
+          download_url: string | null
+          external_url: string | null
+          file_path: string | null
+          id: string
+          is_active: boolean
+          is_premium: boolean
+          thumbnail_path: string | null
+          title: string
+          updated_at: string
+          view_count: number | null
+        }
+        Insert: {
+          affiliate_link?: string | null
+          content_type: string
+          created_at?: string
+          created_by?: string | null
+          description: string
+          download_count?: number | null
+          download_url?: string | null
+          external_url?: string | null
+          file_path?: string | null
+          id?: string
+          is_active?: boolean
+          is_premium?: boolean
+          thumbnail_path?: string | null
+          title: string
+          updated_at?: string
+          view_count?: number | null
+        }
+        Update: {
+          affiliate_link?: string | null
+          content_type?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          download_count?: number | null
+          download_url?: string | null
+          external_url?: string | null
+          file_path?: string | null
+          id?: string
+          is_active?: boolean
+          is_premium?: boolean
+          thumbnail_path?: string | null
+          title?: string
+          updated_at?: string
+          view_count?: number | null
         }
         Relationships: []
       }
@@ -217,7 +309,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_content_stats: {
+        Args: { content_id_param: string; stat_type: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

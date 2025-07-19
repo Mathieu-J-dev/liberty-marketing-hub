@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { ContentItem } from '@/types/memberTypes';
+import { MemberContent } from '@/hooks/useFileManagement';
 import ContentCard from './ContentCard';
 
 interface ContentListProps {
-  items: ContentItem[];
+  items: MemberContent[];
 }
 
 const ContentList = ({ items }: ContentListProps) => {

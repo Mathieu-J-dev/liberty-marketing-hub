@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FileText, FileVideo, Book, Target, CreditCard } from 'lucide-react';
+import { FileText, FileVideo, Book, Target, CreditCard, Settings } from 'lucide-react';
 import ContentList from '@/components/member/ContentList';
 import SubscriptionCard from '@/components/subscription/SubscriptionCard';
 import ActionsSection from './ActionsSection';
-import { memberContent } from '@/types/memberTypes';
+import ContentManager from './ContentManager';
+import { useFileManagement, MemberContent } from '@/hooks/useFileManagement';
 
 type Action = {
   id: string;
@@ -32,10 +33,22 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
   completedActions, 
   loadingActions 
 }) => {
+  const { fetchContent, loading } = useFileManagement();
+  const [content, setContent] = useState<MemberContent[]>([]);
+
+  // Charger le contenu au montage
+  useEffect(() => {
+    const loadContent = async () => {
+      const data = await fetchContent();
+      setContent(data);
+    };
+    loadContent();
+  }, [fetchContent]);
+
   // Filtrer les contenus par type
-  const pdfContent = memberContent.filter(item => item.type === 'pdf');
-  const videoContent = memberContent.filter(item => item.type === 'video');
-  const courseContent = memberContent.filter(item => item.type === 'course');
+  const pdfContent = content.filter(item => item.content_type === 'pdf');
+  const videoContent = content.filter(item => item.content_type === 'video');
+  const courseContent = content.filter(item => item.content_type === 'course');
 
   return (
     <Tabs defaultValue="subscription" className="w-full">
@@ -56,6 +69,9 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
         <TabsTrigger value="actions">
           <Target className="mr-2 h-4 w-4" /> Actions
         </TabsTrigger>
+        <TabsTrigger value="admin">
+          <Settings className="mr-2 h-4 w-4" /> Administration
+        </TabsTrigger>
       </TabsList>
 
       <TabsContent value="subscription">
@@ -65,7 +81,11 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
       </TabsContent>
 
       <TabsContent value="all">
-        <ContentList items={memberContent} />
+        {loading ? (
+          <div className="text-center py-8">Chargement du contenu...</div>
+        ) : (
+          <ContentList items={content} />
+        )}
       </TabsContent>
 
       <TabsContent value="pdf">
@@ -86,6 +106,10 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
           completedActions={completedActions}
           loadingActions={loadingActions}
         />
+      </TabsContent>
+
+      <TabsContent value="admin">
+        <ContentManager />
       </TabsContent>
     </Tabs>
   );
