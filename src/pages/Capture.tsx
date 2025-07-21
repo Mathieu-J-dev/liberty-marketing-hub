@@ -13,7 +13,7 @@ const Capture = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Découvrez Comment Générer <span className="gradient-text">€3000/mois</span> en Affiliation grâce à notre Méthode V.I.B.E
+                Découvrez Comment Générer <span className="gradient-text">€3000/mois</span> en Affiliation Marketing grâce aux Meillieures Opportunités et Outils du quotidiens pour devenir Entrepreneur du Web Digital s'en ce ruinés dans des formations coûteuses et avec notre Plan d'action qui vous Guidera Step by Step jusqu'a à créer un Revenu Passif avec des objectifs atteignables et votre Liberté Financière.
               </h1>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Accédez à notre masterclass gratuite et recevez un guide exclusif sur les meilleures stratégies d'affiliation en 2025.
