@@ -58,7 +58,7 @@ const CaptureForm = () => {
           setTimeout(() => {
             const link = document.createElement('a');
             link.href = "/pdf/analyse_niche_2025.pdf";
-            link.download = "https://docs.google.com/document/d/1Zw6PnwAlPQTymtdP1im2MmFqlLh89nqJO6EMgHeD7uY/edit?usp=sharing";
+            link.download = "analyse_niche_2025.pdf";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
