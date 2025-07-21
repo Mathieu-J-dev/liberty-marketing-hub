@@ -65,12 +65,12 @@ export default {
 				},
 				liberty: {
 					blue: {
-						DEFAULT: '#1E40AF',
-						light: '#3B82F6'
+						DEFAULT: 'hsl(215 84% 34%)', // #1E40AF en HSL
+						light: 'hsl(217 91% 60%)'   // #3B82F6 en HSL
 					},
 					gold: {
-						DEFAULT: '#F59E0B',
-						light: '#FBBF24'
+						DEFAULT: 'hsl(45 96% 48%)',  // #F59E0B en HSL
+						light: 'hsl(43 96% 56%)'    // #FBBF24 en HSL
 					}
 				}
 			},
