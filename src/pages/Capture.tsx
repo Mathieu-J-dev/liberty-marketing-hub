@@ -60,7 +60,7 @@ const Capture = () => {
               <div className="relative">
                 <VideoPlayer 
                   thumbnailUrl="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                  videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  videoUrl="/Les_5_Secrets_Affiliation_Rentable.mp4"
                   title="Les 5 Secrets de l'Affiliation Rentable en 2025"
                   duration="45 min"
                 />

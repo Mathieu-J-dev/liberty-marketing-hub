@@ -89,16 +89,17 @@ const VideoPlayer = ({ thumbnailUrl, videoUrl, title, duration }: VideoPlayerPro
       ) : (
         /* Lecteur vidéo intégré */
         <div className="aspect-video">
-          <iframe 
+          <video 
             width="100%" 
             height="100%" 
-            src={`${videoUrl}?autoplay=1&rel=0&modestbranding=1`}
-            title={title}
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowFullScreen
+            controls
+            autoPlay
             className="rounded-xl"
-          ></iframe>
+            src={videoUrl}
+          >
+            <source src={videoUrl} type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
         </div>
       )}
       
