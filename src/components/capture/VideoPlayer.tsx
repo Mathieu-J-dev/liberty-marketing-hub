@@ -94,11 +94,17 @@ const VideoPlayer = ({ thumbnailUrl, videoUrl, title, duration }: VideoPlayerPro
             height="100%" 
             controls
             autoPlay
+            preload="metadata"
             className="rounded-xl"
-            src={videoUrl}
+            onError={(e) => {
+              console.error('Erreur de lecture vidéo:', e);
+              console.log('URL vidéo:', videoUrl);
+            }}
+            onLoadStart={() => console.log('Chargement vidéo commencé')}
+            onCanPlay={() => console.log('Vidéo prête à être lue')}
           >
             <source src={videoUrl} type="video/mp4" />
-            Votre navigateur ne supporte pas la lecture vidéo.
+            Erreur: Impossible de charger la vidéo. Vérifiez que le fichier MP4 est dans le dossier public/ et qu'il est correctement encodé.
           </video>
         </div>
       )}
