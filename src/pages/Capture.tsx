@@ -15,12 +15,7 @@ const Capture = () => {
           <div className="max-w-6xl mx-auto">
             
             {/* En-tête avec titre principal */}
-            <div className="text-center mb-12 pt-8">
-              <div className="inline-block bg-liberty-gold/10 text-liberty-gold px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                🚀 MASTERCLASS GRATUITE - ÉDITION 2025
-              </div>
-              
-              <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
                 Découvrez Comment Générer{' '}
                 <span className="gradient-text text-liberty-gold">3000€/mois</span>{' '}
                 en Affiliation
