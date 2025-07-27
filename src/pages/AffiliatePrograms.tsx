@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { useAffiliatePrograms } from '@/hooks/useAffiliatePrograms';
-import { useAuth } from '@/auth/useAuth';
+import { useAuth } from '@/auth';
 import AffiliateFilters from '@/components/affiliate/AffiliateFilters';
 import AffiliateList from '@/components/affiliate/AffiliateList';
 import AddProgramModal from '@/components/affiliate/AddProgramModal';
