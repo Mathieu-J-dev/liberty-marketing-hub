@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Capture from "./pages/Capture";
 import Opportunities from "./pages/Opportunities";
 import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import ActionPlan from "./pages/ActionPlan";
 import AffiliatePrograms from "./pages/AffiliatePrograms";
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/affiliate-programs" element={<AffiliatePrograms />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/espace-membre" element={<MemberArea />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />

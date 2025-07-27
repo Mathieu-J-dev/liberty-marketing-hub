@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, User, LogOut } from 'lucide-react';
+import { Menu, X, User, LogOut, Shield } from 'lucide-react';
 import { useAuth } from '@/auth';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -42,6 +42,13 @@ const Navbar = () => {
                   <User className="mr-2 h-4 w-4" /> Espace Membre
                 </Button>
               </Link>
+              {user?.email === 'admin@affi-liberty.com' && (
+                <Link to="/admin">
+                  <Button variant="outline" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
+                    <Shield className="mr-2 h-4 w-4" /> Admin
+                  </Button>
+                </Link>
+              )}
               <Button 
                 variant="ghost" 
                 className="text-gray-600 hover:text-liberty-blue"
