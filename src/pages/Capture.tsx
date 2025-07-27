@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import VideoPlayer from '@/components/capture/VideoPlayer';
@@ -46,7 +45,6 @@ const Capture = () => {
                   <span className="text-sm font-medium">Guide PDF offert</span>
                 </div>
               </div>
-            </div>
             
             {/* Contenu principal en deux colonnes */}
             <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
