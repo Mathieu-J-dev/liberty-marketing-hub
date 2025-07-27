@@ -45,10 +45,11 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-interface AddProgramModalProps {
+interface EditProgramModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSubmit: (data: Omit<AffiliateProgram, 'id' | 'created_at' | 'updated_at'>) => Promise<void>;
+  onSubmit: (id: string, data: Partial<AffiliateProgram>) => Promise<void>;
+  program: AffiliateProgram | null;
   categories: string[];
 }
 
@@ -62,10 +63,11 @@ const predefinedCategories = [
   'Formation',
 ];
 
-const AddProgramModal: React.FC<AddProgramModalProps> = ({
+const EditProgramModal: React.FC<EditProgramModalProps> = ({
   open,
   onOpenChange,
   onSubmit,
+  program,
   categories,
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,16 +81,31 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      commission: '',
-      category: '',
-      link: '',
-      description: '',
-      rating: 4.0,
-      recurring: false,
-      earnings: '',
+      name: program?.name || '',
+      commission: program?.commission || '',
+      category: program?.category || '',
+      link: program?.link || '',
+      description: program?.description || '',
+      rating: program?.rating || 4.0,
+      recurring: program?.recurring || false,
+      earnings: program?.earnings || '',
     },
   });
+
+  React.useEffect(() => {
+    if (program) {
+      form.reset({
+        name: program.name,
+        commission: program.commission,
+        category: program.category,
+        link: program.link,
+        description: program.description,
+        rating: program.rating,
+        recurring: program.recurring,
+        earnings: program.earnings,
+      });
+    }
+  }, [program, form]);
 
   const validateLink = async (url: string) => {
     if (!url || !url.startsWith('http')) {
@@ -99,6 +116,7 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
     setLinkValidation({ status: 'checking' });
     
     try {
+      // Simple validation - in production, you might want to check if the URL is reachable
       const urlObj = new URL(url);
       if (urlObj.hostname) {
         setLinkValidation({ status: 'valid', message: 'Lien valide' });
@@ -111,24 +129,15 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
   };
 
   const handleSubmit = async (data: FormData) => {
+    if (!program) return;
+    
     setIsSubmitting(true);
     try {
       const category = showCustomCategory ? customCategory : data.category;
-      await onSubmit({
-        name: data.name,
-        commission: data.commission,
+      await onSubmit(program.id, {
+        ...data,
         category,
-        link: data.link,
-        description: data.description,
-        rating: data.rating,
-        recurring: data.recurring,
-        earnings: data.earnings,
-        created_by: undefined, // Will be set by auth context
-        is_active: true,
       });
-      form.reset();
-      setCustomCategory('');
-      setShowCustomCategory(false);
       onOpenChange(false);
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -139,13 +148,15 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
 
   const allCategories = [...new Set([...predefinedCategories, ...categories])];
 
+  if (!program) return null;
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Ajouter un Programme d'Affiliation</DialogTitle>
+          <DialogTitle>Modifier le Programme d'Affiliation</DialogTitle>
           <DialogDescription>
-            Ajoutez un nouveau programme d'affiliation à votre collection.
+            Modifiez les informations du programme d'affiliation.
           </DialogDescription>
         </DialogHeader>
 
@@ -357,7 +368,7 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
               </Button>
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Ajouter le programme
+                Sauvegarder les modifications
               </Button>
             </DialogFooter>
           </form>
@@ -367,4 +378,4 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
   );
 };
 
-export default AddProgramModal;
+export default EditProgramModal;

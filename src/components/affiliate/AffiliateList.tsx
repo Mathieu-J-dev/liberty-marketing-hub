@@ -7,9 +7,11 @@ import { AffiliateProgram } from '@/hooks/useAffiliatePrograms';
 interface AffiliateListProps {
   programs: AffiliateProgram[];
   resetFilters: () => void;
+  onEdit?: (program: AffiliateProgram) => void;
+  onDelete?: (programId: string) => void;
 }
 
-const AffiliateList: React.FC<AffiliateListProps> = ({ programs, resetFilters }) => {
+const AffiliateList: React.FC<AffiliateListProps> = ({ programs, resetFilters, onEdit, onDelete }) => {
   if (programs.length === 0) {
     return (
       <div className="text-center py-12">
@@ -28,7 +30,12 @@ const AffiliateList: React.FC<AffiliateListProps> = ({ programs, resetFilters })
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {programs.map((program) => (
-        <AffiliateCard key={program.id} program={program} />
+        <AffiliateCard 
+          key={program.id} 
+          program={program} 
+          onEdit={onEdit}
+          onDelete={onDelete}
+        />
       ))}
     </div>
   );

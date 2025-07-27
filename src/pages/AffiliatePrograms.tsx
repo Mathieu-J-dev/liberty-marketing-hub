@@ -6,17 +6,30 @@ import { useAuth } from '@/auth/useAuth';
 import AffiliateFilters from '@/components/affiliate/AffiliateFilters';
 import AffiliateList from '@/components/affiliate/AffiliateList';
 import AddProgramModal from '@/components/affiliate/AddProgramModal';
+import EditProgramModal from '@/components/affiliate/EditProgramModal';
+import CSVImportModal from '@/components/affiliate/CSVImportModal';
+import APIImportModal from '@/components/affiliate/APIImportModal';
 import { Button } from '@/components/ui/button';
-import { Plus, Loader2 } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Plus, Loader2, Upload, Download, Globe } from 'lucide-react';
 
 const AffiliatePrograms = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showRecurringOnly, setShowRecurringOnly] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showCSVImportModal, setShowCSVImportModal] = useState(false);
+  const [showAPIImportModal, setShowAPIImportModal] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState<any>(null);
   
   const { user } = useAuth();
-  const { programs, categories, loading, addProgram } = useAffiliatePrograms();
+  const { programs, categories, loading, addProgram, updateProgram, deleteProgram } = useAffiliatePrograms();
   
   // Filter programs based on search, category and recurring filter
   const filteredPrograms = programs.filter(program => {
@@ -45,6 +58,41 @@ const AffiliatePrograms = () => {
     });
   };
 
+  const handleEditProgram = async (id: string, programData: any) => {
+    await updateProgram(id, programData);
+    setShowEditModal(false);
+    setSelectedProgram(null);
+  };
+
+  const handleDeleteProgram = async (id: string) => {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer ce programme ?')) {
+      await deleteProgram(id);
+    }
+  };
+
+  const handleEdit = (program: any) => {
+    setSelectedProgram(program);
+    setShowEditModal(true);
+  };
+
+  const handleCSVImport = async (programs: any[]) => {
+    for (const program of programs) {
+      await addProgram({
+        ...program,
+        created_by: user?.id,
+      });
+    }
+  };
+
+  const handleAPIImport = async (programs: any[]) => {
+    for (const program of programs) {
+      await addProgram({
+        ...program,
+        created_by: user?.id,
+      });
+    }
+  };
+
   if (loading) {
     return (
       <Layout>
@@ -64,10 +112,30 @@ const AffiliatePrograms = () => {
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-4xl font-bold">Programmes d'Affiliation</h1>
               {user && (
-                <Button onClick={() => setShowAddModal(true)}>
-                  <Plus className="mr-2 h-4 w-4" />
-                  Ajouter un programme
-                </Button>
+                <div className="flex gap-2">
+                  <Button onClick={() => setShowAddModal(true)}>
+                    <Plus className="mr-2 h-4 w-4" />
+                    Ajouter un programme
+                  </Button>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline">
+                        <Upload className="mr-2 h-4 w-4" />
+                        Importer
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem onClick={() => setShowCSVImportModal(true)}>
+                        <Download className="mr-2 h-4 w-4" />
+                        Importer CSV
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setShowAPIImportModal(true)}>
+                        <Globe className="mr-2 h-4 w-4" />
+                        Importer via API
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               )}
             </div>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -92,6 +160,8 @@ const AffiliatePrograms = () => {
           <AffiliateList 
             programs={filteredPrograms}
             resetFilters={resetFilters}
+            onEdit={handleEdit}
+            onDelete={handleDeleteProgram}
           />
 
           <AddProgramModal
@@ -99,6 +169,26 @@ const AffiliatePrograms = () => {
             onOpenChange={setShowAddModal}
             onSubmit={handleAddProgram}
             categories={categories}
+          />
+
+          <EditProgramModal
+            open={showEditModal}
+            onOpenChange={setShowEditModal}
+            onSubmit={handleEditProgram}
+            program={selectedProgram}
+            categories={categories}
+          />
+
+          <CSVImportModal
+            open={showCSVImportModal}
+            onOpenChange={setShowCSVImportModal}
+            onImport={handleCSVImport}
+          />
+
+          <APIImportModal
+            open={showAPIImportModal}
+            onOpenChange={setShowAPIImportModal}
+            onImport={handleAPIImport}
           />
         </div>
       </section>
