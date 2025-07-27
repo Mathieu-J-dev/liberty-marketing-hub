@@ -41,6 +41,54 @@ export type Database = {
         }
         Relationships: []
       }
+      affiliate_programs: {
+        Row: {
+          category: string
+          commission: string
+          created_at: string
+          created_by: string | null
+          description: string
+          earnings: string
+          id: string
+          is_active: boolean
+          link: string
+          name: string
+          rating: number
+          recurring: boolean
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          commission: string
+          created_at?: string
+          created_by?: string | null
+          description: string
+          earnings: string
+          id?: string
+          is_active?: boolean
+          link: string
+          name: string
+          rating: number
+          recurring?: boolean
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          commission?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          earnings?: string
+          id?: string
+          is_active?: boolean
+          link?: string
+          name?: string
+          rating?: number
+          recurring?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       completed_actions: {
         Row: {
           action_id: string

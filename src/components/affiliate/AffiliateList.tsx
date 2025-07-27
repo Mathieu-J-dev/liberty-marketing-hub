@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import AffiliateCard from './AffiliateCard';
-import { AffiliateProgram } from '@/data/affiliatePrograms';
+import { AffiliateProgram } from '@/hooks/useAffiliatePrograms';
 
 interface AffiliateListProps {
   programs: AffiliateProgram[];

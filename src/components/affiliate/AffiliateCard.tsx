@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Link, Percent, Star, TrendingUp } from 'lucide-react';
-import { AffiliateProgram } from '@/data/affiliatePrograms';
+import { AffiliateProgram } from '@/hooks/useAffiliatePrograms';
 
 interface AffiliateCardProps {
   program: AffiliateProgram;
