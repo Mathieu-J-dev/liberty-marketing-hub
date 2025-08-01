@@ -4,14 +4,16 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { AuthContextType, AuthUser } from './types';
 import { formatUser, registerFirstLoginAction } from './utils';
+import { Session, User } from '@supabase/supabase-js';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUserState] = useState<AuthUser | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   
-  const isAuthenticated = !!user;
+  const isAuthenticated = !!user && !!session;
 
   const setUser = (updatedUser: AuthUser) => {
     setUserState(updatedUser);
@@ -35,14 +37,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     // D'abord, configurer l'écouteur d'événements d'authentification
     const { data: authListener } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        if (session?.user) {
-          const currentUser = await formatUser(session.user);
-          setUser(currentUser);
-          // Vérifier l'abonnement après l'authentification
-          checkSubscription();
+      (event, currentSession) => {
+        console.log('Auth state change:', event, currentSession);
+        setSession(currentSession);
+        
+        if (currentSession?.user) {
+          // Utiliser setTimeout pour éviter les problèmes de récursion
+          setTimeout(async () => {
+            const currentUser = await formatUser(currentSession.user);
+            setUserState(currentUser);
+            // Vérifier l'abonnement après l'authentification
+            checkSubscription();
+          }, 0);
         } else {
-          setUser(null);
+          setUserState(null);
         }
         setLoading(false);
       }
@@ -50,10 +58,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Ensuite, vérifier la session initiale
     const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session?.user) {
-        const currentUser = await formatUser(session.user);
-        setUser(currentUser);
+      const { data: { session: initialSession } } = await supabase.auth.getSession();
+      setSession(initialSession);
+      
+      if (initialSession?.user) {
+        const currentUser = await formatUser(initialSession.user);
+        setUserState(currentUser);
         // Vérifier l'abonnement pour la session existante
         checkSubscription();
       }
@@ -156,7 +166,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       setLoading(true);
       await supabase.auth.signOut();
-      setUser(null);
+      // Nettoyer l'état complètement
+      setSession(null);
+      setUserState(null);
     } catch (error) {
       toast({
         variant: "destructive",
