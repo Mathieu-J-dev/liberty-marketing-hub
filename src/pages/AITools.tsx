@@ -31,6 +31,12 @@ import pikaThumbnail from '@/assets/pika-thumbnail.jpg';
 import minimaxThumbnail from '@/assets/minimax-thumbnail.jpg';
 import pictoryThumbnail from '@/assets/pictory-thumbnail.jpg';
 import invideoThumbnail from '@/assets/invideo-thumbnail.jpg';
+import jasperThumbnail from '@/assets/jasper-thumbnail.jpg';
+import copyaiThumbnail from '@/assets/copyai-thumbnail.jpg';
+import elevenlabsThumbnail from '@/assets/elevenlabs-thumbnail.jpg';
+import gammaThumbnail from '@/assets/gamma-thumbnail.jpg';
+import lumaThumbnail from '@/assets/luma-thumbnail.jpg';
+import canvaThumbnail from '@/assets/canva-thumbnail.jpg';
 
 const aiTools = [
   // Image Generation Tools
@@ -321,6 +327,83 @@ const aiTools = [
     rating: 2,
     price: 'Essai gratuit puis 20$/mois',
     category: 'Génération de vidéos'
+  },
+  // Nouveaux outils - Rédaction et Marketing
+  {
+    id: 26,
+    name: 'Jasper AI',
+    description: 'L\'un des outils de rédaction IA les plus avancés. Jasper excelle dans la création de contenu marketing, d\'articles de blog, de descriptions de produits et de campagnes publicitaires pour vos promotions d\'affiliation. Interface intuitive et templates prêts à l\'emploi.',
+    usage: 'Rédaction marketing, copywriting, articles de blog',
+    icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: jasperThumbnail,
+    link: 'https://www.jasper.ai/',
+    rating: 5,
+    price: '29$/mois pour le plan Creator',
+    category: 'Rédaction'
+  },
+  {
+    id: 27,
+    name: 'Copy.ai',
+    description: 'Alternative abordable à Jasper pour la création de contenu marketing. Excellent pour générer des accroches publicitaires, des descriptions de produits et du contenu pour les réseaux sociaux. Parfait pour débuter dans l\'IA marketing.',
+    usage: 'Copywriting, contenu réseaux sociaux, descriptions produits',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: copyaiThumbnail,
+    link: 'https://www.copy.ai/',
+    rating: 4,
+    price: 'Gratuit jusqu\'à 2000 mots/mois, puis 49$/mois',
+    category: 'Rédaction'
+  },
+  // Nouveaux outils - Audio et Voix
+  {
+    id: 28,
+    name: 'ElevenLabs',
+    description: 'Synthèse vocale IA ultra-réaliste permettant de créer des voix off professionnelles pour vos vidéos de promotion. Clonage vocal possible et support de multiples langues. Idéal pour créer du contenu audio personnalisé pour vos campagnes d\'affiliation.',
+    usage: 'Synthèse vocale, voix off, contenu audio',
+    icon: <Zap className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: elevenlabsThumbnail,
+    link: 'https://elevenlabs.io/',
+    rating: 5,
+    price: 'Gratuit jusqu\'à 10 000 caractères/mois, puis 5$/mois',
+    category: 'Audio'
+  },
+  // Nouveaux outils - Présentations
+  {
+    id: 29,
+    name: 'Gamma',
+    description: 'Créateur de présentations IA révolutionnaire. Générez des présentations professionnelles en quelques minutes pour vos webinaires, formations et pitchs de vente. Alternative moderne à PowerPoint avec un design automatique élégant.',
+    usage: 'Présentations, webinaires, formations, pitchs',
+    icon: <Lightbulb className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: gammaThumbnail,
+    link: 'https://gamma.app/',
+    rating: 5,
+    price: 'Gratuit avec limitation, puis 8$/mois',
+    category: 'Présentation'
+  },
+  // Nouveaux outils - Vidéo 3D
+  {
+    id: 30,
+    name: 'Luma AI',
+    description: 'Outil innovant pour créer des vidéos 3D et des modèles 3D à partir de simples photos. Parfait pour créer du contenu visuel unique et engageant pour vos promotions d\'affiliation. Technologie de pointe pour des résultats impressionnants.',
+    usage: 'Vidéos 3D, modélisation 3D, contenu immersif',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: lumaThumbnail,
+    link: 'https://lumalabs.ai/',
+    rating: 4,
+    price: 'Gratuit avec limitation, puis 30$/mois',
+    category: 'Génération de vidéos'
+  },
+  // Nouveaux outils - Design
+  {
+    id: 31,
+    name: 'Canva AI',
+    description: 'La version IA de Canva qui révolutionne le design graphique. Créez des visuels, bannières, posts sociaux et infographies en décrivant simplement ce que vous voulez. Parfait pour créer du contenu visuel pour vos campagnes d\'affiliation sans compétences en design.',
+    usage: 'Design graphique, visuels marketing, réseaux sociaux',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: canvaThumbnail,
+    link: 'https://www.canva.com/ai-image-generator/',
+    rating: 4,
+    price: 'Gratuit avec limitation, puis 15$/mois pour Canva Pro',
+    category: 'Design'
   }
 ];
 
