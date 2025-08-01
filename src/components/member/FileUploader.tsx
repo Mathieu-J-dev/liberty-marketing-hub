@@ -8,6 +8,7 @@ import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Upload, FileText, Image } from 'lucide-react';
 import { useFileManagement } from '@/hooks/useFileManagement';
+import { toast } from '@/hooks/use-toast';
 
 interface FileUploaderProps {
   onContentCreated?: () => void;
@@ -30,9 +31,55 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onContentCreated }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
 
+  // Validation de fichier sécurisée
+  const validateFile = (file: File, type: 'main' | 'thumbnail'): { isValid: boolean; error?: string } => {
+    const maxSize = type === 'main' ? 50 * 1024 * 1024 : 5 * 1024 * 1024; // 50MB pour main, 5MB pour thumbnail
+    
+    if (file.size > maxSize) {
+      return { isValid: false, error: `Le fichier dépasse la taille maximale de ${maxSize / 1024 / 1024}MB` };
+    }
+    
+    if (type === 'main') {
+      const allowedTypes = ['application/pdf', 'video/mp4', 'application/zip'];
+      const allowedExtensions = ['.pdf', '.mp4', '.zip'];
+      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
+      
+      if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+        return { isValid: false, error: 'Type de fichier non autorisé. Utilisez PDF, MP4 ou ZIP.' };
+      }
+    } else {
+      const allowedImageTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+      if (!allowedImageTypes.includes(file.type)) {
+        return { isValid: false, error: 'Type d\'image non autorisé. Utilisez JPEG, PNG, WebP ou GIF.' };
+      }
+    }
+    
+    return { isValid: true };
+  };
+
+  const validateUrl = (url: string): boolean => {
+    if (!url) return true; // Optional fields
+    try {
+      const urlObj = new URL(url);
+      return urlObj.protocol === 'https:' || urlObj.protocol === 'http:';
+    } catch {
+      return false;
+    }
+  };
+
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      const validation = validateFile(file, 'main');
+      if (!validation.isValid) {
+        toast({
+          variant: "destructive",
+          title: "Fichier invalide",
+          description: validation.error,
+        });
+        event.target.value = '';
+        return;
+      }
       setSelectedFile(file);
     }
   };
@@ -40,6 +87,16 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onContentCreated }) => {
   const handleThumbnailSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      const validation = validateFile(file, 'thumbnail');
+      if (!validation.isValid) {
+        toast({
+          variant: "destructive",
+          title: "Image invalide",
+          description: validation.error,
+        });
+        event.target.value = '';
+        return;
+      }
       setSelectedThumbnail(file);
     }
   };
@@ -48,6 +105,34 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onContentCreated }) => {
     e.preventDefault();
     
     if (!formData.title || !formData.description || !formData.content_type) {
+      return;
+    }
+
+    // Validation des URLs
+    if (formData.external_url && !validateUrl(formData.external_url)) {
+      toast({
+        variant: "destructive",
+        title: "URL invalide",
+        description: "L'URL externe n'est pas valide",
+      });
+      return;
+    }
+
+    if (formData.download_url && !validateUrl(formData.download_url)) {
+      toast({
+        variant: "destructive",
+        title: "URL invalide",
+        description: "L'URL de téléchargement n'est pas valide",
+      });
+      return;
+    }
+
+    if (formData.affiliate_link && !validateUrl(formData.affiliate_link)) {
+      toast({
+        variant: "destructive",
+        title: "URL invalide",
+        description: "Le lien d'affiliation n'est pas valide",
+      });
       return;
     }
 

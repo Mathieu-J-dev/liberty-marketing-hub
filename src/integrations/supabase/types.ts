@@ -389,6 +389,10 @@ export type Database = {
         Args: { content_id_param: string; stat_type: string }
         Returns: undefined
       }
+      validate_password: {
+        Args: { password: string }
+        Returns: boolean
+      }
     }
     Enums: {
       app_role: "admin" | "content_manager" | "user"

@@ -7,6 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Mail, Download, Loader2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import { useFormValidation, validationRules } from '@/hooks/useFormValidation';
 
 const CaptureForm = () => {
   const { toast } = useToast();
@@ -16,39 +17,34 @@ const CaptureForm = () => {
   const [deliveryMethod, setDeliveryMethod] = useState<'email' | 'download'>('email');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Validation d'email côté client
-  const isEmailValid = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  // Configuration de validation sécurisée
+  const validationSchema = {
+    name: [
+      validationRules.required('Le nom est requis'),
+      validationRules.minLength(2, 'Le nom doit contenir au moins 2 caractères'),
+      validationRules.maxLength(100, 'Le nom ne peut pas dépasser 100 caractères'),
+      validationRules.sanitized('Le nom contient des caractères non autorisés')
+    ],
+    email: [
+      validationRules.required('L\'email est requis'),
+      validationRules.email('Format d\'email invalide'),
+      validationRules.maxLength(254, 'L\'email ne peut pas dépasser 254 caractères'),
+      validationRules.sanitized('L\'email contient des caractères non autorisés')
+    ]
   };
+
+  const { errors, validateForm } = useFormValidation(validationSchema);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validation améliorée
-    if (!name.trim()) {
+    // Validation sécurisée avec le nouveau système
+    const formData = { name: name.trim(), email: email.trim() };
+    if (!validateForm(formData)) {
       toast({
         variant: "destructive",
-        title: "Nom requis",
-        description: "Veuillez saisir votre nom.",
-      });
-      return;
-    }
-
-    if (!email.trim()) {
-      toast({
-        variant: "destructive",
-        title: "Email requis",
-        description: "Veuillez saisir votre adresse email.",
-      });
-      return;
-    }
-
-    if (!isEmailValid(email)) {
-      toast({
-        variant: "destructive",
-        title: "Email invalide",
-        description: "Veuillez saisir une adresse email valide.",
+        title: "Formulaire invalide",
+        description: Object.values(errors)[0] || "Veuillez corriger les erreurs.",
       });
       return;
     }
@@ -174,10 +170,10 @@ const CaptureForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={isLoading}
-            className={`mt-1 ${email && !isEmailValid(email) ? 'border-red-300 focus:border-red-500' : ''}`}
+            className={`mt-1 ${errors.email ? 'border-red-300 focus:border-red-500' : ''}`}
           />
-          {email && !isEmailValid(email) && (
-            <p className="text-red-500 text-xs mt-1">Format d'email invalide</p>
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
           )}
         </div>
         

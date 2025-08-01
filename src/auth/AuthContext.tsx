@@ -113,10 +113,45 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Fonction de validation de mot de passe
+  const validatePassword = (password: string): { isValid: boolean; errors: string[] } => {
+    const errors: string[] = [];
+    
+    if (password.length < 8) {
+      errors.push("Le mot de passe doit contenir au moins 8 caractères");
+    }
+    if (!/[A-Z]/.test(password)) {
+      errors.push("Le mot de passe doit contenir au moins une lettre majuscule");
+    }
+    if (!/[a-z]/.test(password)) {
+      errors.push("Le mot de passe doit contenir au moins une lettre minuscule");
+    }
+    if (!/[0-9]/.test(password)) {
+      errors.push("Le mot de passe doit contenir au moins un chiffre");
+    }
+    if (!/[^A-Za-z0-9]/.test(password)) {
+      errors.push("Le mot de passe doit contenir au moins un caractère spécial");
+    }
+    
+    return { isValid: errors.length === 0, errors };
+  };
+
   // Fonction d'inscription
   const signup = async (email: string, password: string): Promise<boolean> => {
     try {
       setLoading(true);
+      
+      // Valider le mot de passe
+      const passwordValidation = validatePassword(password);
+      if (!passwordValidation.isValid) {
+        toast({
+          variant: "destructive",
+          title: "Mot de passe invalide",
+          description: passwordValidation.errors.join(". "),
+        });
+        return false;
+      }
+      
       const redirectUrl = `${window.location.origin}/`;
       
       const { error, data } = await supabase.auth.signUp({ 
