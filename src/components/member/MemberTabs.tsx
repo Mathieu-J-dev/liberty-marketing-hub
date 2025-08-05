@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FileText, FileVideo, Book, Target, CreditCard, Settings } from 'lucide-react';
+import { FileText, FileVideo, Book, Target, CreditCard, Settings, GraduationCap } from 'lucide-react';
 import ContentList from '@/components/member/ContentList';
 import SubscriptionCard from '@/components/subscription/SubscriptionCard';
 import ActionsSection from './ActionsSection';
 import ContentManager from './ContentManager';
+import StarterPackCourse from '@/components/courses/StarterPackCourse';
 import { useFileManagement, MemberContent } from '@/hooks/useFileManagement';
 
 type Action = {
@@ -56,6 +57,9 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
         <TabsTrigger value="subscription">
           <CreditCard className="mr-2 h-4 w-4" /> Abonnement
         </TabsTrigger>
+        <TabsTrigger value="starter-pack">
+          <GraduationCap className="mr-2 h-4 w-4" /> Starter Pack
+        </TabsTrigger>
         <TabsTrigger value="all">Tous les contenus</TabsTrigger>
         <TabsTrigger value="pdf">
           <FileText className="mr-2 h-4 w-4" /> Documents PDF
@@ -78,6 +82,10 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
         <div className="max-w-2xl mx-auto">
           <SubscriptionCard />
         </div>
+      </TabsContent>
+
+      <TabsContent value="starter-pack">
+        <StarterPackCourse />
       </TabsContent>
 
       <TabsContent value="all">
