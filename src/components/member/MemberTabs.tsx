@@ -1,12 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FileText, FileVideo, Book, Target, CreditCard, Settings, GraduationCap } from 'lucide-react';
+import { FileText, FileVideo, Book, Target, CreditCard, Settings, GraduationCap, Brain, Zap, Rocket } from 'lucide-react';
 import ContentList from '@/components/member/ContentList';
 import SubscriptionCard from '@/components/subscription/SubscriptionCard';
 import ActionsSection from './ActionsSection';
 import ContentManager from './ContentManager';
 import StarterPackCourse from '@/components/courses/StarterPackCourse';
+import AdvancedMarketingCourse from '@/components/courses/AdvancedMarketingCourse';
+import AutomationAICourse from '@/components/courses/AutomationAICourse';
+import ScalingBusinessCourse from '@/components/courses/ScalingBusinessCourse';
 import { useFileManagement, MemberContent } from '@/hooks/useFileManagement';
 
 type Action = {
@@ -71,6 +74,15 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
         <TabsTrigger value="starter-pack">
           <GraduationCap className="mr-2 h-4 w-4" /> Starter Pack
         </TabsTrigger>
+        <TabsTrigger value="marketing-advanced">
+          <Brain className="mr-2 h-4 w-4" /> Marketing Avancé
+        </TabsTrigger>
+        <TabsTrigger value="automation-ai">
+          <Zap className="mr-2 h-4 w-4" /> Automation & IA
+        </TabsTrigger>
+        <TabsTrigger value="scaling-business">
+          <Rocket className="mr-2 h-4 w-4" /> Scaling Business
+        </TabsTrigger>
         <TabsTrigger value="all">Tous les contenus</TabsTrigger>
         <TabsTrigger value="pdf">
           <FileText className="mr-2 h-4 w-4" /> Documents PDF
@@ -97,6 +109,18 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
 
       <TabsContent value="starter-pack">
         <StarterPackCourse />
+      </TabsContent>
+
+      <TabsContent value="marketing-advanced">
+        <AdvancedMarketingCourse />
+      </TabsContent>
+
+      <TabsContent value="automation-ai">
+        <AutomationAICourse />
+      </TabsContent>
+
+      <TabsContent value="scaling-business">
+        <ScalingBusinessCourse />
       </TabsContent>
 
       <TabsContent value="all">
