@@ -358,7 +358,7 @@ const AutomationAICourse = () => {
             <TabsContent value="content">
               <ModuleContent 
                 module={activeModule}
-                onComplete={(moduleId) => handleModuleComplete(moduleId)}
+                onComplete={() => handleModuleComplete(activeModule.id)}
               />
             </TabsContent>
 
@@ -382,7 +382,7 @@ const AutomationAICourse = () => {
             <TabsContent value="quiz">
               <ModuleQuiz 
                 module={activeModule}
-                onComplete={(moduleId, passed) => handleQuizComplete(moduleId, passed)}
+                onComplete={(passed) => handleQuizComplete(activeModule.id, passed)}
               />
             </TabsContent>
           </Tabs>
