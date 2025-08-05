@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Download, FileVideo, Book, ExternalLink, Eye } from 'lucide-react';
+import { Download, FileVideo, Book, ExternalLink, Eye, Play } from 'lucide-react';
 import { useFileManagement, MemberContent } from '@/hooks/useFileManagement';
 
 interface ContentCardProps {
@@ -16,7 +16,17 @@ const ContentCard = ({ content }: ContentCardProps) => {
     // Incrémenter les vues
     await incrementViews(content.id);
 
-    if (content.content_type === 'pdf' && content.file_path) {
+    if (content.file_path && content.file_path.startsWith('/espace-membre')) {
+      // Navigation interne vers l'espace membre avec onglet spécifique
+      const url = new URL(content.file_path, window.location.origin);
+      const params = new URLSearchParams(url.search);
+      const tab = params.get('tab');
+      if (tab) {
+        // Trigger tab change in member area
+        const event = new CustomEvent('changeTab', { detail: { tab } });
+        window.dispatchEvent(event);
+      }
+    } else if (content.content_type === 'pdf' && content.file_path) {
       // Téléchargement sécurisé depuis Supabase Storage
       const signedUrl = await downloadSecureFile(content.id, content.file_path);
       if (signedUrl) {
@@ -87,7 +97,11 @@ const ContentCard = ({ content }: ContentCardProps) => {
           className="w-full flex items-center justify-center gap-2"
           onClick={handleAction}
         >
-          {content.content_type === 'pdf' ? (
+          {content.file_path && content.file_path.startsWith('/espace-membre') ? (
+            <>
+              <Play className="h-4 w-4" /> Suivre la formation
+            </>
+          ) : content.content_type === 'pdf' ? (
             <>
               <Download className="h-4 w-4" /> Télécharger
             </>

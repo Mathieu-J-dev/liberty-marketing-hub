@@ -36,6 +36,7 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
 }) => {
   const { fetchContent, loading } = useFileManagement();
   const [content, setContent] = useState<MemberContent[]>([]);
+  const [activeTab, setActiveTab] = useState('subscription');
 
   // Charger le contenu au montage
   useEffect(() => {
@@ -46,13 +47,23 @@ const MemberTabs: React.FC<MemberTabsProps> = ({
     loadContent();
   }, [fetchContent]);
 
+  // Listen for tab change events from ContentCard
+  useEffect(() => {
+    const handleTabChange = (event: CustomEvent) => {
+      setActiveTab(event.detail.tab);
+    };
+    
+    window.addEventListener('changeTab', handleTabChange as EventListener);
+    return () => window.removeEventListener('changeTab', handleTabChange as EventListener);
+  }, []);
+
   // Filtrer les contenus par type
   const pdfContent = content.filter(item => item.content_type === 'pdf');
   const videoContent = content.filter(item => item.content_type === 'video');
   const courseContent = content.filter(item => item.content_type === 'course');
 
   return (
-    <Tabs defaultValue="subscription" className="w-full">
+    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
       <TabsList className="mb-8">
         <TabsTrigger value="subscription">
           <CreditCard className="mr-2 h-4 w-4" /> Abonnement
