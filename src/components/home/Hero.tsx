@@ -31,10 +31,13 @@ const Hero = () => {
         </div>
         <div className="lg:w-1/2 relative animate-fade-in">
           <div className="aspect-video bg-gray-200 rounded-lg shadow-xl overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-              alt="Marketing Digital" 
+            <video 
+              src="/lovable-uploads/eab8160a-c6aa-4b56-b306-fce613036ede.png" 
               className="w-full h-full object-cover"
+              controls
+              autoPlay
+              muted
+              loop
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
