@@ -42,7 +42,7 @@ const aiTools = [
   // Image Generation Tools
   {
     id: 1,
-    name: 'ChatGPT 4o/o1',
+    name: 'ChatGPT 5',
     description: 'Clairement un des meilleurs GPT au monde actuellement. Parfait pour la création de contenu marketing, la rédaction d\'e-mails, d\'articles de blog et la génération d\'idées pour vos campagnes d\'affiliation. La version gratuite est limitée, mais les 20$ pour ChatGPT+ peuvent valoir le coup pour les professionnels.',
     usage: 'Création de contenu, assistance rédactionnelle, idées marketing',
     icon: <BrainCircuit className="h-12 w-12 text-liberty-blue" />,
