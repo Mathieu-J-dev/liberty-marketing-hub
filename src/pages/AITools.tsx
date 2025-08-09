@@ -66,7 +66,7 @@ const aiTools = [
   },
   {
     id: 3,
-    name: 'Claude 3.5',
+    name: 'Claude 4',
     description: 'Récemment ouvert aux utilisateurs européens, Claude est le 3ème meilleur chatbot derrière ChatGPT et Gemini. Il applique un contrôle éthique plus poussé et excelle dans la rédaction créative et l\'analyse de texte pour vos contenus d\'affiliation.',
     usage: 'Rédaction créative, analyse de texte, éthique IA',
     icon: <Bot className="h-12 w-12 text-liberty-blue" />,
