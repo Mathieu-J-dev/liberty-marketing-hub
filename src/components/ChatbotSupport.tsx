@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
+import { affiliatePrograms } from '@/data/affiliatePrograms';
 
 // Base de connaissances pour les réponses du chatbot
 const knowledgeBase = {
@@ -44,7 +45,17 @@ interface Message {
   timestamp: Date;
 }
 
-const ChatbotSupport = () => {
+interface ChatbotSupportProps {
+  includeAffiliateLinks?: boolean;
+  generateResponseExt?: (question: string) => Promise<string> | string;
+  title?: string;
+}
+
+const ChatbotSupport: React.FC<ChatbotSupportProps> = ({
+  includeAffiliateLinks = false,
+  generateResponseExt,
+  title,
+}) => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -86,34 +97,46 @@ const ChatbotSupport = () => {
   // Fonction pour envoyer un message
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!input.trim()) return;
-    
-    // Ajouter le message de l'utilisateur
+
     const userMessage: Message = {
       id: messages.length,
       text: input,
       sender: 'user',
       timestamp: new Date()
     };
-    
+
     setMessages(prev => [...prev, userMessage]);
+    const userInput = input;
     setInput('');
-    
-    // Simuler la réponse du bot
+
     setIsTyping(true);
-    
-    setTimeout(() => {
+    setTimeout(async () => {
+      // Génération de la réponse (interne ou externe)
+      let reply = typeof generateResponseExt === 'function'
+        ? await Promise.resolve(generateResponseExt(userInput))
+        : generateResponse(userInput);
+
+      // Ajout de recommandations affiliées si activé
+      if (includeAffiliateLinks) {
+        const top = [...affiliatePrograms]
+          .sort((a, b) => b.rating - a.rating)
+          .slice(0, 3)
+          .map((p) => `• ${p.name} — ${p.link}`)
+          .join('\n');
+        reply += `\n\nRecommandations affiliées:\n${top}`;
+      }
+
       const botResponse: Message = {
         id: messages.length + 1,
-        text: generateResponse(input),
+        text: reply,
         sender: 'bot',
         timestamp: new Date()
       };
-      
+
       setMessages(prev => [...prev, botResponse]);
       setIsTyping(false);
-    }, 1000); // Délai artificiel pour simuler la réflexion du bot
+    }, 600);
   };
 
   // Fonction pour utiliser une question suggérée
@@ -132,7 +155,7 @@ const ChatbotSupport = () => {
           <div className="bg-liberty-blue text-white p-4 rounded-t-lg flex items-center">
             <Bot className="w-6 h-6 mr-2" />
             <div>
-              <h3 className="font-bold">Assistant Affi-Liberty</h3>
+              <h3 className="font-bold">{title ?? "Assistant Affi-Liberty"}</h3>
               <p className="text-xs opacity-80">En ligne - Répond instantanément</p>
             </div>
           </div>

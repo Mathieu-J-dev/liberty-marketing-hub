@@ -26,7 +26,7 @@ const FAQ = () => {
           <Tabs defaultValue="faq" className="max-w-4xl mx-auto">
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="faq">Questions fréquentes</TabsTrigger>
-              <TabsTrigger value="chatbot">Assistant virtuel</TabsTrigger>
+              <TabsTrigger value="chatbot">Assistant IA</TabsTrigger>
             </TabsList>
             
             <TabsContent value="faq" className="border p-6 rounded-lg">
@@ -110,7 +110,7 @@ const FAQ = () => {
             </TabsContent>
             
             <TabsContent value="chatbot" className="border p-6 rounded-lg">
-              <ChatbotSupport />
+              <ChatbotSupport includeAffiliateLinks title="Assistant IA Affi-Liberty" />
             </TabsContent>
           </Tabs>
         </div>
