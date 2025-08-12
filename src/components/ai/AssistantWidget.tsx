@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from '@/components/ui/dialog';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import ChatbotSupport from '@/components/ChatbotSupport';
@@ -33,6 +33,7 @@ const AssistantWidget: React.FC = () => {
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
             <DialogTitle>Assistant IA Affi-Liberty</DialogTitle>
+            <DialogDescription>Discutez avec votre assistant. Activez ou désactivez les recommandations d’affiliation ci-dessous.</DialogDescription>
           </DialogHeader>
 
           <div className="flex items-center justify-between rounded-md border p-3 mb-4">
