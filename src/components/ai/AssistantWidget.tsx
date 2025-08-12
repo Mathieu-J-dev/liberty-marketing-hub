@@ -26,20 +26,20 @@ const AssistantWidget: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-50">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button size="lg" className="shadow-lg">
+          <Button size="lg" className="shadow-lg bg-liberty-600 hover:bg-liberty-700 text-white border-0">
             <MessageCircle className="mr-2 h-5 w-5" /> Assistant IA
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-xl">
+        <DialogContent className="sm:max-w-xl bg-card text-card-foreground border-liberty-200 dark:border-liberty-800">
           <DialogHeader>
-            <DialogTitle>Assistant IA Affi-Liberty</DialogTitle>
-            <DialogDescription>Discutez avec votre assistant. Activez ou désactivez les recommandations d’affiliation ci-dessous.</DialogDescription>
+            <DialogTitle className="text-liberty-900 dark:text-liberty-100">Assistant IA Affi-Liberty</DialogTitle>
+            <DialogDescription className="text-liberty-700 dark:text-liberty-300">Discutez avec votre assistant. Activez ou désactivez les recommandations d'affiliation ci-dessous.</DialogDescription>
           </DialogHeader>
 
-          <div className="flex items-center justify-between rounded-md border p-3 mb-4">
+          <div className="flex items-center justify-between rounded-md border border-liberty-200 dark:border-liberty-700 bg-liberty-50 dark:bg-liberty-900/20 p-3 mb-4">
             <div>
-              <Label htmlFor="aff-toggle" className="font-medium">Inclure des liens d’affiliation</Label>
-              <p className="text-sm text-muted-foreground">Ajoute 2-3 recommandations pertinentes dans les réponses</p>
+              <Label htmlFor="aff-toggle" className="font-medium text-liberty-900 dark:text-liberty-100">Inclure des liens d'affiliation</Label>
+              <p className="text-sm text-liberty-600 dark:text-liberty-400">Ajoute 2-3 recommandations pertinentes dans les réponses</p>
             </div>
             <Switch id="aff-toggle" checked={includeAff} onCheckedChange={onToggle} />
           </div>
