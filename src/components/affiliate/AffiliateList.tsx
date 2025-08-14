@@ -15,7 +15,7 @@ const AffiliateList: React.FC<AffiliateListProps> = ({ programs, resetFilters, o
   if (programs.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-xl text-gray-600">Aucun programme ne correspond à vos critères.</p>
+        <p className="text-xl text-muted-foreground mb-4">Aucun programme ne correspond à vos critères.</p>
         <Button 
           variant="outline" 
           className="mt-4"

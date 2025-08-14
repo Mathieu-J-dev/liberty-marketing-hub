@@ -109,7 +109,7 @@ const AffiliatePrograms = () => {
   return (
     <Layout>
       <div id="top"></div>
-      <section className="section bg-gray-50">
+      <section className="section bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <div className="flex justify-between items-center mb-4">
@@ -141,7 +141,7 @@ const AffiliatePrograms = () => {
                 </div>
               )}
             </div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Découvrez notre sélection de programmes d'affiliation de haute qualité avec des commissions attractives.
             </p>
           </div>

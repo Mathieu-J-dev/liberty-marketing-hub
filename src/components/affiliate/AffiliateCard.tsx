@@ -73,12 +73,12 @@ const AffiliateCard: React.FC<AffiliateCardProps> = ({ program, onEdit, onDelete
               }`} 
             />
           ))}
-          <span className="ml-1 text-sm text-gray-600">{program.rating}/5</span>
+          <span className="ml-1 text-sm text-muted-foreground">{program.rating}/5</span>
         </div>
       </CardHeader>
       
       <CardContent className="flex-1">
-        <p className="text-gray-600 mb-4 line-clamp-3">{program.description}</p>
+        <p className="text-muted-foreground mb-4 line-clamp-3">{program.description}</p>
         
         <div className="space-y-2">
           <div className="flex justify-between items-center">
@@ -95,7 +95,7 @@ const AffiliateCard: React.FC<AffiliateCardProps> = ({ program, onEdit, onDelete
           
           <div className="flex justify-between items-center">
             <span className="text-sm font-medium">Gains estimés:</span>
-            <span className="text-sm text-green-600 font-medium">{program.earnings}</span>
+            <span className="text-sm text-success font-medium">{program.earnings}</span>
           </div>
         </div>
       </CardContent>

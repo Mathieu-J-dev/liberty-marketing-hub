@@ -37,6 +37,11 @@
 
     --radius: 0.5rem;
 
+    /* Affi-Liberty Brand Colors */
+    --liberty-blue: 224 71% 30%;
+    --liberty-gold: 38 100% 60%;
+    --success: 142 69% 58%;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;

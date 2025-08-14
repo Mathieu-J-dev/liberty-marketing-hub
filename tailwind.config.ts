@@ -65,14 +65,15 @@ export default {
 				},
 				liberty: {
 					blue: {
-						DEFAULT: 'hsl(215 84% 34%)', // #1E40AF en HSL
-						light: 'hsl(217 91% 60%)'   // #3B82F6 en HSL
+						DEFAULT: 'hsl(var(--liberty-blue))',
+						light: 'hsl(217 91% 60%)'
 					},
 					gold: {
-						DEFAULT: 'hsl(45 96% 48%)',  // #F59E0B en HSL
-						light: 'hsl(43 96% 56%)'    // #FBBF24 en HSL
+						DEFAULT: 'hsl(var(--liberty-gold))',
+						light: 'hsl(43 96% 56%)'
 					}
-				}
+				},
+				success: 'hsl(var(--success))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

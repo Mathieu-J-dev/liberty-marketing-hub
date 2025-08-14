@@ -49,7 +49,7 @@ export const useAffiliatePrograms = () => {
       console.error('❌ Error fetching affiliate programs:', error);
       toast({
         title: "Erreur",
-        description: "Impossible de charger les programmes d'affiliation",
+        description: "Impossible de charger les programmes d'affiliation. Veuillez réessayer.",
         variant: "destructive",
       });
     } finally {
