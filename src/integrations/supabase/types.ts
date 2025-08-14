@@ -256,6 +256,82 @@ export type Database = {
         }
         Relationships: []
       }
+      nods_page: {
+        Row: {
+          checksum: string | null
+          id: number
+          meta: Json | null
+          parent_page_id: number | null
+          path: string
+          source: string | null
+          type: string | null
+        }
+        Insert: {
+          checksum?: string | null
+          id?: number
+          meta?: Json | null
+          parent_page_id?: number | null
+          path: string
+          source?: string | null
+          type?: string | null
+        }
+        Update: {
+          checksum?: string | null
+          id?: number
+          meta?: Json | null
+          parent_page_id?: number | null
+          path?: string
+          source?: string | null
+          type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nods_page_parent_page_id_fkey"
+            columns: ["parent_page_id"]
+            isOneToOne: false
+            referencedRelation: "nods_page"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nods_page_section: {
+        Row: {
+          content: string | null
+          embedding: string | null
+          heading: string | null
+          id: number
+          page_id: number
+          slug: string | null
+          token_count: number | null
+        }
+        Insert: {
+          content?: string | null
+          embedding?: string | null
+          heading?: string | null
+          id?: number
+          page_id: number
+          slug?: string | null
+          token_count?: number | null
+        }
+        Update: {
+          content?: string | null
+          embedding?: string | null
+          heading?: string | null
+          id?: number
+          page_id?: number
+          slug?: string | null
+          token_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nods_page_section_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "nods_page"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       subscribers: {
         Row: {
           created_at: string
@@ -378,6 +454,43 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      binary_quantize: {
+        Args: { "": string } | { "": unknown }
+        Returns: unknown
+      }
+      create_thread: {
+        Args: {
+          p_created_by: string
+          p_participant_ids: string[]
+          p_title: string
+        }
+        Returns: string
+      }
+      get_page_parents: {
+        Args: { page_id: number }
+        Returns: {
+          id: number
+          meta: Json
+          parent_page_id: number
+          path: string
+        }[]
+      }
+      halfvec_avg: {
+        Args: { "": number[] }
+        Returns: unknown
+      }
+      halfvec_out: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      halfvec_send: {
+        Args: { "": unknown }
+        Returns: string
+      }
+      halfvec_typmod_in: {
+        Args: { "": unknown[] }
+        Returns: number
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -385,13 +498,101 @@ export type Database = {
         }
         Returns: boolean
       }
+      hnsw_bit_support: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      hnsw_halfvec_support: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      hnsw_sparsevec_support: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      hnswhandler: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
       increment_content_stats: {
         Args: { content_id_param: string; stat_type: string }
         Returns: undefined
       }
+      ivfflat_bit_support: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      ivfflat_halfvec_support: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      ivfflathandler: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      l2_norm: {
+        Args: { "": unknown } | { "": unknown }
+        Returns: number
+      }
+      l2_normalize: {
+        Args: { "": string } | { "": unknown } | { "": unknown }
+        Returns: string
+      }
+      match_page_sections: {
+        Args: {
+          embedding: string
+          match_count: number
+          match_threshold: number
+          min_content_length: number
+        }
+        Returns: {
+          content: string
+          heading: string
+          id: number
+          page_id: number
+          similarity: number
+          slug: string
+        }[]
+      }
+      sparsevec_out: {
+        Args: { "": unknown }
+        Returns: unknown
+      }
+      sparsevec_send: {
+        Args: { "": unknown }
+        Returns: string
+      }
+      sparsevec_typmod_in: {
+        Args: { "": unknown[] }
+        Returns: number
+      }
       validate_password: {
         Args: { password: string }
         Returns: boolean
+      }
+      vector_avg: {
+        Args: { "": number[] }
+        Returns: string
+      }
+      vector_dims: {
+        Args: { "": string } | { "": unknown }
+        Returns: number
+      }
+      vector_norm: {
+        Args: { "": string }
+        Returns: number
+      }
+      vector_out: {
+        Args: { "": string }
+        Returns: unknown
+      }
+      vector_send: {
+        Args: { "": string }
+        Returns: string
+      }
+      vector_typmod_in: {
+        Args: { "": unknown[] }
+        Returns: number
       }
     }
     Enums: {
