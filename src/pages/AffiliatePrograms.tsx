@@ -31,6 +31,9 @@ const AffiliatePrograms = () => {
   const { user } = useAuth();
   const { programs, categories, loading, addProgram, updateProgram, deleteProgram } = useAffiliatePrograms();
   
+  console.log('🔐 Auth state:', { user: !!user, userId: user?.id });
+  console.log('📊 Programs data:', { count: programs.length, loading, categories });
+  
   // Filter programs based on search, category and recurring filter
   const filteredPrograms = programs.filter(program => {
     const matchesSearch = program.name.toLowerCase().includes(searchTerm.toLowerCase()) || 

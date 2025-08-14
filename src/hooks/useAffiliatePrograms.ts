@@ -26,6 +26,7 @@ export const useAffiliatePrograms = () => {
 
   const fetchPrograms = async () => {
     try {
+      console.log('🔍 Fetching affiliate programs...');
       setLoading(true);
       const { data, error } = await supabase
         .from('affiliate_programs')
@@ -33,15 +34,19 @@ export const useAffiliatePrograms = () => {
         .eq('is_active', true)
         .order('created_at', { ascending: false });
 
+      console.log('📊 Database response:', { data, error, count: data?.length });
+
       if (error) throw error;
 
       setPrograms(data || []);
+      console.log('✅ Programs set in state:', data?.length || 0);
       
       // Extract unique categories
       const uniqueCategories = [...new Set(data?.map(program => program.category) || [])];
       setCategories(uniqueCategories);
+      console.log('📋 Categories extracted:', uniqueCategories);
     } catch (error) {
-      console.error('Error fetching affiliate programs:', error);
+      console.error('❌ Error fetching affiliate programs:', error);
       toast({
         title: "Erreur",
         description: "Impossible de charger les programmes d'affiliation",

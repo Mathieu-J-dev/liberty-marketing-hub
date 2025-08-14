@@ -36,13 +36,13 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
       
       <CardHeader>
         <CardTitle>{opportunity.title}</CardTitle>
-        <CardDescription className="flex items-center">
+        <div className="flex items-center">
           <div className="flex items-center mr-2">
             <Star className="h-4 w-4 text-liberty-gold mr-1 fill-liberty-gold" />
             <span>{opportunity.rating}/5</span>
           </div>
           <span className="text-sm text-gray-500">• Programme vérifié</span>
-        </CardDescription>
+        </div>
       </CardHeader>
       
       <CardContent>
