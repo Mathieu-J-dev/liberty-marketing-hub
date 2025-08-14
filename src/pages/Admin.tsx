@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/auth/useAuth';
 import { Navigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
+import { supabase } from '@/integrations/supabase/client';
 import { useAffiliatePrograms } from '@/hooks/useAffiliatePrograms';
 import AffiliateFilters from '@/components/affiliate/AffiliateFilters';
 import AffiliateList from '@/components/affiliate/AffiliateList';
@@ -21,46 +22,29 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Plus, Loader2, Upload, Download, Globe, Shield } from 'lucide-react';
 
-const ADMIN_EMAIL = 'admin@affi-liberty.com'; // L'email admin autorisé
-
-const AdminLogin = ({ onLogin }: { onLogin: (password: string) => void }) => {
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onLogin(password);
-  };
-
+const AccessDenied = () => {
   return (
     <Layout>
       <div className="min-h-screen flex items-center justify-center bg-background">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-              <Shield className="h-6 w-6 text-primary" />
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+              <Shield className="h-6 w-6 text-destructive" />
             </div>
-            <CardTitle className="text-2xl font-bold">Administration Affi-Liberty</CardTitle>
+            <CardTitle className="text-2xl font-bold">Accès Refusé</CardTitle>
             <CardDescription>
-              Accès réservé à l'administrateur
+              Vous n'avez pas les permissions nécessaires pour accéder à cette page.
+              Contactez un administrateur pour obtenir l'accès.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="password">Mot de passe administrateur</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Entrez le mot de passe"
-                  required
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Se connecter
-              </Button>
-            </form>
+            <Button 
+              onClick={() => window.history.back()} 
+              variant="outline" 
+              className="w-full"
+            >
+              Retour
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -248,26 +232,62 @@ const AdminDashboard = () => {
 
 const Admin = () => {
   const { user, isAuthenticated } = useAuth();
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
-  const [error, setError] = useState('');
+  const [hasAdminRole, setHasAdminRole] = useState<boolean | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Vérifier si l'utilisateur est connecté et autorisé
-  if (!isAuthenticated || user?.email !== ADMIN_EMAIL) {
+  // Check if user has admin role
+  useEffect(() => {
+    const checkAdminRole = async () => {
+      if (!isAuthenticated || !user) {
+        setHasAdminRole(false);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', user.id)
+          .eq('role', 'admin')
+          .single();
+
+        if (error && error.code !== 'PGRST116') {
+          console.error('Error checking admin role:', error);
+          setHasAdminRole(false);
+        } else {
+          setHasAdminRole(!!data);
+        }
+      } catch (error) {
+        console.error('Error checking admin role:', error);
+        setHasAdminRole(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAdminRole();
+  }, [isAuthenticated, user]);
+
+  // Redirect to login if not authenticated
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  const handleAdminLogin = (password: string) => {
-    // Mot de passe simple pour l'admin (en production, utiliser un hash)
-    if (password === 'admin123') {
-      setIsAdminLoggedIn(true);
-      setError('');
-    } else {
-      setError('Mot de passe incorrect');
-    }
-  };
+  // Show loading while checking permissions
+  if (loading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[400px]">
+          <Loader2 className="h-8 w-8 animate-spin" />
+        </div>
+      </Layout>
+    );
+  }
 
-  if (!isAdminLoggedIn) {
-    return <AdminLogin onLogin={handleAdminLogin} />;
+  // Show access denied if user doesn't have admin role
+  if (!hasAdminRole) {
+    return <AccessDenied />;
   }
 
   return <AdminDashboard />;
