@@ -37,6 +37,23 @@ import elevenlabsThumbnail from '@/assets/elevenlabs-thumbnail.jpg';
 import gammaThumbnail from '@/assets/gamma-thumbnail.jpg';
 import lumaThumbnail from '@/assets/luma-thumbnail.jpg';
 import canvaThumbnail from '@/assets/canva-thumbnail.jpg';
+import craiyonThumbnail from '@/assets/craiyon-thumbnail.jpg';
+import personThumbnail from '@/assets/person-thumbnail.jpg';
+import mebyThumbnail from '@/assets/meby-thumbnail.jpg';
+import spinsaltThumbnail from '@/assets/spinsalt-thumbnail.jpg';
+import womboThumbnail from '@/assets/wombo-thumbnail.jpg';
+import photosonicThumbnail from '@/assets/photosonic-thumbnail.jpg';
+import playgroundThumbnail from '@/assets/playground-thumbnail.jpg';
+import lexicaThumbnail from '@/assets/lexica-thumbnail.jpg';
+import everypixelThumbnail from '@/assets/everypixel-thumbnail.jpg';
+import rosebudThumbnail from '@/assets/rosebud-thumbnail.jpg';
+import thestudioThumbnail from '@/assets/thestudio-thumbnail.jpg';
+import alpacaThumbnail from '@/assets/alpaca-thumbnail.jpg';
+import dreamsandsThumbnail from '@/assets/dreamsands-thumbnail.jpg';
+import genieThumbnail from '@/assets/genie-thumbnail.jpg';
+import quickdrawThumbnail from '@/assets/quickdraw-thumbnail.jpg';
+import logojoyThumbnail from '@/assets/logojoy-thumbnail.jpg';
+import lottieThumbnail from '@/assets/lottie-thumbnail.jpg';
 
 const aiTools = [
   // Image Generation Tools
@@ -403,6 +420,211 @@ const aiTools = [
     link: 'https://www.canva.com/ai-image-generator/',
     rating: 4,
     price: 'Gratuit avec limitation, puis 15$/mois pour Canva Pro',
+    category: 'Design'
+  },
+  // Nouveaux outils - Création et génération d'images
+  {
+    id: 32,
+    name: 'Craiyon',
+    description: 'Générez des images à partir de texte et transformez-les en designs de t-shirts personnalisés. Outil gratuit parfait pour créer des visuels uniques pour vos produits d\'affiliation ou vos campagnes marketing. Interface simple et résultats créatifs.',
+    usage: 'Génération d\'images, designs de t-shirts, créations personnalisées',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: craiyonThumbnail,
+    link: 'https://www.craiyon.com',
+    rating: 4,
+    price: 'Gratuit',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 33,
+    name: 'This Person Does Not Exist',
+    description: 'Générez des visages de personnes qui n\'existent pas pour vos produits, reviews et témoignages. Idéal pour créer des profils clients fictifs authentiques sans problèmes de droits d\'image pour vos campagnes d\'affiliation.',
+    usage: 'Génération de visages, témoignages, profils clients',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: personThumbnail,
+    link: 'https://this-person-does-not-exist.com/fr',
+    rating: 4,
+    price: 'Gratuit',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 34,
+    name: 'Meby',
+    description: 'Créez des photos de profil inspirantes et professionnelles avec l\'IA. Parfait pour améliorer votre image de marque personnelle et créer des avatars attractifs pour vos profils sur les réseaux sociaux et plateformes d\'affiliation.',
+    usage: 'Photos de profil, avatars professionnels, image de marque',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: mebyThumbnail,
+    link: 'https://www.meby.ai',
+    rating: 4,
+    price: 'Freemium',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 35,
+    name: 'SpinSalt',
+    description: 'Générez de magnifiques images riches et détaillées avec une qualité exceptionnelle. Outil premium pour créer des visuels haut de gamme qui se démarquent dans vos campagnes d\'affiliation et contenus marketing.',
+    usage: 'Images haute qualité, visuels premium, marketing de luxe',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: spinsaltThumbnail,
+    link: 'https://spinsalt.com',
+    rating: 5,
+    price: 'Premium',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 36,
+    name: 'Wombo',
+    description: 'Créez des lip sync stupéfiants et originaux pour vos vidéos marketing. Disponible en version mobile et PC, parfait pour créer du contenu viral et engageant pour promouvoir vos produits d\'affiliation.',
+    usage: 'Lip sync, vidéos virales, contenu engageant',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: womboThumbnail,
+    link: 'https://www.wombo.ai/',
+    rating: 4,
+    price: 'Freemium',
+    category: 'Génération de vidéos'
+  },
+  {
+    id: 37,
+    name: 'Photosonic',
+    description: 'IA de génération de tableaux artistiques basée sur des mots-clés. Créez des œuvres d\'art uniques et des illustrations créatives pour enrichir vos contenus d\'affiliation et captiver votre audience.',
+    usage: 'Art génératif, illustrations créatives, tableaux artistiques',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: photosonicThumbnail,
+    link: 'https://photosonic.writesonic.com',
+    rating: 4,
+    price: 'Freemium',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 38,
+    name: 'Playground AI',
+    description: 'Logiciel de génération d\'images ultra-puissant avec des fonctionnalités avancées. Alternative sérieuse à MidJourney offrant une grande flexibilité créative pour tous vos besoins visuels d\'affiliation.',
+    usage: 'Génération d\'images avancée, créativité professionnelle',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: playgroundThumbnail,
+    link: 'https://playgroundai.com/create',
+    rating: 5,
+    price: 'Freemium puis 15$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 39,
+    name: 'Lexica',
+    description: 'Outil créatif capable de créer des merveilles visuelles avec une approche artistique unique. Excellent pour générer des images inspirantes et esthétiques pour vos contenus d\'affiliation haut de gamme.',
+    usage: 'Art visuel, images esthétiques, créations inspirantes',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: lexicaThumbnail,
+    link: 'https://lexica.art',
+    rating: 4,
+    price: 'Freemium puis 10$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 40,
+    name: 'Everypixel',
+    description: 'La solution ultime pour trouver des images stock de qualité. Accédez à une vaste bibliothèque d\'images libres de droits pour illustrer tous vos contenus d\'affiliation sans souci de copyright.',
+    usage: 'Images stock, photos libres de droits, illustrations',
+    icon: <Lightbulb className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: everypixelThumbnail,
+    link: 'https://www.everypixel.com',
+    rating: 4,
+    price: 'Gratuit et payant',
+    category: 'Images stock'
+  },
+  {
+    id: 41,
+    name: 'Rosebud',
+    description: 'Générez des visuels créatifs et originaux avec une approche artistique raffinée. Parfait pour créer du contenu visuel qui se démarque dans l\'univers saturé du marketing d\'affiliation.',
+    usage: 'Visuels créatifs, design artistique, contenu original',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: rosebudThumbnail,
+    link: 'https://www.rosebud.ai',
+    rating: 4,
+    price: 'Freemium',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 42,
+    name: 'The Studio',
+    description: 'IA innovante qui crée des images à partir d\'images existantes que vous lui fournissez. Idéal pour transformer et améliorer vos visuels existants ou créer des variations créatives de vos contenus.',
+    usage: 'Transformation d\'images, variations créatives, amélioration visuelle',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: thestudioThumbnail,
+    link: 'https://app.pixelz.ai/studio',
+    rating: 4,
+    price: 'Freemium',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 43,
+    name: 'Alpaca',
+    description: 'Plugin Photoshop révolutionnaire qui intègre l\'IA directement dans votre workflow de design. Parfait pour les créateurs expérimentés qui veulent allier la puissance de Photoshop à l\'intelligence artificielle.',
+    usage: 'Plugin Photoshop, design professionnel, workflow IA',
+    icon: <Zap className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: alpacaThumbnail,
+    link: 'https://www.getalpaca.io',
+    rating: 5,
+    price: 'Premium',
+    category: 'Design'
+  },
+  {
+    id: 44,
+    name: 'Dreamsands',
+    description: 'Créez et vendez des œuvres d\'art générées par IA. Plateforme complète pour monétiser votre créativité en créant des NFT et œuvres numériques uniques que vous pouvez vendre comme produits d\'affiliation.',
+    usage: 'Création d\'art IA, NFT, monétisation créative',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: dreamsandsThumbnail,
+    link: 'https://dreamsands.ai',
+    rating: 4,
+    price: 'Freemium',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 45,
+    name: 'Genie',
+    description: 'Outil de génération d\'images spécialement conçu pour les artistes et designers professionnels. Interface intuitive et résultats de haute qualité pour créer des visuels exceptionnels.',
+    usage: 'Design professionnel, art numérique, créations haut de gamme',
+    icon: <Sparkles className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: genieThumbnail,
+    link: 'https://www.genie.ai',
+    rating: 4,
+    price: 'Freemium puis 20$/mois',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 46,
+    name: 'Quick, Draw!',
+    description: 'IA ludique de Google qui génère des dessins à partir de mots-clés. Parfait pour créer des illustrations simples et amusantes, idéal pour du contenu éducatif ou des présentations interactives.',
+    usage: 'Dessins simples, illustrations ludiques, contenu éducatif',
+    icon: <Bot className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: quickdrawThumbnail,
+    link: 'https://quickdraw.withgoogle.com',
+    rating: 3,
+    price: 'Gratuit',
+    category: 'Génération d\'images'
+  },
+  {
+    id: 47,
+    name: 'Logojoy',
+    description: 'Générez des visuels d\'entreprise professionnels en un clin d\'œil. Créez des logos, cartes de visite et identités visuelles complètes pour vos projets d\'affiliation et votre personal branding.',
+    usage: 'Logos, identité visuelle, branding professionnel',
+    icon: <Lightbulb className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: logojoyThumbnail,
+    link: 'https://www.logojoy.com',
+    rating: 4,
+    price: 'Freemium puis 25$/mois',
+    category: 'Design'
+  },
+  {
+    id: 48,
+    name: 'Lottie',
+    description: 'Générez des écrans de chargement animés et des micro-interactions pour vos jeux vidéo et applications. Parfait pour créer des expériences utilisateur engageantes dans vos projets numériques.',
+    usage: 'Animations, écrans de chargement, micro-interactions',
+    icon: <Zap className="h-12 w-12 text-liberty-blue" />,
+    thumbnail: lottieThumbnail,
+    link: 'https://lottiefiles.com/use-cases/game-design',
+    rating: 4,
+    price: 'Freemium puis 15$/mois',
     category: 'Design'
   }
 ];
