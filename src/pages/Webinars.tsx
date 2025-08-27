@@ -22,7 +22,7 @@ const Webinars = () => {
       id: 2,
       title: "IA et Marketing : Automatiser ses revenus",
       description: "Comment utiliser l'intelligence artificielle pour optimiser vos campagnes marketing.",
-      date: "2025-02-22",
+      date: "2025-05-22",
       time: "20:00",
       duration: "60 min", 
       participants: 189,
