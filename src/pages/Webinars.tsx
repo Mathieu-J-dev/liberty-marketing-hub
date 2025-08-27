@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Calendar, Clock, Users, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -141,9 +142,11 @@ const Webinars = () => {
             <p className="text-muted-foreground mb-4">
               Ne manquez aucun webinaire !
             </p>
-            <Button>
-              S'abonner aux notifications
-            </Button>
+            <Link to="/stay-informed">
+              <Button>
+                S'abonner aux notifications
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
