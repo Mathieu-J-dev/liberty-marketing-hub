@@ -73,9 +73,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-2">Email: contact@affi-liberty.fr</p>
             
             <p className="text-gray-300">
-              Affi-Liberty S.A.S<br />
-              123 Avenue de la Liberté<br />
-              75000 Paris, France
+              affi-liberty.fr Saas
             </p>
           </div>
         </div>
