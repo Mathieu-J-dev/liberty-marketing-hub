@@ -1,9 +1,10 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
-import { Play, Clock, BookOpen, Star } from 'lucide-react';
+import { Play, Clock, BookOpen, Star, Target, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import resourcesHero from '@/assets/resources-hero.jpg';
 
 const Tutorials = () => {
   const tutorialCategories = [
@@ -85,11 +86,62 @@ const Tutorials = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 gradient-text">
-              Tutoriels Affi-Liberty
+              Ressources Affi-Liberty
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Apprenez étape par étape avec nos tutoriels vidéo pratiques. De débutant à expert, maîtrisez tous les aspects du marketing digital.
+              Découvrez notre bibliothèque complète de ressources pour réussir dans le marketing d'affiliation et développer votre business en ligne.
             </p>
+          </div>
+
+          {/* Section Ressources mise en évidence */}
+          <div className="bg-gradient-to-br from-liberty-blue/5 to-liberty-gold/5 rounded-2xl p-8 mb-16">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-6 text-liberty-blue">
+                  Toutes nos ressources à votre disposition
+                </h2>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-liberty-gold mt-1" size={20} />
+                    <div>
+                      <h3 className="font-semibold">Tutoriels vidéo exclusifs</h3>
+                      <p className="text-muted-foreground">Plus de 50 heures de contenu premium</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-liberty-gold mt-1" size={20} />
+                    <div>
+                      <h3 className="font-semibold">Guides PDF téléchargeables</h3>
+                      <p className="text-muted-foreground">Documents pratiques et check-lists</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-liberty-gold mt-1" size={20} />
+                    <div>
+                      <h3 className="font-semibold">Templates et outils</h3>
+                      <p className="text-muted-foreground">Modèles prêts à utiliser pour vos campagnes</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="text-liberty-gold mt-1" size={20} />
+                    <div>
+                      <h3 className="font-semibold">Études de cas détaillées</h3>
+                      <p className="text-muted-foreground">Analyses de campagnes réussies</p>
+                    </div>
+                  </div>
+                </div>
+                <Button size="lg" className="mt-6">
+                  Accéder aux ressources
+                </Button>
+              </div>
+              <div className="lg:text-right">
+                <img 
+                  src={resourcesHero} 
+                  alt="Ressources Affi-Liberty" 
+                  className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-12">
@@ -140,14 +192,51 @@ const Tutorials = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
 
-          <div className="text-center mt-12 p-8 bg-muted rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Accès complet aux tutoriels</h3>
-            <p className="text-muted-foreground mb-6">
-              Rejoignez notre espace membre pour accéder à tous les tutoriels exclusifs et aux formations complètes.
+      {/* Section Plan d'action déplacée en pied de page */}
+      <div className="bg-muted py-16">
+        <div className="container mx-auto">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center mb-4">
+              <Target className="text-liberty-gold mr-3" size={32} />
+              <h2 className="text-3xl font-bold">Votre Plan d'Action Personnalisé</h2>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Suivez votre progression et atteignez vos objectifs avec notre plan d'action étape par étape.
             </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <Card className="text-center p-6">
+              <div className="w-12 h-12 bg-liberty-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-xl font-bold text-liberty-blue">1</span>
+              </div>
+              <h3 className="font-bold mb-2">Évaluation</h3>
+              <p className="text-muted-foreground">Analysez votre situation actuelle et définissez vos objectifs</p>
+            </Card>
+            
+            <Card className="text-center p-6">
+              <div className="w-12 h-12 bg-liberty-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-xl font-bold text-liberty-blue">2</span>
+              </div>
+              <h3 className="font-bold mb-2">Formation</h3>
+              <p className="text-muted-foreground">Suivez nos tutoriels et formations adaptés à votre niveau</p>
+            </Card>
+            
+            <Card className="text-center p-6">
+              <div className="w-12 h-12 bg-liberty-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-xl font-bold text-liberty-blue">3</span>
+              </div>
+              <h3 className="font-bold mb-2">Action</h3>
+              <p className="text-muted-foreground">Mettez en pratique et lancez vos premières campagnes</p>
+            </Card>
+          </div>
+          
+          <div className="text-center">
             <Button size="lg">
-              Devenir membre
+              Commencer mon plan d'action
             </Button>
           </div>
         </div>
