@@ -24,6 +24,7 @@ import Blog from "./pages/Blog";
 import Webinars from "./pages/Webinars";
 import Tutorials from "./pages/Tutorials";
 import CaseStudies from "./pages/CaseStudies";
+import StayInformed from "./pages/StayInformed";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
             <Route path="/webinars" element={<Webinars />} />
             <Route path="/tutorials" element={<Tutorials />} />
             <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/stay-informed" element={<StayInformed />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

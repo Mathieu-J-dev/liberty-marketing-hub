@@ -33,6 +33,7 @@ const Navbar = () => {
           <Link to="/affiliate-programs" className="text-gray-600 hover:text-liberty-blue">Programmes</Link>
           <Link to="/action-plan" className="text-gray-600 hover:text-liberty-blue">Plan d'action</Link>
           <Link to="/tools" className="text-gray-600 hover:text-liberty-blue">Outils IA</Link>
+          <Link to="/stay-informed" className="text-gray-600 hover:text-liberty-blue">Resté informés</Link>
           <Link to="/contact" className="text-gray-600 hover:text-liberty-blue">Contact</Link>
           
           {isAuthenticated ? (
@@ -80,6 +81,7 @@ const Navbar = () => {
             <Link to="/affiliate-programs" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Programmes</Link>
             <Link to="/action-plan" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Plan d'action</Link>
             <Link to="/tools" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Outils IA</Link>
+            <Link to="/stay-informed" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Resté informés</Link>
             <Link to="/contact" className="text-gray-600 hover:text-liberty-blue py-2 border-b" onClick={toggleMenu}>Contact</Link>
             
             {isAuthenticated ? (
