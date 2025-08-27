@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
@@ -7,21 +6,18 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
-
 const Contact = () => {
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     toast({
       title: "Message envoyé!",
-      description: "Nous vous répondrons dans les meilleurs délais.",
+      description: "Nous vous répondrons dans les meilleurs délais."
     });
   };
-
-  return (
-    <Layout>
+  return <Layout>
       <div id="top"></div>
       <div className="section">
         <div className="container mx-auto">
@@ -59,12 +55,7 @@ const Contact = () => {
                 
                 <div>
                   <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Détaillez votre question ici..."
-                    className="min-h-32" 
-                    required 
-                  />
+                  <Textarea id="message" placeholder="Détaillez votre question ici..." className="min-h-32" required />
                 </div>
                 
                 <Button type="submit" className="w-full bg-liberty-blue hover:bg-liberty-blue/90 text-white">
@@ -74,7 +65,7 @@ const Contact = () => {
               </form>
             </div>
             
-            <div>
+            <div className="rounded-md">
               <h2 className="text-2xl font-bold mb-6">Nos coordonnées</h2>
               
               <div className="bg-gray-50 p-6 rounded-lg mb-6">
@@ -86,14 +77,7 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4 mb-6">
-                  <Phone className="h-6 w-6 text-liberty-gold mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Téléphone</h3>
-                    <p className="text-gray-600">0745055246</p>
-                    <p className="text-gray-600">Lun - Ven, 9h - 18h</p>
-                  </div>
-                </div>
+                
                 
                 <div className="flex items-start space-x-4">
                   <MapPin className="h-6 w-6 text-liberty-gold mt-1" />
@@ -109,22 +93,14 @@ const Contact = () => {
               </div>
               
               <div className="rounded-lg overflow-hidden h-64 shadow-md">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.76457405996!2d2.2769946926222757!3d48.85894658138696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1696969022592!5m2!1sen!2sus" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen={true} 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.76457405996!2d2.2769946926222757!3d48.85894658138696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1696969022592!5m2!1sen!2sus" width="100%" height="100%" style={{
+                border: 0
+              }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Contact;
