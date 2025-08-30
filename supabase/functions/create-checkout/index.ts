@@ -67,8 +67,30 @@ serve(async (req) => {
       subscription_data: {
         trial_period_days: 14, // 14 jours d'essai gratuit
       },
-      success_url: `${req.headers.get("origin")}/espace-membre?success=true`,
-      cancel_url: `${req.headers.get("origin")}/espace-membre?canceled=true`,
+      success_url: `${(() => {
+        const origin = req.headers.get("origin");
+        const allowedOrigins = [
+          "http://localhost:3000",
+          "https://uaulsokocacypxbqbhgo.supabase.co", 
+          "https://lovable.app"
+        ];
+        if (!origin || !allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+          return "http://localhost:3000";
+        }
+        return origin;
+      })()}/espace-membre?success=true`,
+      cancel_url: `${(() => {
+        const origin = req.headers.get("origin");
+        const allowedOrigins = [
+          "http://localhost:3000",
+          "https://uaulsokocacypxbqbhgo.supabase.co",
+          "https://lovable.app"
+        ];
+        if (!origin || !allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+          return "http://localhost:3000";
+        }
+        return origin;
+      })()}/espace-membre?canceled=true`,
       allow_promotion_codes: true,
     });
 

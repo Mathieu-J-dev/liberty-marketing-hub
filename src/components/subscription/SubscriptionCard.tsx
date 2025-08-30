@@ -66,7 +66,10 @@ const SubscriptionCard = () => {
       }
 
       if (data?.url) {
-        window.open(data.url, '_blank');
+        const newWindow = window.open(data.url, '_blank');
+        if (newWindow) {
+          newWindow.opener = null;
+        }
       }
     } catch (error) {
       console.error('Erreur inattendue:', error);
@@ -96,7 +99,10 @@ const SubscriptionCard = () => {
       }
 
       if (data?.url) {
-        window.open(data.url, '_blank');
+        const newWindow = window.open(data.url, '_blank');
+        if (newWindow) {
+          newWindow.opener = null;
+        }
       }
     } catch (error) {
       console.error('Erreur inattendue:', error);

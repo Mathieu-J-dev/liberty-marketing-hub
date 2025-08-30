@@ -47,7 +47,10 @@ const ContentCard = ({ content }: ContentCardProps) => {
       document.body.removeChild(link);
     } else if (content.external_url) {
       // Redirection vers URL externe
-      window.open(content.external_url, '_blank');
+      const newWindow = window.open(content.external_url, '_blank');
+      if (newWindow) {
+        newWindow.opener = null;
+      }
     }
   };
 
@@ -122,7 +125,12 @@ const ContentCard = ({ content }: ContentCardProps) => {
             variant="secondary" 
             size="sm"
             className="w-full text-xs"
-            onClick={() => window.open(content.affiliate_link, '_blank')}
+            onClick={() => {
+              const newWindow = window.open(content.affiliate_link, '_blank');
+              if (newWindow) {
+                newWindow.opener = null;
+              }
+            }}
           >
             <ExternalLink className="h-3 w-3 mr-1" /> Lien d'affiliation
           </Button>

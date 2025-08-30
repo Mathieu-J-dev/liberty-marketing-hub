@@ -50,7 +50,18 @@ serve(async (req) => {
     const customerId = customers.data[0].id;
     logStep("Found Stripe customer", { customerId });
 
-    const origin = req.headers.get("origin") || "http://localhost:3000";
+    // Validate origin to prevent open redirects
+    const origin = req.headers.get("origin");
+    const allowedOrigins = [
+      "http://localhost:3000",
+      "https://uaulsokocacypxbqbhgo.supabase.co",
+      "https://lovable.app"
+    ];
+    
+    if (!origin || !allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+      throw new Error("Invalid origin");
+    }
+    
     const portalSession = await stripe.billingPortal.sessions.create({
       customer: customerId,
       return_url: `${origin}/espace-membre`,

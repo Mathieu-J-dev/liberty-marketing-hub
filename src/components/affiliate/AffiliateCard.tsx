@@ -22,7 +22,10 @@ const AffiliateCard: React.FC<AffiliateCardProps> = ({ program, onEdit, onDelete
   const { user } = useAuth();
   
   const handleVisit = () => {
-    window.open(program.link, '_blank');
+    const newWindow = window.open(program.link, '_blank');
+    if (newWindow) {
+      newWindow.opener = null;
+    }
   };
 
   const canManage = user && (user.id === program.created_by || onEdit || onDelete);

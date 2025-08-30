@@ -730,7 +730,12 @@ const AITools = () => {
                     <p className="text-xs text-gray-500 mb-2">{tool.price}</p>
                     <Button 
                       className="bg-liberty-gold hover:bg-liberty-gold/90 w-full"
-                      onClick={() => window.open(tool.link, '_blank')}
+                      onClick={() => {
+                        const newWindow = window.open(tool.link, '_blank');
+                        if (newWindow) {
+                          newWindow.opener = null;
+                        }
+                      }}
                     >
                       Tester
                     </Button>
