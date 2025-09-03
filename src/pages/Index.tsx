@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Layout from '@/components/layout/Layout';
-import Hero from '@/components/home/Hero';
+import CaptureSection from '@/components/capture/CaptureSection';
 import Features from '@/components/home/Features';
 import HowItWorks from '@/components/home/HowItWorks';
 import Testimonials from '@/components/home/Testimonials';
@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <Layout>
       <div id="top"></div>
-      <Hero />
+      <CaptureSection />
       <Stats />
       <Features />
       <HowItWorks />

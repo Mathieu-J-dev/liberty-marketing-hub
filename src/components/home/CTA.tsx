@@ -13,17 +13,17 @@ const CTA = () => {
           Rejoignez notre communauté d'entrepreneurs qui génèrent déjà des revenus passifs grâce à notre plateforme.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link to="/capture">
+          <a href="/#lead">
             <Button className="bg-liberty-gold hover:bg-liberty-gold/90 text-white py-3 px-8 text-lg">
               Démarrer Gratuitement
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </Link>
-          <Link to="jeanmaire.mathi@gmail.com">
+          </a>
+          <a href="mailto:jeanmaire.mathi@gmail.com">
             <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 py-3 px-8 text-lg">
               Nous Contacter
             </Button>
-          </Link>
+          </a>
         </div>
         <p className="mt-6 text-white/70 text-sm">
           Aucune carte de crédit requise. Essai gratuit de 14 jours.

@@ -66,11 +66,11 @@ const Navbar = () => {
             </Link>
           )}
           
-          <Link to="/capture">
+          <a href="/#lead">
             <Button className="bg-liberty-gold hover:bg-liberty-gold/90 text-white">
               Démarrer
             </Button>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile menu */}
@@ -110,11 +110,11 @@ const Navbar = () => {
               </Link>
             )}
             
-            <Link to="/capture" className="w-full" onClick={toggleMenu}>
+            <a href="/#lead" className="w-full" onClick={toggleMenu}>
               <Button className="w-full bg-liberty-gold hover:bg-liberty-gold/90 text-white">
                 Démarrer
               </Button>
-            </Link>
+            </a>
           </div>
         )}
       </div>
