@@ -5,6 +5,7 @@ import { useAffiliatePrograms } from '@/hooks/useAffiliatePrograms';
 import { useAuth } from '@/auth';
 import AffiliateFilters from '@/components/affiliate/AffiliateFilters';
 import AffiliateList from '@/components/affiliate/AffiliateList';
+import PublicCallout from '@/components/affiliate/PublicCallout';
 import AddProgramModal from '@/components/affiliate/AddProgramModal';
 import EditProgramModal from '@/components/affiliate/EditProgramModal';
 import CSVImportModal from '@/components/affiliate/CSVImportModal';
@@ -143,8 +144,15 @@ const AffiliatePrograms = () => {
             </div>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Découvrez notre sélection de programmes d'affiliation de haute qualité avec des commissions attractives.
+              {!user && (
+                <span className="block mt-2 text-sm">
+                  <strong>{programs.length} programmes disponibles</strong> - Créez un compte pour accéder à tous nos programmes exclusifs !
+                </span>
+              )}
             </p>
           </div>
+
+          {!user && <PublicCallout />}
 
           <AffiliateFilters 
             searchTerm={searchTerm}

@@ -16,6 +16,7 @@ export interface AffiliateProgram {
   updated_at: string;
   created_by?: string;
   is_active: boolean;
+  is_public: boolean;
 }
 
 export const useAffiliatePrograms = () => {

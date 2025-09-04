@@ -29,7 +29,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { Loader2, CheckCircle, XCircle, Info } from 'lucide-react';
+import { useAdminRole } from '@/hooks/useAdminRole';
 import { AffiliateProgram } from '@/hooks/useAffiliatePrograms';
 
 const formSchema = z.object({
@@ -41,6 +42,7 @@ const formSchema = z.object({
   rating: z.number().min(0).max(5),
   recurring: z.boolean(),
   earnings: z.string().min(1, 'Les gains estimés sont requis'),
+  is_public: z.boolean(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -76,6 +78,8 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
     message?: string;
   }>({ status: 'idle' });
 
+  const { isAdmin } = useAdminRole();
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -87,6 +91,7 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
       rating: 4.0,
       recurring: false,
       earnings: '',
+      is_public: false,
     },
   });
 
@@ -125,6 +130,7 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
         earnings: data.earnings,
         created_by: undefined, // Will be set by auth context
         is_active: true,
+        is_public: data.is_public,
       });
       form.reset();
       setCustomCategory('');
@@ -346,6 +352,30 @@ const AddProgramModal: React.FC<AddProgramModalProps> = ({
                 )}
               />
             </div>
+
+            {isAdmin && (
+              <FormField
+                control={form.control}
+                name="is_public"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <div className="space-y-0.5">
+                      <FormLabel className="text-base">Programme public</FormLabel>
+                      <div className="text-sm text-muted-foreground flex items-center gap-2">
+                        <Info className="h-4 w-4" />
+                        Visible par les visiteurs non connectés (données non sensibles uniquement)
+                      </div>
+                    </div>
+                    <FormControl>
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            )}
 
             <DialogFooter>
               <Button

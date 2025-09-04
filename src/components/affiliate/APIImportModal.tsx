@@ -121,6 +121,7 @@ const APIImportModal: React.FC<APIImportModalProps> = ({
           recurring: Boolean(program.recurring || program.is_recurring || false),
           earnings: program.earnings || program.potential_earnings || 'Non spécifié',
           is_active: true,
+          is_public: false, // Par défaut, les programmes importés ne sont pas publics
         };
       } catch (error) {
         throw new Error(`Erreur lors de la transformation des données pour le programme ${index + 1}: ${error instanceof Error ? error.message : 'Erreur inconnue'}`);

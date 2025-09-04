@@ -51,6 +51,7 @@ export type Database = {
           earnings: string
           id: string
           is_active: boolean
+          is_public: boolean
           link: string
           name: string
           rating: number
@@ -66,6 +67,7 @@ export type Database = {
           earnings: string
           id?: string
           is_active?: boolean
+          is_public?: boolean
           link: string
           name: string
           rating: number
@@ -81,6 +83,7 @@ export type Database = {
           earnings?: string
           id?: string
           is_active?: boolean
+          is_public?: boolean
           link?: string
           name?: string
           rating?: number
