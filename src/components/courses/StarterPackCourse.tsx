@@ -47,7 +47,7 @@ const StarterPackCourse: React.FC = () => {
       title: "Comprendre l'Affiliation Marketing",
       description: "Les bases essentielles pour débuter",
       icon: <BookOpen className="h-5 w-5" />,
-      duration: "45 min",
+      duration: "10 min",
       completed: completedModules.includes(1),
       content: {
         introduction: "L'affiliation marketing est une stratégie de marketing en ligne où vous promouvez les produits ou services d'autres entreprises et gagnez une commission sur chaque vente générée.",
