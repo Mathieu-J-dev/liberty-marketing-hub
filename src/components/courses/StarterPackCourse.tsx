@@ -47,7 +47,7 @@ const StarterPackCourse: React.FC = () => {
       title: "Comprendre l'Affiliation Marketing",
       description: "Les bases essentielles pour débuter",
       icon: <BookOpen className="h-5 w-5" />,
-      duration: "10 min",
+      duration: "25 min",
       completed: completedModules.includes(1),
       content: {
         introduction: "L'affiliation marketing est une stratégie de marketing en ligne où vous promouvez les produits ou services d'autres entreprises et gagnez une commission sur chaque vente générée.",
@@ -129,7 +129,7 @@ const StarterPackCourse: React.FC = () => {
       title: "Choisir sa Niche Rentable",
       description: "Identifier les opportunités lucratives",
       icon: <Target className="h-5 w-5" />,
-      duration: "60 min",
+      duration: "15 min",
       completed: completedModules.includes(2),
       content: {
         introduction: "Le choix de votre niche détermine en grande partie votre succès en affiliation. Une niche bien choisie combine passion personnelle, demande du marché et potentiel de monétisation.",
@@ -211,7 +211,7 @@ const StarterPackCourse: React.FC = () => {
       title: "Créer du Contenu qui Convertit",
       description: "Techniques de création de contenu persuasif",
       icon: <Users className="h-5 w-5" />,
-      duration: "75 min",
+      duration: "25 min",
       completed: completedModules.includes(3),
       content: {
         introduction: "Le contenu est le pilier de votre stratégie d'affiliation. Un contenu de qualité établit votre crédibilité, engage votre audience et guide naturellement vers l'achat.",
@@ -294,7 +294,7 @@ const StarterPackCourse: React.FC = () => {
       title: "Générer du Trafic Qualifié",
       description: "Stratégies d'acquisition de visiteurs",
       icon: <DollarSign className="h-5 w-5" />,
-      duration: "90 min",
+      duration: "50 min",
       completed: completedModules.includes(4),
       content: {
         introduction: "Sans trafic qualifié, même le meilleur contenu d'affiliation ne génère pas de revenus. Découvrez les stratégies les plus efficaces pour attirer des visiteurs prêts à acheter.",
