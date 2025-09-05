@@ -23,7 +23,8 @@ const SubscriptionCard = () => {
   const checkSubscriptionStatus = async () => {
     setCheckingStatus(true);
     try {
-      const { data, error } = await supabase.functions.invoke('check-subscription');
+      // Use the new secure function instead of direct edge function call
+      const { data, error } = await supabase.rpc('get_user_subscription_status');
       
       if (error) {
         console.error('Erreur lors de la vérification:', error);
@@ -35,8 +36,17 @@ const SubscriptionCard = () => {
         return;
       }
 
-      if (data) {
-        setSubscriptionData(data);
+      if (data && data.length > 0) {
+        const subscriptionInfo = data[0];
+        setSubscriptionData({
+          subscribed: subscriptionInfo.subscribed,
+          subscription_tier: subscriptionInfo.subscription_tier,
+          subscription_end: subscriptionInfo.subscription_end,
+          trial_end: subscriptionInfo.trial_end
+        });
+      } else {
+        // No subscription found - set default state
+        setSubscriptionData({ subscribed: false });
       }
     } catch (error) {
       console.error('Erreur inattendue:', error);

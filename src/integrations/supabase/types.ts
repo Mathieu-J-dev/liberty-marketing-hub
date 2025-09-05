@@ -505,6 +505,16 @@ export type Database = {
           path: string
         }[]
       }
+      get_user_subscription_status: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          is_valid: boolean
+          subscribed: boolean
+          subscription_end: string
+          subscription_tier: string
+          trial_end: string
+        }[]
+      }
       halfvec_avg: {
         Args: { "": number[] }
         Returns: unknown
