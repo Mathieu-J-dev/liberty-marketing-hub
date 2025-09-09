@@ -11,7 +11,7 @@ const CaptureSection = () => {
           {/* En-tête avec titre principal */}
           <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
               Découvrez Comment Générer{' '}
-              <span className="gradient-text text-liberty-gold">3000€/mois</span>{' '}
+              <span className="gradient-text text-liberty-gold">1500€/mois</span>{' '}
               en Affiliation
             </h1>
             
