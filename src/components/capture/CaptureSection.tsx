@@ -87,7 +87,7 @@ const CaptureSection = () => {
           
           {/* Section de social proof */}
           <div className="text-center py-12 border-t border-gray-200">
-            <p className="text-gray-600 mb-6">Déjà plus de 2,847 entrepreneurs nous font confiance</p>
+            <p className="text-gray-600 mb-6">Déjà plus de 20 entrepreneurs nous font confiance</p>
             <div className="flex flex-wrap justify-center items-center space-x-8 opacity-60">
               <span className="text-2xl font-bold text-gray-400">★★★★★</span>
               <span className="text-sm text-gray-500">4.8/5 - Trustpilot</span>
