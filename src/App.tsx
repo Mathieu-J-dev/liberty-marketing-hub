@@ -8,6 +8,7 @@ import { AuthProvider } from "./auth"; // Import modifié
 import Index from "./pages/Index";
 import Capture from "./pages/Capture";
 import Opportunities from "./pages/Opportunities";
+import OpportunityDetail from "./pages/OpportunityDetail";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/capture" element={<Capture />} />
             <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/opportunities/:id" element={<OpportunityDetail />} />
             <Route path="/action-plan" element={<ActionPlan />} />
             <Route path="/tools" element={<AITools />} />
             <Route path="/contact" element={<Contact />} />

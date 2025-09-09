@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Star, DollarSign, Award, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export interface Opportunity {
   id: number;
@@ -73,10 +74,12 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
       </CardContent>
       
       <CardFooter>
-        <Button className="w-full bg-liberty-blue hover:bg-liberty-blue/90 text-white">
-          Voir plus
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <Link to={`/opportunities/${opportunity.id}`} className="w-full">
+          <Button className="w-full bg-liberty-blue hover:bg-liberty-blue/90 text-white">
+            Voir plus
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
