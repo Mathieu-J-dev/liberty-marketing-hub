@@ -8,6 +8,7 @@ import { useAuth } from '@/auth';
 import ProfileHeader from '@/components/member/ProfileHeader';
 import XPProgressSection from '@/components/member/XPProgressSection';
 import MemberTabs from '@/components/member/MemberTabs';
+import SubscriptionCard from '@/components/subscription/SubscriptionCard';
 
 type Action = {
   id: string;
@@ -124,11 +125,18 @@ const MemberArea = () => {
           
           <XPProgressSection user={user} />
 
-          <MemberTabs 
-            actions={actions}
-            completedActions={completedActions}
-            loadingActions={loadingActions}
-          />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div className="lg:col-span-2">
+              <MemberTabs 
+                actions={actions}
+                completedActions={completedActions}
+                loadingActions={loadingActions}
+              />
+            </div>
+            <div className="lg:col-span-1">
+              <SubscriptionCard />
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
