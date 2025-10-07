@@ -22,11 +22,12 @@ interface Module {
       content: string;
       examples?: string[];
     }>;
-    exercices: Array<{
+    exercise?: {
       title: string;
-      description: string;
-      task: string;
-    }>;
+      instructions: string;
+      tasks: string[];
+      deliverable: string;
+    };
   };
   quiz: Array<{
     question: string;
@@ -44,732 +45,560 @@ const StarterPackCourse: React.FC = () => {
   const modules: Module[] = [
     {
       id: 1,
-      title: "Comprendre l'Affiliation Marketing",
-      description: "Les bases essentielles pour débuter",
+      title: "Les Fondamentaux de l'Affiliation Marketing",
+      description: "Comprendre les bases de l'affiliation",
       icon: <BookOpen className="h-5 w-5" />,
       duration: "45 min",
       completed: completedModules.includes(1),
       content: {
-        introduction: "L'affiliation marketing est une stratégie de marketing en ligne où vous promouvez les produits ou services d'autres entreprises et gagnez une commission sur chaque vente générée. C'est l'un des business models les plus accessibles pour débuter en ligne en 2025.",
+        introduction: "Ce module est la pierre angulaire pour bien comprendre ce qu'est l'affiliation et pourquoi c'est une stratégie si puissante.",
         sections: [
           {
-            title: "Histoire et évolution de l'affiliation",
-            content: "L'affiliation marketing a été lancée en 1996 par Amazon. Aujourd'hui, c'est un marché de plus de 12 milliards de dollars. Avec l'IA et le no-code, créer un business d'affiliation rentable est plus accessible que jamais.",
+            title: "1.1. Qu'est-ce que l'Affiliation Marketing ?",
+            content: "L'affiliation marketing, c'est comme être un apporteur d'affaires. Vous recommandez les produits ou services d'autres entreprises et, si quelqu'un achète grâce à votre recommandation (via un lien unique), vous touchez une commission.",
             examples: [
-              "1996 : Amazon lance le premier programme d'affiliation grand public",
-              "2010 : L'explosion des blogs et du marketing de contenu",
-              "2025 : L'ère de l'IA et de l'automatisation pour l'affiliation"
+              "Les acteurs clés : L'affilié (vous !) - Celui qui promeut les produits",
+              "Le commerçant / annonceur : L'entreprise qui vend le produit/service",
+              "La plateforme d'affiliation (ex: ClickBank, 1TPE) : L'intermédiaire qui gère les liens et les commissions",
+              "Le client : Celui qui effectue l'achat",
+              "Comment l'affiliation peut augmenter le chiffre d'affaires de 30% en un an avec la Team Affiliates Liberté"
             ]
           },
           {
-            title: "Qu'est-ce que l'affiliation marketing ?",
-            content: "L'affiliation est un partenariat entre trois parties : l'annonceur (qui vend le produit), l'affilié (vous, qui fait la promotion), et le client final. Vous recevez un lien de suivi unique pour chaque produit que vous promouvez. Chaque fois qu'une vente est réalisée via votre lien, vous touchez une commission.",
+            title: "1.2. Les Avantages de l'Affiliation Marketing",
+            content: "L'affiliation marketing offre de nombreux avantages pour débuter dans le digital sans investissement lourd.",
             examples: [
-              "Amazon Associates - Commission de 1-10% selon la catégorie (des millions de produits)",
-              "ClickBank - Produits numériques avec commissions jusqu'à 75% (idéal pour débuter)",
-              "ShareASale - Marketplace avec des milliers de programmes (tous secteurs)",
-              "Systeme.io - Outils marketing avec 40-60% de commissions récurrentes"
+              "Faible coût de démarrage : Pas besoin d'avoir son propre produit, de gérer un stock ou le service client. Idéal pour débuter avec peu d'investissement",
+              "Flexibilité totale : Travailler de n'importe où, à son propre rythme. Excellente option pour un complément de revenu ou une reconversion",
+              "Potentiel de revenus passifs : Une fois vos systèmes mis en place (articles de blog, vidéos, etc.), ils peuvent continuer à générer des ventes sans votre intervention constante",
+              "Accès à une multitude de produits : Possibilité de promouvoir des produits dans des niches très variées qui vous passionnent"
             ]
           },
           {
-            title: "Les différents types de commissions",
-            content: "Il existe plusieurs modèles de rémunération dans l'affiliation. Comprendre ces modèles vous permet de choisir les programmes les plus adaptés à votre stratégie et votre audience.",
+            title: "1.3. Les Inconvénients et les Pièges à Éviter",
+            content: "Il est important d'avoir une vision réaliste de l'affiliation pour éviter les désillusions.",
             examples: [
-              "CPS (Coût Par Vente) : 5-75% de commission sur chaque vente - Le plus courant",
-              "CPL (Coût Par Lead) : 1-50€ par email collecté ou inscription",
-              "CPA (Coût Par Action) : 10-200€ par action spécifique (inscription, essai gratuit)",
-              "Commissions récurrentes : Revenu mensuel tant que le client reste abonné (SaaS)"
+              "Nécessite temps et effort : Ce n'est pas de l'argent facile. Il faut construire une audience, créer du contenu de qualité et être persévérant",
+              "Dépendance vis-à-vis des autres : Les commissions, les produits et les règles peuvent changer du côté de l'annonceur ou de la plateforme",
+              "Risque d'arnaques : Importance de choisir des plateformes et des annonceurs fiables (d'où l'importance de cette formation et de la Team Affiliates Liberté !)",
+              "Concurrence : Certaines niches sont très concurrentielles, ce qui demande plus d'efforts pour se démarquer"
             ]
           },
           {
-            title: "Études de cas : Revenus réels d'affiliés",
-            content: "Voici des exemples concrets de revenus générés par des affiliés pour vous montrer le potentiel réel de ce business model.",
+            title: "1.4. Terminologie Essentielle de l'Affiliation",
+            content: "Maîtriser le vocabulaire de base est essentiel pour comprendre et réussir en affiliation.",
             examples: [
-              "Pat Flynn (Smart Passive Income) : 150 000$/mois principalement via l'affiliation",
-              "Michelle Schroeder (Making Sense of Cents) : 50 000$/mois en affiliation finance",
-              "Matthew Woodward (SEO) : 40 000$/mois en affiliation outils marketing",
-              "Cas débutant réaliste : 500-2000€/mois après 6-12 mois de travail constant"
-            ]
-          },
-          {
-            title: "Mythes vs Réalités de l'affiliation",
-            content: "Démystifions les idées reçues sur l'affiliation marketing pour avoir des attentes réalistes et éviter les erreurs courantes des débutants.",
-            examples: [
-              "❌ MYTHE : 'On devient riche rapidement' → ✅ RÉALITÉ : Ça prend 6-12 mois pour des revenus réguliers",
-              "❌ MYTHE : 'C'est du 100% passif' → ✅ RÉALITÉ : Demande du travail initial puis maintenance",
-              "❌ MYTHE : 'Il suffit de partager des liens' → ✅ RÉALITÉ : Nécessite du contenu de qualité et de la stratégie",
-              "❌ MYTHE : 'Il faut une énorme audience' → ✅ RÉALITÉ : Une petite audience engagée suffit"
-            ]
-          },
-          {
-            title: "Avantages et inconvénients",
-            content: "L'affiliation offre la possibilité de revenus passifs sans créer de produits, mais nécessite du temps pour construire une audience et optimiser les conversions. Voici un bilan honnête pour prendre une décision éclairée.",
-            examples: [
-              "✅ Avantages : Pas de stock, pas de SAV, flexible, scalable, revenus passifs potentiels",
-              "❌ Inconvénients : Dépendance aux programmes, commissions variables, concurrence, besoin de trafic constant"
+              "Lien d'affilié : Votre identifiant unique qui permet de suivre vos ventes",
+              "Commission : Le pourcentage ou le montant fixe que vous recevez pour chaque vente validée",
+              "Cookie : Petit fichier texte placé sur l'ordinateur du visiteur pour suivre son parcours et attribuer la vente à l'affilié (avec une durée de vie spécifique)",
+              "Taux de conversion : Le pourcentage de visiteurs qui effectuent l'action désirée (achat, inscription, etc.) après avoir cliqué sur votre lien",
+              "Niche : Un segment spécifique et ciblé du marché (ex: 'matériel de camping léger', 'recettes végétaliennes rapides')"
             ]
           }
         ],
-        exercices: [
-          {
-            title: "Recherche de programmes d'affiliation",
-            description: "Trouvez et analysez 10 programmes d'affiliation dans votre niche",
-            task: "Inscrivez-vous sur 3 plateformes d'affiliation (Amazon Associates, ClickBank, ShareASale ou 1TPE) et créez un tableau Excel avec 10 programmes incluant : nom, commission %, type de commission, durée du cookie, support affilié disponible."
-          },
-          {
-            title: "Analyse de commissions et calcul de revenus",
-            description: "Calculez le potentiel de revenus réaliste",
-            task: "Pour chaque programme sélectionné, calculez combien de ventes vous devez faire pour atteindre 500€, 1000€ et 2000€ de commissions mensuelles. Notez aussi le nombre de visiteurs nécessaire avec un taux de conversion de 1-3%."
-          },
-          {
-            title: "Étude de cas d'un affilié à succès",
-            description: "Apprenez des meilleurs",
-            task: "Trouvez 2 affiliés à succès dans votre niche (via YouTube, blogs ou podcasts). Analysez leur stratégie : types de contenu, canaux utilisés, positionnement, et notez 3 idées que vous pouvez appliquer."
-          },
-          {
-            title: "Planification de votre business d'affiliation",
-            description: "Créez votre plan d'action personnalisé",
-            task: "Rédigez un document décrivant : votre niche choisie, 3 programmes d'affiliation prioritaires, votre stratégie de contenu (blog/YouTube/Instagram), objectif de revenus à 3, 6 et 12 mois, et vos 3 premières actions concrètes."
-          }
-        ]
+        exercise: {
+          title: "Ma première recherche d'affilié dans mon quotidien",
+          instructions: "Objectif : Comprendre le concept d'affiliation dans des situations réelles et identifier les acteurs clés.",
+          tasks: [
+            "Liste tes préférés : Réfléchis à 3 à 5 produits ou services que tu utilises régulièrement et que tu apprécies sincèrement. Pense à des choses que tu recommandes déjà naturellement (logiciel de productivité, marque de café, site de streaming, cours en ligne, application mobile, etc.)",
+            "Recherche de programme d'affiliation : Pour chacun, effectue une recherche Google avec des requêtes comme '[Nom du produit/service] programme affiliation', '[Nom de l'entreprise] affilié', 'Devenir partenaire [Nom de l'entreprise]'",
+            "Identification des acteurs : Si tu trouves un programme, essaye d'identifier qui serait l'annonceur, s'il y a une plateforme d'affiliation tierce (comme Awin, Partnerize), et le modèle de rémunération",
+            "Réflexion : Pourquoi penses-tu que cette entreprise propose un programme d'affiliation ? Quels seraient les avantages et inconvénients de promouvoir ce type de produit pour toi ?"
+          ],
+          deliverable: "Un court document (texte, tableau simple) listant les 3-5 produits/services, le résultat de la recherche d'affiliation (oui/non), les acteurs identifiés, le modèle de rémunération (si trouvé) et une brève réflexion."
+        }
       },
       quiz: [
         {
-          question: "Quel est le rôle principal d'un affilié ?",
+          question: "Quel est le rôle principal de l'affilié en marketing d'affiliation ?",
           options: [
-            "Créer le produit à vendre",
-            "Promouvoir les produits d'autres entreprises",
-            "Gérer le service client",
-            "Livrer les produits aux clients"
-          ],
-          correctAnswer: 1,
-          explanation: "L'affilié agit comme un intermédiaire marketing qui promeut les produits d'autres entreprises en échange d'une commission. Il n'a pas à gérer la création, le stock ou la livraison."
-        },
-        {
-          question: "Que signifie CPS en affiliation ?",
-          options: [
-            "Coût Par Seconde",
-            "Commission Par Semaine",
-            "Coût Par Vente (Cost Per Sale)",
-            "Clients Par Site"
+            "Vendre ses propres produits en ligne directement aux clients",
+            "Créer de nouveaux produits et services pour les annonceurs",
+            "Promouvoir les produits ou services d'autres entreprises et toucher une commission",
+            "Gérer le service client et les retours produits pour les annonceurs"
           ],
           correctAnswer: 2,
-          explanation: "CPS (Cost Per Sale) signifie que vous êtes payé uniquement quand une vente est réalisée grâce à votre promotion. C'est le modèle le plus courant en affiliation."
+          explanation: "L'affilié agit comme un apporteur d'affaires en recommandant des produits d'autres entreprises et en touchant une commission sur les ventes générées via son lien unique."
         },
         {
-          question: "Quel est l'avantage principal de l'affiliation marketing ?",
+          question: "L'un des principaux avantages de l'affiliation marketing est :",
           options: [
-            "Pas besoin de créer de produits",
-            "Revenus garantis dès le premier jour",
-            "Aucun effort marketing requis",
-            "Commission de 100% sur toutes les ventes"
-          ],
-          correctAnswer: 0,
-          explanation: "L'affiliation permet de générer des revenus sans avoir à créer, développer ou gérer des produits. Vous pouvez vous concentrer uniquement sur le marketing et la promotion."
-        },
-        {
-          question: "Combien de temps faut-il généralement pour générer des revenus réguliers en affiliation ?",
-          options: [
-            "1 semaine avec le bon système",
-            "1 mois maximum",
-            "6-12 mois de travail constant",
-            "C'est impossible, c'est une arnaque"
+            "La gestion complexe des stocks et de la logistique",
+            "Le besoin d'un investissement initial très élevé",
+            "Sa flexibilité et le faible coût de démarrage",
+            "La garantie de revenus passifs dès le premier jour"
           ],
           correctAnswer: 2,
-          explanation: "De manière réaliste, il faut compter 6 à 12 mois de travail constant pour construire une audience et générer des revenus réguliers en affiliation. Les résultats instantanés sont très rares."
+          explanation: "L'affiliation permet de démarrer avec un faible coût, sans besoin de créer de produit ou gérer des stocks, offrant une grande flexibilité de travail."
         },
         {
-          question: "Quelle est la meilleure plateforme pour débuter en affiliation ?",
+          question: "Qu'est-ce qu'un 'lien d'affilié' ?",
           options: [
-            "Il n'y a pas de 'meilleure' plateforme, ça dépend de votre niche",
-            "Amazon Associates uniquement",
-            "ClickBank uniquement",
-            "Les programmes d'affiliation ne marchent plus"
-          ],
-          correctAnswer: 0,
-          explanation: "La meilleure plateforme dépend de votre niche, de votre audience et du type de produits que vous souhaitez promouvoir. Amazon est idéal pour les produits physiques, ClickBank pour le numérique, etc."
-        },
-        {
-          question: "Que sont les commissions récurrentes ?",
-          options: [
-            "Des commissions payées une seule fois",
-            "Des commissions payées chaque mois tant que le client reste abonné",
-            "Des commissions qui reviennent aléatoirement",
-            "Un bonus annuel"
+            "Un lien générique vers n'importe quelle page web",
+            "Un lien unique qui permet de suivre les ventes et d'attribuer la commission à l'affilié",
+            "Un lien pour s'abonner à une newsletter uniquement",
+            "Un lien vers le profil de l'affilié sur les réseaux sociaux"
           ],
           correctAnswer: 1,
-          explanation: "Les commissions récurrentes sont payées mensuellement tant que le client que vous avez référé reste abonné au service. C'est très intéressant pour les logiciels SaaS et créer un revenu passif stable."
+          explanation: "Le lien d'affilié est un lien tracké unique qui permet d'identifier les ventes générées par chaque affilié et d'attribuer les commissions correspondantes."
         },
         {
-          question: "Faut-il une énorme audience pour réussir en affiliation ?",
+          question: "Lorsqu'un client clique sur votre lien d'affilié et achète le produit, comment appelle-t-on cette action réussie ?",
           options: [
-            "Oui, minimum 100 000 abonnés",
-            "Non, une petite audience engagée et ciblée peut suffire",
-            "Oui, sinon aucune chance de réussite",
-            "L'audience n'a aucune importance"
+            "Un 'clic'",
+            "Une 'impression'",
+            "Une 'conversion'",
+            "Une 'commission'"
           ],
-          correctAnswer: 1,
-          explanation: "Une petite audience très engagée et ciblée sur une niche spécifique peut générer plus de revenus qu'une grande audience non qualifiée. La qualité prime sur la quantité en affiliation."
+          correctAnswer: 2,
+          explanation: "Une conversion désigne l'action souhaitée accomplie par un visiteur, dans ce cas un achat suite au clic sur le lien d'affilié."
         }
       ]
     },
     {
       id: 2,
-      title: "Choisir sa Niche Rentable",
-      description: "Identifier les opportunités lucratives",
-      icon: <Target className="h-5 w-5" />,
+      title: "Les Différents Types de Programmes d'Affiliation",
+      description: "Comprendre les modèles de rémunération",
+      icon: <DollarSign className="h-5 w-5" />,
       duration: "35 min",
       completed: completedModules.includes(2),
       content: {
-        introduction: "Le choix de votre niche détermine en grande partie votre succès en affiliation. Une niche bien choisie combine passion personnelle, demande du marché et potentiel de monétisation. C'est la décision la plus importante de votre business d'affiliation.",
+        introduction: "Ce module va explorer les principaux modèles de rémunération en affiliation, en soulignant leurs spécificités, leurs avantages, leurs inconvénients, et des exemples concrets, tout en les rattachant aux réalités actuelles du marché.",
         sections: [
           {
-            title: "Framework complet de sélection de niche",
-            content: "Utilisez la méthode des 3 P : Passion (votre intérêt), Problème (que résolvez-vous ?), Profit (y a-t-il de l'argent ?). Une niche idéale coche ces 3 cases. Ajoutez à cela les critères SMART pour valider votre choix.",
+            title: "2.1. Le Programme au Coût Par Vente (CPV) / Commission par Vente (CPA)",
+            content: "C'est le modèle le plus courant. L'affilié touche une commission uniquement lorsqu'une vente est générée grâce à son lien unique. Le client achète un produit ou un service, et vous recevez un pourcentage du prix de vente ou un montant fixe. En 2025, ce modèle reste le plus stable et le plus rémunérateur pour les affiliés qui génèrent du trafic qualifié.",
             examples: [
-              "Passion : Sujet qui vous passionne et sur lequel vous pouvez créer du contenu régulièrement",
-              "Problème : Une audience avec des problèmes spécifiques et un pouvoir d'achat",
-              "Profit : Des produits avec de bonnes commissions (15%+ ou 50€+)",
-              "Évitez : Les niches trop larges (santé) ou trop étroites (santé des lapins nains albinos)"
+              "Avantages : Potentiel de revenus élevés (surtout pour les produits chers), clarté de la rémunération, sentiment d'apporter une vraie valeur",
+              "Inconvénients : Demande un trafic très qualifié (conversion plus difficile), risque zéro si pas de vente",
+              "Amazon Partenaires : Produits physiques (électronique, mode, maison) avec commissions variables selon catégories",
+              "ClickBank & Hotmart : Produits numériques (formations en ligne, e-books, logiciels) avec commissions 30-75%",
+              "Programmes SaaS : Outils comme Semrush, Ahrefs, Systeme.io, Shopify avec commissions récurrentes sur abonnements"
             ]
           },
           {
-            title: "Critères d'une niche rentable en 2025",
-            content: "Une niche profitable doit avoir une audience suffisamment large (mais pas trop), des problèmes spécifiques à résoudre, et des produits avec de bonnes commissions disponibles. Le marché doit être assez grand mais pas saturé.",
+            title: "2.2. Le Programme au Coût Par Action (CPA) / Coût Par Lead (CPL)",
+            content: "L'affilié est rémunéré lorsqu'un utilisateur effectue une action spécifique qui n'est pas nécessairement un achat. Cela peut être une inscription à une newsletter, le téléchargement d'une application, la participation à un sondage, la demande d'un devis, ou l'ouverture d'un compte. En 2025, le CPA/CPL est de plus en plus valorisé par les entreprises.",
             examples: [
-              "Santé & bien-être : marché de 4,2 milliards d'euros (ex: fitness à domicile, nutrition végane)",
-              "Finance personnelle : commissions élevées de 50-200€ par lead (ex: trading, crypto, épargne)",
-              "Formation en ligne : croissance de 15% par an (ex: marketing digital, no-code, IA)",
-              "Technologie & productivité : fort pouvoir d'achat (ex: outils SaaS, équipement télétravail)",
-              "Développement personnel : audience engagée (ex: coaching, habitudes, mindfulness)"
+              "Avantages : Plus facile de générer des conversions (l'action est moins engageante qu'un achat), idéal pour construire une liste d'emails",
+              "Inconvénients : Commissions souvent plus faibles que le CPV, la qualité du lead est primordiale",
+              "Services financiers : Rémunération pour demande de devis, simulation de prêt, ouverture de compte bancaire",
+              "Jeux en ligne et applications mobiles : Rémunération pour installation d'application ou inscription",
+              "Sites de rencontre : Commissions pour inscription gratuite ou essai d'abonnement",
+              "Génération de leads B2B : Paiement pour chaque entreprise demandant une démo d'un logiciel CRM"
             ]
           },
           {
-            title: "Matrice de scoring de niches",
-            content: "Utilisez cette matrice pour évaluer et comparer vos niches potentielles. Notez chaque critère de 1 à 10, puis additionnez pour obtenir un score global sur 80 points.",
+            title: "2.3. Le Programme au Coût Par Clic (CPC) ou Coût Par Impression (CPM)",
+            content: "L'affilié est rémunéré chaque fois qu'un utilisateur clique sur une publicité (CPC) ou pour chaque mille impressions d'une publicité (CPM). En 2025, ces modèles sont moins typiques de l'affiliation directe et plus souvent associés à la publicité en ligne (Google AdSense, YouTube).",
             examples: [
-              "Passion personnelle (1-10) : Pouvez-vous créer du contenu pendant 2 ans ?",
-              "Taille du marché (1-10) : Y a-t-il assez de clients potentiels ?",
-              "Pouvoir d'achat (1-10) : Les gens dépensent-ils dans cette niche ?",
-              "Commissions disponibles (1-10) : Y a-t-il de bons programmes d'affiliation ?",
-              "Niveau de concurrence (1-10) : Pouvez-vous vous différencier ? (10 = faible concurrence)",
-              "Votre expertise (1-10) : Avez-vous de la crédibilité ou de l'expérience ?",
-              "Tendance du marché (1-10) : Le marché est-il en croissance ?",
-              "Potentiel de contenu (1-10) : Y a-t-il beaucoup de sujets à traiter ?",
-              "Score > 60 : Excellente niche | 50-60 : Bonne niche | < 50 : À éviter"
+              "Avantages : Facile à générer des clics/impressions, ne demande pas d'achat complexe",
+              "Inconvénients : Rémunération très faible, ne récompense pas la valeur générée mais seulement la visibilité",
+              "Note : Ces modèles sont rares en affiliation pure car ils ne garantissent pas de résultat à l'annonceur"
             ]
           },
           {
-            title: "Analyse de tendances 2025",
-            content: "Certaines niches explosent en 2025 grâce aux nouvelles technologies et changements sociétaux. Identifiez les opportunités émergentes avant la saturation.",
+            title: "2.4. Le Programme Récurrent ou à Vie (Lifetime Commission)",
+            content: "L'affilié touche une commission non seulement sur la première vente, mais aussi sur tous les paiements futurs effectués par le client qu'il a apporté (abonnements, renouvellements, achats additionnels). C'est le Saint Graal de l'affiliation et le modèle à privilégier pour construire des revenus passifs stables et croissants.",
             examples: [
-              "Intelligence Artificielle : Outils no-code, automatisation, prompts",
-              "Travail hybride : Équipement home office, productivité, outils collaboratifs",
-              "Écologie & durabilité : Produits éco-responsables, minimalisme, zéro déchet",
-              "Santé mentale : Méditation, thérapie en ligne, gestion du stress",
-              "Side hustles : Freelancing, revenus passifs, indépendance financière"
-            ]
-          },
-          {
-            title: "Recherche et validation de niche",
-            content: "Utilisez des outils gratuits et payants comme Google Trends, Answer The Public, Reddit, et les forums spécialisés pour évaluer l'intérêt et la demande réelle dans votre niche avant de vous lancer.",
-            examples: [
-              "Google Trends : Vérifiez que la tendance est stable ou croissante sur 5 ans",
-              "Forums Reddit : 10 000+ membres = demande forte. Analysez les questions récurrentes",
-              "Amazon bestsellers : Top 100 de la catégorie = produits qui se vendent bien",
-              "YouTube : Cherchez des chaînes similaires. 100K+ vues par vidéo = bon signe",
-              "Facebook Groups : Groupes actifs de 5000+ membres = communauté engagée"
-            ]
-          },
-          {
-            title: "Concurrence et positionnement",
-            content: "Analysez vos concurrents pour identifier les opportunités de différenciation et les angles d'approche non exploités. Une concurrence forte n'est pas mauvaise si vous trouvez votre angle unique.",
-            examples: [
-              "Identifiez les 5 principaux concurrents de votre niche",
-              "Analysez leurs forces/faiblesses : types de contenu, ton, fréquence",
-              "Trouvez votre angle : débutant vs expert, humour vs sérieux, vidéo vs écrit",
-              "Sous-niche : Passez de 'fitness' à 'fitness pour mamans occupées de plus de 40 ans'"
+              "Avantages : Création de revenus véritablement passifs et exponentiels sur le long terme, moins de pression pour acquérir constamment de nouveaux clients",
+              "Inconvénients : Les premières commissions peuvent être faibles, demande de la patience, dépend de la rétention client",
+              "Logiciels et services SaaS : Outils d'email marketing, plateformes de création de sites, logiciels de gestion",
+              "Abonnements à des plateformes de contenu : Plateformes de fitness, méditation, cours de langue",
+              "Programmes de membership : Accès à des communautés privées, contenus exclusifs"
             ]
           }
         ],
-        exercices: [
-          {
-            title: "Brainstorming de 10 niches potentielles",
-            description: "Listez toutes vos idées de niches sans filtre",
-            task: "Créez une liste de 10 niches qui vous intéressent. Pour chacune, notez pourquoi elle vous intéresse et si vous avez une expertise ou expérience personnelle dans le domaine."
-          },
-          {
-            title: "Analyse approfondie de 5 niches avec matrice de scoring",
-            description: "Évaluez scientifiquement vos meilleures niches",
-            task: "Sélectionnez vos 5 meilleures niches et créez un tableau Excel avec la matrice de scoring complète (8 critères notés sur 10). Calculez le score total de chaque niche et classez-les par ordre de priorité."
-          },
-          {
-            title: "Validation par recherche de mots-clés",
-            description: "Vérifiez la demande réelle avec des données",
-            task: "Pour vos 3 niches les mieux notées, utilisez Ubersuggest (gratuit) ou Google Keyword Planner pour identifier 15-20 mots-clés avec leur volume de recherche mensuel, difficulté SEO et CPC. Objectif : min 10 000 recherches/mois au total."
-          },
-          {
-            title: "Analyse de concurrence approfondie",
-            description: "Étudiez vos futurs concurrents",
-            task: "Pour votre niche #1, identifiez les 5 principaux concurrents (blogs, YouTube, Instagram). Analysez leur stratégie de contenu, fréquence de publication, engagement, et notez 5 opportunités de différenciation que vous pouvez exploiter."
-          },
-          {
-            title: "Décision finale et plan de lancement",
-            description: "Choisissez votre niche et planifiez vos premiers pas",
-            task: "Basé sur vos analyses, choisissez UNE niche définitive. Rédigez un document de 1-2 pages incluant : votre niche précise, votre positionnement unique, votre avatar client idéal, 3 programmes d'affiliation prioritaires, et vos 10 premières idées de contenu."
-          }
-        ]
+        exercise: {
+          title: "Analyse de Programmes d'Affiliation par Type",
+          instructions: "Objectif : Apprendre à identifier concrètement les différents modèles de rémunération et à évaluer leur pertinence pour diverses niches.",
+          tasks: [
+            "Choix de niches : Sélectionne 3 niches différentes qui t'intéressent (ex: fitness à domicile, développement personnel, outils de marketing digital, mode éthique, jeux vidéo indépendants)",
+            "Recherche de programmes : Pour chaque niche, recherche un programme au Coût Par Vente (CPV) ou avec commission récurrente (ex: logiciels SaaS, formations en ligne, produits Amazon) ET un programme au Coût Par Action (CPA) ou Coût Per Lead (CPL) (ex: services financiers, assurances, jeux gratuits avec inscription)",
+            "Analyse et justification : Pour chaque programme trouvé, décris brièvement le produit/service, identifie clairement le type de rémunération (CPV, CPL, Récurrent), et évalue le potentiel de ce programme pour toi dans cette niche"
+          ],
+          deliverable: "Un tableau ou document structuré pour chaque niche, détaillant les programmes trouvés, leur type de rémunération et une brève analyse de leur potentiel."
+        }
       },
       quiz: [
         {
-          question: "Quel est le critère le plus important pour choisir une niche ?",
+          question: "Dans un programme d'affiliation au 'Coût Par Vente' (CPV), quand êtes-vous rémunéré ?",
           options: [
-            "Votre passion personnelle uniquement",
-            "Le niveau de concurrence faible",
-            "L'équilibre entre passion, demande et monétisation (3 P)",
-            "Le nombre de produits disponibles"
+            "Chaque fois qu'un utilisateur clique sur votre lien",
+            "Chaque fois qu'un utilisateur voit la publicité sur votre site",
+            "Chaque fois qu'un client achète un produit ou service via votre lien",
+            "Chaque fois qu'un utilisateur remplit un formulaire d'inscription"
           ],
           correctAnswer: 2,
-          explanation: "Une niche réussie doit combiner votre intérêt personnel (Passion), une demande du marché avec des problèmes à résoudre (Problème), et un potentiel de monétisation (Profit). C'est la règle des 3 P."
+          explanation: "Le Coût Par Vente (CPV) signifie que vous êtes rémunéré uniquement lorsqu'une vente effective est réalisée grâce à votre lien d'affiliation."
         },
         {
-          question: "Quel outil est recommandé pour analyser les tendances d'une niche ?",
+          question: "Quel type de programme d'affiliation est idéal pour générer des revenus passifs sur le long terme grâce aux abonnements des clients que vous avez apportés ?",
           options: [
-            "Google Trends",
-            "Facebook uniquement",
-            "Wikipedia",
-            "Votre intuition"
-          ],
-          correctAnswer: 0,
-          explanation: "Google Trends permet de voir l'évolution de l'intérêt pour des sujets sur plusieurs années. Une tendance stable ou croissante sur 5 ans est un excellent indicateur."
-        },
-        {
-          question: "Que faire si une niche a beaucoup de concurrence ?",
-          options: [
-            "L'éviter complètement",
-            "Chercher un angle de différenciation ou une sous-niche",
-            "Copier exactement les concurrents",
-            "Attendre que la concurrence diminue"
-          ],
-          correctAnswer: 1,
-          explanation: "Une forte concurrence indique souvent un marché viable et rentable. Il faut trouver un angle unique pour se différencier ou cibler une sous-niche plus spécifique avec moins de concurrence."
-        },
-        {
-          question: "Qu'est-ce qu'une 'sous-niche' ?",
-          options: [
-            "Une niche de mauvaise qualité",
-            "Une spécialisation plus précise d'une niche large",
-            "Une niche avec peu de trafic",
-            "Une niche sans concurrence"
-          ],
-          correctAnswer: 1,
-          explanation: "Une sous-niche est une spécialisation d'une niche large. Par exemple, passer de 'fitness' (niche large) à 'yoga pour femmes enceintes' (sous-niche) permet de réduire la concurrence et mieux cibler son audience."
-        },
-        {
-          question: "Quel score minimum devrait avoir une niche selon la matrice de scoring (sur 80 points) ?",
-          options: [
-            "20 points, peu importe",
-            "40 points minimum",
-            "50-60 points pour être viable",
-            "80 points obligatoire"
+            "Le Coût Par Clic (CPC)",
+            "Le Coût Par Lead (CPL)",
+            "Le programme à commission récurrente ou à vie",
+            "Le Coût Par Impression (CPM)"
           ],
           correctAnswer: 2,
-          explanation: "Une niche avec un score de 50-60/80 est généralement viable. Plus de 60 est excellent. En dessous de 50, il vaut mieux chercher une autre niche ou affiner son positionnement."
+          explanation: "Les programmes à commission récurrente ou à vie permettent de toucher des commissions mensuelles tant que le client reste abonné, créant ainsi un véritable revenu passif."
         },
         {
-          question: "Pourquoi analyser les forums et Reddit de votre niche ?",
+          question: "Si vous êtes rémunéré pour chaque utilisateur qui s'inscrit à une newsletter gratuite via votre lien, quel est le type de programme le plus probable ?",
           options: [
-            "Pour copier les réponses",
-            "Pour comprendre les vraies questions et douleurs de l'audience",
-            "C'est une perte de temps",
-            "Pour spam vos liens d'affiliation"
+            "Coût Par Vente (CPV)",
+            "Coût Par Lead (CPL) ou Coût Par Action (CPA)",
+            "Coût Par Clic (CPC)",
+            "Commission récurrente"
           ],
           correctAnswer: 1,
-          explanation: "Les forums et Reddit révèlent les vraies questions, problèmes et besoins de votre audience. C'est une mine d'or pour créer du contenu pertinent qui répond à des besoins réels et qui convertit bien."
+          explanation: "Le Coût Par Lead (CPL) rémunère l'affilié pour chaque inscription ou action spécifique (comme s'inscrire à une newsletter), sans nécessiter d'achat."
         },
         {
-          question: "Quelle est la meilleure stratégie si votre niche est trop large (ex: 'santé') ?",
+          question: "Parmi les plateformes suivantes, laquelle est principalement spécialisée dans les produits physiques ?",
           options: [
-            "Continuer tel quel, c'est bien",
-            "Abandonner complètement",
-            "Se spécialiser dans une sous-niche plus précise",
-            "Créer du contenu sur tous les sujets santé"
+            "ClickBank",
+            "Hotmart",
+            "Amazon Partenaires",
+            "1TPE"
           ],
           correctAnswer: 2,
-          explanation: "Une niche trop large rend difficile de se positionner face aux gros acteurs. Il vaut mieux se spécialiser dans une sous-niche (ex: 'nutrition végane pour sportifs') pour devenir une référence et réduire la concurrence."
+          explanation: "Amazon Partenaires est spécialisé dans les produits physiques avec des millions de références, alors que ClickBank et Hotmart se concentrent sur les produits numériques."
         }
       ]
     },
     {
       id: 3,
-      title: "Créer du Contenu qui Convertit",
-      description: "Techniques de création de contenu persuasif",
-      icon: <Users className="h-5 w-5" />,
+      title: "Comment Choisir sa Niche et les Produits à Promouvoir",
+      description: "Identifier les opportunités rentables",
+      icon: <Target className="h-5 w-5" />,
       duration: "50 min",
       completed: completedModules.includes(3),
       content: {
-        introduction: "Le contenu est le pilier de votre stratégie d'affiliation. Un contenu de qualité établit votre crédibilité, engage votre audience et guide naturellement vers l'achat. En 2025, avec l'IA, créer du contenu de qualité est plus rapide que jamais.",
+        introduction: "Ce module est absolument crucial car une niche bien choisie et des produits pertinents sont les fondations d'un succès durable en affiliation. On va voir comment identifier les opportunités, analyser le marché, et s'assurer que l'on propose des produits qui résonnent vraiment avec son audience.",
         sections: [
           {
-            title: "Templates de contenu prêts à l'emploi",
-            content: "Utilisez ces templates éprouvés pour créer du contenu qui convertit rapidement. Chaque template a fait ses preuves pour générer des commissions.",
+            title: "3.1. L'Importance Cruciale du Choix de la Niche en 2025",
+            content: "La niche est le socle de toute l'activité d'affiliation. Une niche bien définie permet de cibler précisément une audience, de créer du contenu pertinent, de se positionner comme une autorité et de réduire la concurrence généraliste. En 2025, avec l'explosion de l'information, se spécialiser est plus important que jamais.",
             examples: [
-              "Template Review : Introduction + Test personnel (30j) + Avantages (5 points) + Inconvénients (3 points) + Pour qui c'est fait + Alternative + Verdict final + FAQ + CTA",
-              "Template Comparatif : Tableau comparatif + Description de chaque produit + Test de chacun + Recommandation par profil utilisateur + FAQ + CTA",
-              "Template Tutoriel : Problème + Solution + Étapes détaillées + Outils nécessaires (liens affiliés) + Résultat attendu + FAQ",
-              "Template Liste : Introduction du problème + Critères de sélection + Top X produits avec mini-review de chacun + Tableau récap + CTA"
+              "Passion ou Intérêt : Choisir un sujet qui vous intéresse rend le travail plus agréable, authentique et durable",
+              "Potentiel de Rémunération : La niche doit contenir des produits avec des commissions intéressantes et un volume de ventes suffisant",
+              "Problème à Résoudre : Les meilleures niches répondent à un besoin clair, une douleur ou un désir profond de l'audience",
+              "Taille d'Audience : Assez grande pour être rentable, mais pas trop large pour éviter une concurrence écrasante",
+              "Tendances Actuelles : Évaluer si la niche est stable, en croissance (IA, durabilité, bien-être numérique, apprentissage en ligne)"
             ]
           },
           {
-            title: "Types de contenu performants",
-            content: "Les reviews détaillées, comparatifs, tutoriels et listes de recommandations sont parmi les formats les plus efficaces pour l'affiliation. Chaque type a son utilité selon l'intention de recherche.",
+            title: "3.2. Méthodes et Outils pour Identifier une Niche Rentable",
+            content: "Il existe plusieurs approches pour trouver une niche rentable, combinant réflexion personnelle et analyse de données de marché.",
             examples: [
-              "Reviews longues : 'Test complet de [produit] après 30 jours d'utilisation' (2000+ mots)",
-              "Comparatifs : 'Top 5 des meilleurs outils de [catégorie] en 2025' (1500+ mots)",
-              "Tutoriels : 'Comment résoudre [problème] étape par étape avec [outil]' (1000+ mots)",
-              "Listes : '10 outils indispensables pour [objectif]' (1200+ mots)",
-              "Guides : 'Guide ultime pour choisir [produit] en 2025' (3000+ mots)"
+              "Réflexion Personnelle : Liste des passions, hobbies, compétences, problèmes que vous avez résolus",
+              "Google Trends : Indispensable pour visualiser l'intérêt d'un sujet au fil du temps et repérer les tendances émergentes",
+              "Recherche de Mots-clés : Ubersuggest, Semrush, Ahrefs permettent d'identifier les mots-clés recherchés, leur volume mensuel, la difficulté de positionnement",
+              "Google Suggestions : Sources gratuites pour trouver des idées de sujets et de problèmes",
+              "Forums, Groupes Facebook, Reddit, TikTok, YouTube : Où les gens discutent de leurs problèmes et besoins réels"
             ]
           },
           {
-            title: "Structure d'un contenu qui convertit (méthode AIDA)",
-            content: "Utilisez la méthode AIDA (Attention, Intérêt, Désir, Action) pour structurer vos contenus et guider le lecteur vers la conversion. C'est une formule de copywriting éprouvée depuis des décennies.",
+            title: "3.3. Comment Analyser la Concurrence dans une Niche",
+            content: "Analyser la concurrence vous permet d'identifier les opportunités et de définir votre positionnement unique.",
             examples: [
-              "A - Attention : Titre accrocheur avec chiffres et bénéfices ('J'ai gagné 2000€ en 30j avec...')",
-              "I - Intérêt : Problème + bénéfices clairs + preuve sociale (témoignages, stats)",
-              "D - Désir : Storytelling, émotions, transformation possible, urgence/rareté",
-              "A - Action : Call-to-action clair et répété (début, milieu, fin) avec boutons visibles"
+              "Identifier les Concurrents : Qui sont déjà présents ? Quels types de contenu proposent-ils (blogs, vidéos, réseaux sociaux) ?",
+              "Semrush / Ahrefs : Voir les mots-clés sur lesquels ils se positionnent, d'où vient leur trafic, et quels sont leurs backlinks",
+              "Audit de Contenu : Quel type de contenu génère le plus d'engagement ? Les lacunes qu'on peut combler ?",
+              "Positionnement Unique : Comment vous différencier ? Nouvelle perspective, sous-segment plus précis (micro-niche), style unique, valeur ajoutée particulière"
             ]
           },
           {
-            title: "Stratégie de content pillar",
-            content: "Organisez votre contenu autour de 'piliers' thématiques principaux. Chaque pilier génère 10-15 articles connexes, créant un maillage interne puissant pour le SEO.",
+            title: "3.4. Choisir les Bons Produits à Promouvoir dans sa Niche",
+            content: "La cohérence entre les produits promus et votre niche est essentielle pour maintenir votre crédibilité.",
             examples: [
-              "Pilier 1 : 'Guide complet du [sujet]' (3000 mots) → 10 articles détaillant chaque sous-thème",
-              "Pilier 2 : 'Tout sur [produit/catégorie]' (2500 mots) → 10 reviews/comparatifs spécifiques",
-              "Avantages : Autorité SEO, maillage interne, augmente le temps sur site, guide l'audience"
+              "Qualité du Produit : Ne jamais promouvoir un produit que vous ne recommanderiez pas à un ami. Rechercher les avis clients, tester si possible",
+              "Taux de Commission et LTV : Privilégier les commissions généreuses, surtout les modèles récurrents ou produits à LTV élevée",
+              "Taux de Conversion : Une belle commission ne sert à rien si la page de vente ne convertit pas. Vérifier qu'elle est professionnelle et convaincante",
+              "Matériel Marketing Fourni : L'annonceur fournit-il des bannières, emails pré-rédigés, exemples de contenu ?",
+              "Durée du Cookie : Plus longue = plus de chances de toucher la commission si achat ultérieur",
+              "Support Affilié : L'annonceur est-il réactif et offre-t-il un bon support ?"
             ]
           },
           {
-            title: "Copywriting et neuromarketing",
-            content: "Appliquez les principes du copywriting et du neuromarketing pour rendre votre contenu irrésistible et augmenter vos conversions de 50-300%.",
+            title: "3.5. Stratégies Avancées de Sélection de Produits en 2025",
+            content: "Pour maximiser vos revenus, adoptez une approche stratégique et dynamique dans le choix de vos produits.",
             examples: [
-              "Déclencheurs émotionnels : Peur de rater, urgence, exclusivité, preuve sociale",
-              "Power words : Gratuit, Secret, Garanti, Prouvé, Révélé, Nouveau, Limité",
-              "Chiffres précis : '127 personnes ont acheté aujourd'hui' vs 'Beaucoup de gens achètent'",
-              "Avant/Après : Montrez la transformation possible avec le produit",
-              "Garantie : Rassurez avec 'satisfait ou remboursé', 'sans risque', 'essai gratuit'"
-            ]
-          },
-          {
-            title: "Optimisation SEO pour l'affiliation",
-            content: "Intégrez naturellement vos mots-clés, optimisez vos méta-descriptions et créez des liens internes pertinents. Le SEO reste la source #1 de trafic gratuit pour l'affiliation.",
-            examples: [
-              "Titre : Mot-clé principal + chiffre + année + bénéfice (max 60 car.)",
-              "Meta description : Mot-clé + promesse + CTA (max 160 car.)",
-              "H1 unique avec mot-clé principal",
-              "H2/H3 avec mots-clés secondaires et synonymes",
-              "Images : Alt text descriptifs avec mots-clés, noms de fichiers optimisés",
-              "Liens internes : 3-5 par article vers contenu connexe",
-              "URL : Courte, claire, avec mot-clé principal"
+              "Construire un Entonnoir de Produits : Proposer des produits complémentaires à différentes étapes (produit d'appel gratuit/faible coût, produit principal, produits premium/récurrents)",
+              "Test & Mesure : Tester différents produits, analyser les performances (taux de clic, conversion) et ajuster",
+              "Diversification : Ne pas mettre tous ses œufs dans le même panier. Diversifier programmes et annonceurs pour minimiser les risques"
             ]
           }
         ],
-        exercices: [
-          {
-            title: "Rédaction d'une review complète avec template",
-            description: "Créez votre première review professionnelle",
-            task: "Utilisez le template Review fourni pour rédiger une review de 1500 mots minimum d'un produit de votre niche. Incluez : intro accrocheuse, test personnel avec photos/vidéo, 5 avantages, 3 inconvénients, pour qui c'est fait, alternative, verdict final, FAQ (5 questions), 3 CTA placés stratégiquement, et 3 liens d'affiliation intégrés naturellement."
-          },
-          {
-            title: "Création d'un comparatif 'Top 3'",
-            description: "Comparez 3 produits similaires en profondeur",
-            task: "Créez un article comparatif de 1200 mots avec tableau comparatif, description détaillée de chaque produit (300 mots min.), votre test personnel de chacun, recommandation par profil utilisateur (débutant/avancé, petit/gros budget), section FAQ, et CTA final avec le 'winner'."
-          },
-          {
-            title: "Tutoriel avec intégration d'affiliation naturelle",
-            description: "Créez un tutoriel qui résout un problème spécifique",
-            task: "Rédigez un tutoriel de 1000 mots expliquant comment résoudre un problème de votre niche. Incluez : définition du problème, étapes détaillées avec screenshots, outils nécessaires (3-5 liens affiliés intégrés naturellement), résultat attendu, troubleshooting (problèmes courants), et conclusion avec CTA."
-          },
-          {
-            title: "Rédaction de 5 types de contenu différents",
-            description: "Diversifiez vos formats de contenu",
-            task: "Créez 5 titres + introductions (200 mots chacune) pour : 1) Une review longue, 2) Un comparatif, 3) Un tutoriel, 4) Une liste 'Top 10', 5) Un guide complet. Pour chacun, identifiez le mot-clé principal, l'intention de recherche, et où placer les liens affiliés."
-          },
-          {
-            title: "A/B testing de vos CTA",
-            description: "Optimisez vos appels à l'action",
-            task: "Créez 5 versions différentes de CTA pour le même produit. Variez : le wording ('Découvrir', 'Essayer gratuitement', 'Voir le prix', 'Obtenir la réduction'), la couleur du bouton, le placement (début/milieu/fin), et l'urgence ('Offre limitée', 'Stock limité'). Planifiez un test A/B sur votre contenu le plus visité."
-          }
-        ]
+        exercise: {
+          title: "Ma Niche Cible & Mes Premiers Produits Stratégiques",
+          instructions: "Objectif : Mettre en pratique les méthodes de recherche de niche et de produits, et commencer à esquisser sa propre stratégie.",
+          tasks: [
+            "Définition de ta Niche : Revise les passions et problèmes identifiés. Utilise Google Trends pour valider l'intérêt et la tendance de 3-5 idées de niches. Utilise Ubersuggest ou Google Keyword Planner pour identifier au moins 5 mots-clés pertinents avec volume de recherche suffisant",
+            "Description de ta niche : Sois précis (ex: 'Conseils pour jeunes parents entrepreneurs qui veulent gérer leur temps' plutôt que juste 'parentalité'). Justifie ce choix en fonction de la demande et de ta passion/expertise",
+            "Sélection des Premiers Produits : Pour ta niche, recherche sur au moins deux plateformes d'affiliation (Amazon, ClickBank, 1TPE, Hotmart) au moins 3 produits/services parfaitement adaptés",
+            "Analyse des produits : Pour chacun, décris son nom et catégorie, le type de programme (CPV, CPA, Récurrent), les raisons pour lesquelles il est pertinent, et s'il s'agit d'un produit d'appel, cœur de gamme ou premium/récurrent"
+          ],
+          deliverable: "Un document détaillé présentant la niche choisie avec justification (mots-clés, tendances), et la liste des 3 produits potentiels avec leur analyse et positionnement."
+        }
       },
       quiz: [
         {
-          question: "Quelle est la méthode recommandée pour structurer un contenu d'affiliation ?",
+          question: "Pourquoi le choix de la niche est-il considéré comme crucial en marketing d'affiliation en 2025 ?",
           options: [
-            "SMART",
-            "AIDA (Attention, Intérêt, Désir, Action)",
-            "SWOT",
-            "PEST"
+            "Il garantit des revenus immédiats et élevés",
+            "Il permet de se positionner comme une autorité et de cibler précisément une audience",
+            "Il élimine toute concurrence sur le marché",
+            "Il n'est pertinent que pour les produits physiques"
           ],
           correctAnswer: 1,
-          explanation: "AIDA est une méthode de copywriting éprouvée qui guide le lecteur du premier contact jusqu'à l'action d'achat. Elle fonctionne car elle suit la psychologie naturelle de décision d'achat."
+          explanation: "Une niche bien choisie permet de créer du contenu pertinent, de se positionner comme une autorité dans un domaine spécifique, et de cibler précisément une audience qualifiée, surtout crucial en 2025 avec l'explosion de l'information."
         },
         {
-          question: "Quel type de contenu convertit généralement le mieux en affiliation ?",
+          question: "Quel outil est le plus utile pour évaluer la popularité d'un sujet (niche) au fil du temps et repérer des tendances de recherche ?",
           options: [
-            "Articles de blog généralistes",
-            "Reviews détaillées et comparatifs",
-            "Photos sans description",
-            "Contenus entièrement promotionnels"
+            "Instagram Stories",
+            "Google Trends",
+            "Facebook Ads Manager",
+            "Microsoft Word"
           ],
           correctAnswer: 1,
-          explanation: "Les reviews et comparatifs apportent de la valeur réelle tout en présentant naturellement les produits d'affiliation. Les gens recherchent activement ces formats quand ils sont prêts à acheter."
+          explanation: "Google Trends est un outil gratuit indispensable qui permet de visualiser l'intérêt d'un sujet au fil du temps et d'identifier les tendances émergentes ou déclinantes."
         },
         {
-          question: "Pourquoi est-il important d'inclure des inconvénients dans une review ?",
+          question: "Lors du choix d'un produit à promouvoir, quel critère est le plus important pour bâtir une réputation solide à long terme ?",
           options: [
-            "Pour décourager l'achat",
-            "Pour établir la crédibilité et la confiance",
-            "Pour allonger le contenu",
-            "C'est une obligation légale"
-          ],
-          correctAnswer: 1,
-          explanation: "Mentionner les inconvénients rend votre review plus crédible et authentique. Les lecteurs savent qu'aucun produit n'est parfait, et votre honnêteté renforce la confiance, ce qui augmente paradoxalement les conversions."
-        },
-        {
-          question: "Quelle longueur minimum pour une review d'affiliation efficace ?",
-          options: [
-            "300 mots suffisent",
-            "500 mots minimum",
-            "1500-2000 mots pour bien ranker en SEO",
-            "La longueur n'a pas d'importance"
+            "Le taux de commission le plus élevé, quelle que soit la qualité",
+            "La durée du cookie la plus longue",
+            "La qualité et la pertinence du produit pour l'audience",
+            "La quantité de matériel marketing fourni par l'annonceur"
           ],
           correctAnswer: 2,
-          explanation: "Les articles de 1500-2000 mots performent mieux en SEO et conversions car ils permettent de couvrir le sujet en profondeur, répondre aux questions, et établir votre expertise. Google favorise le contenu complet."
+          explanation: "La qualité et la pertinence du produit sont essentielles pour maintenir votre crédibilité et bâtir une réputation solide. Ne promouvoir que des produits que vous recommanderiez à un ami est la clé du succès à long terme."
         },
         {
-          question: "Combien de CTA (Call-To-Action) devrait contenir un article d'affiliation ?",
+          question: "En 2025, pourquoi les 'programmes récurrents' (abonnement) sont-ils particulièrement valorisés par les affiliés ?",
           options: [
-            "1 seul à la fin",
-            "3-5 CTA placés stratégiquement",
-            "Le plus possible, partout",
-            "Aucun, les gens trouveront seuls"
+            "Ils offrent des commissions uniques très élevées",
+            "Ils permettent de générer des revenus passifs stables sur le long terme",
+            "Ils ne nécessitent aucun effort de promotion après la première vente",
+            "Ils sont uniquement disponibles pour les produits physiques"
           ],
           correctAnswer: 1,
-          explanation: "3-5 CTA placés stratégiquement (début après intro, milieu, fin, dans la sidebar) captent les lecteurs à différents stades de décision sans être trop agressif. Trop de CTA dilue leur efficacité."
-        },
-        {
-          question: "Qu'est-ce qu'une stratégie de 'content pillar' ?",
-          options: [
-            "Écrire beaucoup d'articles sans structure",
-            "Créer des articles piliers (3000 mots) reliés à 10-15 articles connexes",
-            "Copier le contenu d'autres sites",
-            "Publier uniquement des vidéos"
-          ],
-          correctAnswer: 1,
-          explanation: "Une stratégie de content pillar organise votre contenu autour d'articles majeurs (3000+ mots) qui sont reliés à de nombreux articles plus spécifiques. Cela crée un maillage interne puissant, améliore le SEO et vous positionne comme expert."
-        },
-        {
-          question: "Quel est l'élément le plus important d'un article d'affiliation ?",
-          options: [
-            "Le nombre de mots-clés",
-            "La confiance et l'authenticité",
-            "Le nombre de liens d'affiliation",
-            "La longueur du contenu"
-          ],
-          correctAnswer: 1,
-          explanation: "Sans confiance et authenticité, même le meilleur SEO ne convertira pas. Les lecteurs doivent sentir que vous avez vraiment testé le produit et que vous donnez votre avis honnête. C'est la base de toute stratégie d'affiliation réussie."
+          explanation: "Les programmes récurrents permettent de toucher des commissions mensuelles tant que le client reste abonné, créant ainsi des revenus passifs stables et croissants sur le long terme, sans devoir constamment acquérir de nouveaux clients."
         }
       ]
     },
     {
       id: 4,
-      title: "Monétiser et Optimiser ses Revenus",
-      description: "Stratégies avancées pour maximiser vos gains",
-      icon: <DollarSign className="h-5 w-5" />,
-      duration: "40 min",
+      title: "Les Stratégies pour Générer du Trafic",
+      description: "Attirer des visiteurs qualifiés vers vos liens",
+      icon: <Users className="h-5 w-5" />,
+      duration: "90 min",
       completed: completedModules.includes(4),
       content: {
-        introduction: "Apprenez à maximiser vos revenus d'affiliation grâce à des stratégies avancées, l'optimisation des conversions et la diversification des sources de revenus.",
+        introduction: "En 2025, générer du trafic ne se résume plus à de simples mots-clés. Il s'agit de comprendre les intentions de l'utilisateur, d'offrir de la valeur et de se positionner là où son audience se trouve. Ce module explore les méthodes les plus efficaces pour attirer des visiteurs qualifiés.",
         sections: [
           {
-            title: "Optimisation des taux de conversion",
-            content: "Découvrez comment améliorer le taux de conversion de vos visiteurs en acheteurs grâce à des techniques de copywriting, design et tests A/B.",
+            title: "4.1. Comprendre le Trafic Qualifié : La Clé du Succès",
+            content: "Le trafic qualifié n'est pas juste le volume de visiteurs, mais la pertinence de ces visiteurs. Un trafic qualifié est composé de personnes déjà intéressées par ce que vous proposez, donc plus susceptibles de convertir. 100 visiteurs ultra-ciblés sont plus précieux que 10 000 visiteurs aléatoires.",
             examples: [
-              "Utiliser des CTA clairs et visibles",
-              "Créer des pages de destination dédiées",
-              "Tester différentes offres et messages",
-              "Analyser le comportement utilisateur avec des outils analytics"
+              "Pourquoi la qualité prime sur la quantité : Évite de gaspiller du temps et de l'argent",
+              "L'intention de recherche en 2025 : Comprendre l'état d'esprit de l'utilisateur (recherche d'information, comparaison, intention d'achat)",
+              "Les stratégies doivent s'adapter à cette intention pour maximiser les conversions"
             ]
           },
           {
-            title: "Diversification des sources de revenus",
-            content: "Ne dépendez pas d'une seule source. Explorez les programmes d'affiliation multiples, la publicité, les produits digitaux et les partenariats.",
+            title: "4.2. Stratégies de Trafic Organique (Gratuit) : Long Terme",
+            content: "Ces méthodes demandent du temps et de l'effort, mais offrent un retour sur investissement durable et construisent votre autorité.",
             examples: [
-              "Combiner affiliation et publicité display",
-              "Créer des produits numériques complémentaires",
-              "Proposer des services ou coaching",
-              "Utiliser les réseaux sociaux pour élargir l'audience"
+              "SEO (Search Engine Optimization) : Recherche de mots-clés approfondie avec Semrush, Ahrefs, Ubersuggest. Cibler les mots-clés à longue traîne. Créer du contenu de valeur (articles, comparatifs, tutoriels). Optimisation On-Page (H1, H2, meta descriptions, vitesse). Netlinking pour renforcer l'autorité",
+              "Marketing de Contenu (Blogs, Guides) : Calendrier éditorial planifié. Produire formats variés (articles, guides téléchargeables, infographies). Appels à l'action clairs. Promouvoir le contenu",
+              "Marketing Vidéo (YouTube, TikTok, Reels) : YouTube pour revues détaillées, TikTok/Reels pour vidéos courtes. Créer des scénarios structurés. Optimiser titres, descriptions, vignettes. Interagir avec l'audience",
+              "Réseaux Sociaux : Choisir les bonnes plateformes selon l'audience. Publier régulièrement (mix informatif, divertissant, promotionnel). Engager avec la communauté. Utiliser fonctionnalités affiliées (liens bio, stories)",
+              "Email Marketing : Construire une liste via lead magnet. Choisir un auto-répondeur (ConvertKit, Mailchimp, Systeme.io). Écrire séquences alternant contenu et promotions. Segmenter la liste"
             ]
           },
           {
-            title: "Automatisation et scaling",
-            content: "Utilisez l'automatisation pour gagner du temps et scaler votre business d'affiliation.",
+            title: "4.3. Stratégies de Trafic Payant (Publicité) : Accélérer",
+            content: "Ces méthodes nécessitent un budget mais peuvent générer des résultats rapides si bien gérées.",
             examples: [
-              "Email marketing automatisé",
-              "Chatbots pour la qualification des leads",
-              "Outils de planification de contenu",
-              "Campagnes publicitaires automatisées"
+              "Google Ads (Search & Display) : Rechercher mots-clés d'achat spécifiques ('acheter logiciel X', 'avis produit Y'). Créer annonces pertinentes. Landing page optimisée (page de pré-vente souvent meilleure). Suivi et optimisation (coût par clic, taux de conversion)",
+              "Publicité sur Réseaux Sociaux (Facebook/Instagram Ads, TikTok Ads, LinkedIn Ads) : Définir audience cible avec outils de ciblage avancés. Créer visuels et textes captivants. A/B Testing pour optimiser. Pixel de suivi pour retargeting",
+              "Pertinence 2025 : Contenus vidéo courts et engageants dominent. Transparence sur publicités de plus en plus exigée"
             ]
           }
         ],
-        exercices: [
-          {
-            title: "Audit de conversion",
-            description: "Analysez votre site ou contenu pour identifier les points d'amélioration",
-            task: "Utilisez Google Analytics et Hotjar pour étudier le comportement des visiteurs. Notez 5 actions concrètes pour améliorer le taux de conversion."
-          },
-          {
-            title: "Plan de diversification",
-            description: "Élaborez une stratégie pour diversifier vos revenus",
-            task: "Listez 3 nouvelles sources de revenus à tester dans les 3 prochains mois et décrivez comment vous allez les mettre en place."
-          },
-          {
-            title: "Mise en place d'automatisation",
-            description: "Automatisez une tâche répétitive",
-            task: "Choisissez une tâche (email, publication, suivi) et configurez un outil pour l'automatiser. Documentez le processus et les résultats attendus."
-          }
-        ]
+        exercise: {
+          title: "Mon Plan d'Action Trafic Mixte (Organique & Payant)",
+          instructions: "Objectif : Planifier concrètement les premières actions pour attirer du trafic qualifié vers les offres d'affiliation.",
+          tasks: [
+            "Trafic Organique (choisis 2 stratégies) : Choisis deux stratégies parmi SEO, Marketing de Contenu, YouTube, Réseaux Sociaux, Email Marketing",
+            "Pour chaque stratégie, décris un mini-plan d'action pour les 2 prochains mois : Objectif (ex: 'Publier 4 articles de blog optimisés SEO' ou 'Créer 6 vidéos courtes sur TikTok/Reels'), Type de contenu (précise thèmes et formats), Comment intégrer les liens d'affiliation (ex: 'Dans des comparatifs, avec CTA clairs')",
+            "Trafic Payant (si budget disponible) : Si tu as un budget, choisis une plateforme (Google Ads, Facebook/Instagram Ads, TikTok Ads). Décris une idée de campagne simple : Audience Cible, Message Clé de l'Annonce, Type de Publicité (texte, image, vidéo), Où va diriger le lien",
+            "Cohérence & Complémentarité : Explique comment ces stratégies vont se compléter pour maximiser tes résultats"
+          ],
+          deliverable: "Un document détaillant le plan d'action pour les stratégies organiques (avec exemples de contenu et intégration des liens) et une proposition de campagne de trafic payant (si applicable), soulignant la complémentarité des approches."
+        }
       },
       quiz: [
         {
-          question: "Quelle est une bonne pratique pour augmenter le taux de conversion ?",
+          question: "Pourquoi est-il plus important de générer du 'trafic qualifié' que du 'grand volume de trafic' en affiliation ?",
           options: [
-            "Ajouter plusieurs CTA différents sur la même page",
-            "Utiliser des CTA clairs et visibles",
-            "Éviter les pages de destination dédiées",
-            "Ne pas analyser le comportement utilisateur"
+            "Le trafic qualifié est toujours gratuit",
+            "Le trafic qualifié est composé de visiteurs plus susceptibles de convertir",
+            "Le grand volume de trafic est toujours illégal",
+            "Le trafic qualifié ne nécessite aucune création de contenu"
           ],
           correctAnswer: 1,
-          explanation: "Des CTA clairs et visibles guident l'utilisateur vers l'action souhaitée, augmentant ainsi le taux de conversion."
+          explanation: "Le trafic qualifié désigne des visiteurs déjà intéressés par ce que vous proposez, donc beaucoup plus susceptibles de convertir et d'acheter. 100 visiteurs ciblés valent mieux que 10 000 visiteurs aléatoires."
         },
         {
-          question: "Pourquoi diversifier ses sources de revenus ?",
+          question: "Quel outil est le plus efficace pour identifier les questions que se posent les utilisateurs et les mots-clés à longue traîne pour le SEO en 2025 ?",
           options: [
-            "Pour réduire les risques et augmenter les opportunités",
-            "Pour compliquer la gestion",
-            "Pour se concentrer uniquement sur un programme",
-            "Pour éviter de créer du contenu"
-          ],
-          correctAnswer: 0,
-          explanation: "Diversifier réduit la dépendance à une seule source et ouvre plus de possibilités de gains."
-        },
-        {
-          question: "Quel outil peut aider à automatiser le marketing par email ?",
-          options: [
-            "Google Docs",
-            "Mailchimp",
-            "Photoshop",
-            "Excel"
+            "Un simple tableur Excel",
+            "Des outils comme Semrush ou Ahrefs",
+            "Un éditeur d'images",
+            "Un logiciel de montage vidéo"
           ],
           correctAnswer: 1,
-          explanation: "Mailchimp est un outil populaire pour automatiser les campagnes email marketing."
+          explanation: "Semrush et Ahrefs sont des outils professionnels qui permettent d'identifier les mots-clés recherchés, leur volume, la difficulté de positionnement, et les questions que se posent les utilisateurs dans votre niche."
+        },
+        {
+          question: "Quel est l'un des principaux avantages du marketing par e-mail en affiliation ?",
+          options: [
+            "Il ne coûte absolument rien en temps ou en argent",
+            "Il garantit que tous les emails sont lus et génèrent des ventes immédiates",
+            "Il permet de construire une relation forte et de ne pas dépendre des algorithmes des plateformes",
+            "Il est le meilleur moyen de générer du trafic instantané sans effort"
+          ],
+          correctAnswer: 2,
+          explanation: "L'email marketing permet de construire une liste qui vous appartient (contrairement aux réseaux sociaux), créant une relation directe avec votre audience sans dépendre des algorithmes changeants des plateformes."
+        },
+        {
+          question: "Si vous souhaitez capter des utilisateurs qui recherchent activement un produit ou une solution spécifique, quelle stratégie de trafic payant est généralement la plus pertinente ?",
+          options: [
+            "Les publicités sur TikTok",
+            "Les publicités Google Ads (Search Ads)",
+            "Les posts sponsorisés sur Instagram",
+            "L'achat de followers sur les réseaux sociaux"
+          ],
+          correctAnswer: 1,
+          explanation: "Google Ads (Search Ads) permet de cibler des personnes qui recherchent activement des mots-clés spécifiques liés à votre produit, capturant ainsi des visiteurs avec une forte intention d'achat."
         }
       ]
     },
     {
       id: 5,
-      title: "Communauté et Réseautage",
-      description: "Construire un réseau solide pour booster votre business",
+      title: "Les Outils Indispensables pour un Affilié Débutant",
+      description: "Votre kit de démarrage économique",
       icon: <Zap className="h-5 w-5" />,
-      duration: "30 min",
+      duration: "60 min",
       completed: completedModules.includes(5),
       content: {
-        introduction: "Le réseautage et la construction d'une communauté engagée sont essentiels pour pérenniser et développer votre business d'affiliation.",
+        introduction: "En 2025, il existe une multitude d'outils, mais la clé est de se concentrer sur l'essentiel pour démarrer efficacement. Nous allons privilégier les options gratuites ou à faible coût, avec des conseils clairs sur leur utilisation.",
         sections: [
           {
-            title: "Créer et animer une communauté",
-            content: "Apprenez à créer un espace où votre audience peut échanger, poser des questions et s'entraider.",
+            title: "5.1. La Fondation : Votre Site Web ou Blog",
+            content: "Avoir votre propre espace est crucial pour asseoir votre crédibilité, centraliser votre contenu et vos liens, et construire votre propre actif numérique qui ne dépend pas des plateformes de réseaux sociaux.",
             examples: [
-              "Groupes Facebook ou Discord",
-              "Webinaires réguliers",
-              "Newsletters interactives",
-              "Sondages et feedbacks"
+              "WordPress.org (Gratuit) : La plateforme la plus populaire au monde. Le logiciel est gratuit, il vous faut juste un hébergement. Très flexible et personnalisable. Idéal pour blogs, sites d'avis, sites de comparaison",
+              "Hébergeurs Web Économiques (2-5€/mois) : Hostinger - Forfaits mutualisés très abordables pour débuter. Permet d'héberger votre site WordPress. Choisir un avec support client réactif et installation WordPress en un clic"
             ]
           },
           {
-            title: "Collaborations et partenariats",
-            content: "Développez votre réseau professionnel pour accéder à de nouvelles opportunités.",
+            title: "5.2. La Recherche de Niche et de Mots-Clés",
+            content: "Pour comprendre ce que votre audience recherche et identifier les sujets sur lesquels créer du contenu pour attirer du trafic organique.",
             examples: [
-              "Interviews croisées avec d'autres affiliés",
-              "Co-création de contenu",
-              "Partage de ressources et outils",
-              "Participation à des événements et conférences"
+              "Google Trends (Gratuit) : Suivi des tendances de recherche, comparaison de mots-clés. Entrez des idées de niche/produits et voyez leur popularité au fil du temps. Idéal pour valider l'intérêt d'un sujet",
+              "Google Keyword Planner (Gratuit avec compte Google Ads) : Fournit estimations de volumes de recherche et idées de mots-clés. Créez un compte Google Ads (pas besoin de lancer campagnes), explorez des idées de mots-clés",
+              "Ubersuggest (Version Gratuite Limitée) : Analyse de mots-clés, idées de contenu, analyse de concurrence. Version gratuite pour obtenir idées de mots-clés, volumes de recherche et suggestions de contenu. Suffisant pour premières recherches"
             ]
           },
           {
-            title: "Gestion de la réputation en ligne",
-            content: "Maintenez une image positive et gérez les retours négatifs efficacement.",
+            title: "5.3. La Création de Contenu",
+            content: "Pour produire des articles de blog, des scripts vidéo, des descriptions engageantes qui informent et convertissent votre audience.",
             examples: [
-              "Répondre rapidement aux commentaires",
-              "Être transparent et honnête",
-              "Utiliser les témoignages clients",
-              "Surveiller sa présence en ligne"
+              "Google Docs (Gratuit) : Pour rédaction de tous contenus écrits. Simplicité et collaboration facile, idéal pour structurer articles et scripts",
+              "Canva (Version Gratuite) : Création de visuels pour articles, vignettes YouTube, posts réseaux sociaux. Nombreux modèles gratuits pour designs attrayants sans compétences graphiques",
+              "CapCut (Gratuit) / DaVinci Resolve (Version Gratuite) : Montage vidéo. CapCut parfait pour montages rapides mobile/ordinateur pour TikTok/Reels/Shorts. DaVinci Resolve plus avancé pour vidéos YouTube complexes",
+              "ChatGPT / Gemini / Copilot (Versions Gratuites) : Assistant à la rédaction, génération d'idées de titres, de plans d'articles, de descriptions. Brainstormer sujets, reformuler phrases, obtenir premier jet (toujours relire et vérifier)"
+            ]
+          },
+          {
+            title: "5.4. L'Email Marketing",
+            content: "Pour construire une relation durable avec votre audience, envoyer des offres ciblées et diversifier vos sources de trafic, sans dépendre des algorithmes des réseaux sociaux.",
+            examples: [
+              "Systeme.io (Version Gratuite jusqu'à 2000 contacts) : Plateforme tout-en-un pour créer pages de capture, gérer liste email, envoyer newsletters et créer tunnels de vente simples. Idéal pour construire liste d'emails dès le début sans frais. Facile à prendre en main",
+              "Mailchimp (Version Gratuite jusqu'à 500 contacts) : Alternative populaire pour débuter l'email marketing"
+            ]
+          },
+          {
+            title: "5.5. Suivi et Analyse",
+            content: "Pour savoir ce qui fonctionne (ou pas) et optimiser vos stratégies pour générer plus de ventes.",
+            examples: [
+              "Google Analytics 4 (Gratuit) : Analyse du trafic de votre site web (nombre de visiteurs, pages vues, source du trafic, comportement). Indispensable pour comprendre qui visite votre site et ce qu'il y fait. Demande un peu de configuration initiale",
+              "Tableurs (Google Sheets / Excel) : Suivi manuel de vos commissions, des produits promus, des dates de paiement. Créez un tableau simple pour suivre revenus et dépenses d'affiliation"
             ]
           }
         ],
-        exercices: [
-          {
-            title: "Lancement d'un groupe communautaire",
-            description: "Créez un groupe Facebook ou Discord pour votre audience",
-            task: "Invitez 10 personnes, publiez 3 contenus engageants et modérez les échanges pendant 2 semaines."
-          },
-          {
-            title: "Plan de collaboration",
-            description: "Identifiez 3 partenaires potentiels",
-            task: "Contactez-les pour proposer une collaboration (interview, article invité, live) et planifiez une action commune."
-          },
-          {
-            title: "Audit de réputation",
-            description: "Analysez votre présence en ligne",
-            task: "Recherchez votre nom et marque, notez les avis et commentaires, et préparez un plan pour améliorer votre image."
-          }
-        ]
+        exercise: {
+          title: "Mon Kit de Démarrage Affilié Opérationnel",
+          instructions: "Objectif : Prendre en main les outils essentiels pour démarrer son activité d'affiliation de manière efficace et économique.",
+          tasks: [
+            "Sélection et Inscription/Installation : Pour chaque catégorie d'outils (Site Web, Recherche Mots-clés, Création Contenu, Email Marketing, Suivi), choisis au moins un outil recommandé (privilégie versions gratuites) et procède à son inscription ou installation",
+            "Site Web : Inscris-toi chez un hébergeur économique et installe WordPress. Recherche Mots-clés : Active ton accès à Google Trends et Google Keyword Planner ou Ubersuggest gratuit. Création Contenu : Accède à Canva gratuit et au moins un outil d'IA (ChatGPT, Gemini, Copilot). Email Marketing : Crée un compte gratuit sur Systeme.io ou Mailchimp. Suivi : Assure-toi d'avoir accès à Google Sheets ou Excel",
+            "Première Action Concrète avec chaque Outil : Site Web - Crée page d'accueil ou brouillon d'article. Recherche Mots-clés - Effectue recherche sur 3 mots-clés et note volumes. Création Contenu - Crée vignette simple ou utilise IA pour 3 idées de titres. Email Marketing - Crée première liste et page de capture simple. Suivi - Crée tableau avec colonnes Date, Produit promu, Plateforme, Commission, Statut",
+            "Ton Rapport d'Utilisation Personnel : Pour chaque outil, écris quelques lignes sur : le nom de l'outil, l'action spécifique réalisée, tes premières impressions sur facilité d'utilisation, points forts et défis rencontrés"
+          ],
+          deliverable: "Un rapport structuré (texte ou tableau) avec la liste des outils configurés, la description de la première action réalisée avec chacun, et tes premières impressions/retours d'expérience. Captures d'écran facultatives mais recommandées."
+        }
       },
       quiz: [
         {
-          question: "Quel est un bon moyen d'animer une communauté ?",
+          question: "Quel outil est la plateforme de création de sites web la plus recommandée pour un affilié débutant souhaitant créer un blog et avoir un contrôle total, en étant gratuite (logiciel) ?",
           options: [
-            "Ignorer les membres",
-            "Publier régulièrement du contenu interactif",
-            "Limiter les échanges",
-            "Ne pas répondre aux questions"
+            "Wix",
+            "WordPress.org",
+            "Squarespace",
+            "Shopify"
           ],
           correctAnswer: 1,
-          explanation: "Publier du contenu interactif encourage la participation et l'engagement."
+          explanation: "WordPress.org est la plateforme la plus populaire et flexible pour créer un blog. Le logiciel est gratuit (vous payez seulement l'hébergement), et il offre un contrôle total sur votre site."
         },
         {
-          question: "Pourquoi faire des partenariats ?",
+          question: "Si un affilié veut comprendre ce que son audience recherche et suivre les tendances populaires au fil du temps sans dépenser d'argent, quel outil gratuit doit-il privilégier ?",
           options: [
-            "Pour élargir son audience et créer des opportunités",
-            "Pour copier les autres",
-            "Pour éviter de créer du contenu",
-            "Pour vendre plus cher"
+            "Semrush",
+            "Google Trends",
+            "Ahrefs",
+            "Adobe Photoshop"
           ],
-          correctAnswer: 0,
-          explanation: "Les partenariats permettent d'accéder à de nouvelles audiences et ressources."
+          correctAnswer: 1,
+          explanation: "Google Trends est un outil gratuit qui permet de visualiser l'intérêt d'un sujet au fil du temps et de comparer des mots-clés, idéal pour identifier les tendances et valider l'intérêt d'une niche."
         },
         {
-          question: "Comment gérer une critique négative en ligne ?",
+          question: "Pour un affilié débutant qui souhaite collecter des emails et envoyer des newsletters sans frais initiaux pour un petit nombre de contacts, quelle plateforme tout-en-un est recommandée ?",
           options: [
-            "Ignorer",
-            "Répondre avec agressivité",
-            "Répondre rapidement et honnêtement",
-            "Supprimer tous les commentaires"
+            "ActiveCampaign",
+            "ConvertKit",
+            "Systeme.io (version gratuite)",
+            "HubSpot"
           ],
           correctAnswer: 2,
-          explanation: "Répondre rapidement et honnêtement montre votre professionnalisme et peut transformer une critique en opportunité."
+          explanation: "Systeme.io offre une version gratuite jusqu'à 2000 contacts, permettant de créer des pages de capture, gérer sa liste email et envoyer des newsletters, tout-en-un et en français."
+        },
+        {
+          question: "Quel est l'intérêt principal d'utiliser Google Analytics 4 pour un affilié ?",
+          options: [
+            "Créer des logos et des bannières publicitaires",
+            "Modifier des vidéos pour les réseaux sociaux",
+            "Analyser le trafic de son site web et le comportement des visiteurs",
+            "Gérer les paiements des commissions d'affiliation"
+          ],
+          correctAnswer: 2,
+          explanation: "Google Analytics 4 est un outil d'analyse gratuit qui permet de comprendre qui visite votre site, d'où vient le trafic, quelles pages sont consultées, et comment optimiser votre stratégie en fonction des données."
         }
       ]
     }
@@ -788,126 +617,140 @@ const StarterPackCourse: React.FC = () => {
     }
   };
 
-  const progressPercentage = (completedModules.length / modules.length) * 100;
+  const progress = (completedModules.length / modules.length) * 100;
 
   return (
-    <div className="space-y-6">
-      {/* En-tête de la formation */}
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-2xl font-bold text-liberty-blue">
-                🚀 Starter Pack Débutant
-              </CardTitle>
-              <CardDescription className="text-lg mt-2">
-                Les 5 modules fondamentaux pour réussir en affiliation marketing
-              </CardDescription>
-            </div>
-            <Badge variant="secondary" className="text-sm">
-              Gratuit
-            </Badge>
-          </div>
-          
-          <div className="mt-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium">Progression globale</span>
-              <span className="text-sm text-muted-foreground">
-                {completedModules.length}/{modules.length} modules
-              </span>
-            </div>
-            <Progress value={progressPercentage} className="h-2" />
-          </div>
-        </CardHeader>
-      </Card>
-
-      {/* Liste des modules */}
-      <div className="grid gap-4">
-        {modules.map((module) => (
-          <Card 
-            key={module.id} 
-            className={`cursor-pointer transition-all hover:shadow-md ${
-              activeModule === module.id ? 'ring-2 ring-liberty-blue' : ''
-            }`}
-            onClick={() => setActiveModule(module.id)}
-          >
-            <CardHeader className="pb-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  {module.completed ? (
-                    <CheckCircle className="h-6 w-6 text-green-500" />
-                  ) : (
-                    <Circle className="h-6 w-6 text-gray-300" />
-                  )}
-                  <div className="flex items-center space-x-2">
-                    {module.icon}
-                    <span className="font-semibold">Module {module.id}</span>
-                  </div>
-                </div>
-                <Badge variant="outline">{module.duration}</Badge>
-              </div>
-              <div className="ml-9">
-                <h3 className="font-bold text-lg">{module.title}</h3>
-                <p className="text-muted-foreground">{module.description}</p>
-              </div>
-            </CardHeader>
-          </Card>
-        ))}
+    <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Starter Pack Affi-Liberty
+        </h1>
+        <p className="text-muted-foreground">
+          Maîtrisez les fondamentaux de l'affiliation marketing en 5 modules pratiques
+        </p>
       </div>
 
-      {/* Contenu du module actif */}
-      {activeModule && (
-        <Card>
-          <CardContent className="pt-6">
-            <Tabs defaultValue="content" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="content">Contenu</TabsTrigger>
-                <TabsTrigger value="exercises">Exercices</TabsTrigger>
-                <TabsTrigger value="quiz">QCM</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="content" className="mt-6">
-                <ModuleContent 
-                  module={modules.find(m => m.id === activeModule)!}
-                  onComplete={() => handleModuleComplete(activeModule)}
-                />
-              </TabsContent>
-              
-              <TabsContent value="exercises" className="mt-6">
-                <div className="space-y-6">
-                  <h3 className="text-xl font-bold">Exercices pratiques</h3>
-                  {modules.find(m => m.id === activeModule)?.content.exercices.map((exercise, index) => (
-                    <Card key={index}>
-                      <CardHeader>
-                        <CardTitle className="text-lg">{exercise.title}</CardTitle>
-                        <CardDescription>{exercise.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm">{exercise.task}</p>
-                        <Button 
-                          className="mt-4" 
-                          variant="outline"
-                          onClick={() => handleModuleComplete(activeModule)}
-                        >
-                          Marquer comme terminé
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="quiz" className="mt-6">
-                <ModuleQuiz 
-                  module={modules.find(m => m.id === activeModule)!}
-                  onComplete={(passed) => handleQuizComplete(activeModule, passed)}
-                  result={quizResults[activeModule]}
-                />
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
-      )}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Votre Progression</CardTitle>
+          <CardDescription>
+            {completedModules.length} module{completedModules.length > 1 ? 's' : ''} terminé{completedModules.length > 1 ? 's' : ''} sur {modules.length}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Progress value={progress} className="mb-2" />
+          <p className="text-sm text-muted-foreground">{Math.round(progress)}% complété</p>
+        </CardContent>
+      </Card>
+
+      <div className="grid lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-1">
+          <Card>
+            <CardHeader>
+              <CardTitle>Modules</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              {modules.map((module) => (
+                <Button
+                  key={module.id}
+                  variant={activeModule === module.id ? "default" : "ghost"}
+                  className="w-full justify-start"
+                  onClick={() => setActiveModule(module.id)}
+                >
+                  <span className="mr-2">{module.icon}</span>
+                  <span className="flex-1 text-left truncate">{module.title}</span>
+                  {completedModules.includes(module.id) ? (
+                    <CheckCircle className="h-5 w-5 text-success ml-2 flex-shrink-0" />
+                  ) : (
+                    <Circle className="h-5 w-5 text-muted-foreground ml-2 flex-shrink-0" />
+                  )}
+                </Button>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="lg:col-span-2">
+          {modules
+            .filter((module) => module.id === activeModule)
+            .map((module) => (
+              <Card key={module.id}>
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        {module.icon}
+                        <Badge variant="secondary">{module.duration}</Badge>
+                      </div>
+                      <CardTitle className="text-2xl mb-2">{module.title}</CardTitle>
+                      <CardDescription className="text-base">
+                        {module.description}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <Tabs defaultValue="content" className="w-full">
+                    <TabsList className="grid w-full grid-cols-3">
+                      <TabsTrigger value="content">Contenu</TabsTrigger>
+                      <TabsTrigger value="exercise">Exercices</TabsTrigger>
+                      <TabsTrigger value="quiz">QCM</TabsTrigger>
+                    </TabsList>
+
+                    <TabsContent value="content" className="mt-6">
+                      <ModuleContent
+                        module={module}
+                        onComplete={() => handleModuleComplete(module.id)}
+                      />
+                    </TabsContent>
+
+                    <TabsContent value="exercise" className="mt-6">
+                      {module.content.exercise ? (
+                        <div className="space-y-6">
+                          <div>
+                            <h3 className="text-xl font-semibold mb-3">
+                              {module.content.exercise.title}
+                            </h3>
+                            <p className="text-muted-foreground mb-4">
+                              {module.content.exercise.instructions}
+                            </p>
+                          </div>
+
+                          <div>
+                            <h4 className="font-semibold mb-3">Consignes détaillées :</h4>
+                            <ol className="space-y-3 list-decimal list-inside">
+                              {module.content.exercise.tasks.map((task, index) => (
+                                <li key={index} className="text-sm leading-relaxed">
+                                  {task}
+                                </li>
+                              ))}
+                            </ol>
+                          </div>
+
+                          <div className="bg-accent/10 p-4 rounded-lg">
+                            <h4 className="font-semibold mb-2">Livrable attendu :</h4>
+                            <p className="text-sm text-muted-foreground">
+                              {module.content.exercise.deliverable}
+                            </p>
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground">Aucun exercice pour ce module.</p>
+                      )}
+                    </TabsContent>
+
+                    <TabsContent value="quiz" className="mt-6">
+                      <ModuleQuiz
+                        module={module}
+                        onComplete={(passed) => handleQuizComplete(module.id, passed)}
+                      />
+                    </TabsContent>
+                  </Tabs>
+                </CardContent>
+              </Card>
+            ))}
+        </div>
+      </div>
     </div>
   );
 };
