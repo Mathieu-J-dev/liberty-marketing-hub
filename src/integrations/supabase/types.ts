@@ -335,6 +335,27 @@ export type Database = {
           },
         ]
       }
+      rate_limits: {
+        Row: {
+          action_type: string
+          created_at: string
+          id: string
+          ip_address: unknown
+        }
+        Insert: {
+          action_type: string
+          created_at?: string
+          id?: string
+          ip_address: unknown
+        }
+        Update: {
+          action_type?: string
+          created_at?: string
+          id?: string
+          ip_address?: unknown
+        }
+        Relationships: []
+      }
       security_logs: {
         Row: {
           action_type: string
@@ -488,6 +509,10 @@ export type Database = {
         Args: { "": string } | { "": unknown }
         Returns: unknown
       }
+      cleanup_old_rate_limits: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       create_thread: {
         Args: {
           p_created_by: string
@@ -576,7 +601,7 @@ export type Database = {
       }
       l2_normalize: {
         Args: { "": string } | { "": unknown } | { "": unknown }
-        Returns: string
+        Returns: unknown
       }
       match_page_sections: {
         Args: {

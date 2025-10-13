@@ -60,23 +60,46 @@ const CaptureForm = () => {
     
     setIsLoading(true);
     try {
-      const { error } = await supabase
-        .from('leads')
-        .insert([{ 
-          name: name.trim(), 
-          email: email.trim().toLowerCase(), 
-          source: 'capture-page' 
-        }]);
+      // Call the secure Edge Function instead of direct database insert
+      const { data, error } = await supabase.functions.invoke('submit-lead', {
+        body: {
+          name: name.trim(),
+          email: email.trim(),
+          source: 'capture-page'
+        }
+      });
 
       if (error) {
-        if (error.code === '23505') {
+        console.error('Edge function error:', error);
+        throw new Error('Erreur lors de la soumission');
+      }
+
+      if (data?.error) {
+        // Handle specific error codes from the Edge Function
+        if (data.code === 'DUPLICATE_EMAIL') {
           toast({
             variant: "destructive",
             title: "Email déjà enregistré",
             description: "Cet email est déjà dans notre liste. Essayez avec une autre adresse.",
           });
+        } else if (data.code === 'RATE_LIMIT_EXCEEDED') {
+          toast({
+            variant: "destructive",
+            title: "Trop de tentatives",
+            description: data.error,
+          });
+        } else if (data.code === 'DISPOSABLE_EMAIL') {
+          toast({
+            variant: "destructive",
+            title: "Email non autorisé",
+            description: "Les adresses email jetables ne sont pas autorisées.",
+          });
         } else {
-          throw error;
+          toast({
+            variant: "destructive",
+            title: "Erreur de validation",
+            description: data.error || "Veuillez vérifier vos informations.",
+          });
         }
       } else {
         toast({
