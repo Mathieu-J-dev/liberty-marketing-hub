@@ -211,10 +211,15 @@ serve(async (req) => {
     );
 
   } catch (error) {
-    console.error('Unexpected error in submit-lead function:', error);
+    // Log détaillé côté serveur uniquement
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    console.error('Unexpected error in submit-lead function:', { message: errorMessage, stack: errorStack });
+    
+    // Message générique pour l'utilisateur
     return new Response(
       JSON.stringify({ 
-        error: 'Une erreur inattendue est survenue.',
+        error: 'Une erreur s\'est produite lors du traitement de votre demande.',
         code: 'UNEXPECTED_ERROR'
       }),
       { 

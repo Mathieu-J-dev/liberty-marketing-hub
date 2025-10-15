@@ -142,8 +142,14 @@ serve(async (req) => {
     });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
-    logStep("ERROR in check-subscription", { message: errorMessage });
-    return new Response(JSON.stringify({ error: errorMessage }), {
+    // Log détaillé côté serveur uniquement
+    logStep("ERROR in check-subscription", { message: errorMessage, stack: error instanceof Error ? error.stack : undefined });
+    
+    // Message générique pour l'utilisateur
+    return new Response(JSON.stringify({ 
+      error: "Impossible de vérifier le statut d'abonnement.",
+      subscribed: false 
+    }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,
     });

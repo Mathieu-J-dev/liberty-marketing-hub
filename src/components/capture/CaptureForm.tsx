@@ -70,7 +70,10 @@ const CaptureForm = () => {
       });
 
       if (error) {
-        console.error('Edge function error:', error);
+        // Log en développement seulement, pas en production
+        if (import.meta.env.DEV) {
+          console.error('Edge function error:', error);
+        }
         throw new Error('Erreur lors de la soumission');
       }
 
@@ -126,7 +129,10 @@ const CaptureForm = () => {
                 description: "Votre guide exclusif est en cours de téléchargement.",
               });
             } catch (downloadError) {
-              console.error('Erreur de téléchargement:', downloadError);
+              // Log en développement seulement
+              if (import.meta.env.DEV) {
+                console.error('Erreur de téléchargement:', downloadError);
+              }
               toast({
                 variant: "destructive",
                 title: "Erreur de téléchargement",
@@ -142,7 +148,10 @@ const CaptureForm = () => {
         setAcceptTerms(false);
       }
     } catch (error: any) {
-      console.error("Erreur lors de l'insertion du prospect:", error);
+      // Log en développement seulement
+      if (import.meta.env.DEV) {
+        console.error("Erreur lors de l'insertion du prospect:", error);
+      }
       toast({
         variant: "destructive",
         title: "Une erreur est survenue",
