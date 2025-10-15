@@ -3,7 +3,7 @@ import React from 'react';
 
 const stats = [
   {
-    value: '150+',
+    value: '70',
     label: 'Utilisateurs Actifs'
   },
   {
