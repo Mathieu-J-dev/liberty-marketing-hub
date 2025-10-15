@@ -134,10 +134,10 @@ export const useFileManagement = () => {
         stat_type: 'download'
       });
 
-      // Générer l'URL de téléchargement sécurisée
+      // Générer l'URL de téléchargement sécurisée (5 minutes pour connexions lentes)
       const { data, error } = await supabase.storage
         .from('member-content')
-        .createSignedUrl(filePath, 60); // URL valide 1 minute
+        .createSignedUrl(filePath, 300);
 
       if (error) throw error;
       return data.signedUrl;
