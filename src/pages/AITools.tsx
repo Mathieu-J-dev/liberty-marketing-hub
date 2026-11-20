@@ -7,6 +7,10 @@ import { Badge } from '@/components/ui/badge';
 import { BrainCircuit, Zap, Sparkles, Bot, Lightbulb, Star } from 'lucide-react';
 import AIToolsFilters from '@/components/tools/AIToolsFilters';
 
+// Netlify Image CDN : conversion WebP + redimensionnement à la volée
+const cdnImage = (src: string, width = 640) =>
+  `/.netlify/images?url=${encodeURIComponent(src)}&width=${width}&format=webp&quality=75`;
+
 // Import des miniatures
 import chatgptThumbnail from '@/assets/chatgpt-thumbnail.jpg';
 import geminiThumbnail from '@/assets/gemini-thumbnail.jpg';
@@ -690,8 +694,12 @@ const AITools = () => {
                 {/* Miniature en en-tête */}
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src={tool.thumbnail} 
+                    src={cdnImage(tool.thumbnail)} 
                     alt={`Aperçu de ${tool.name}`}
+                    width={640}
+                    height={360}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform hover:scale-105"
                   />
                   <div className="absolute top-4 right-4">
