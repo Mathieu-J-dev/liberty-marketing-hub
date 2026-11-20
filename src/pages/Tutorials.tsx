@@ -5,8 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import resourcesHero from '@/assets/resources-hero.jpg';
+import { useSeo } from '@/hooks/useSeo';
 
 const Tutorials = () => {
+  useSeo({title: "Tutoriels et Guides Pratiques | Affi-Liberty", description: "Tutoriels pas à pas sur les outils IA, l'affiliation et le marketing digital."});
   const tutorialCategories = [
     {
       id: 1,

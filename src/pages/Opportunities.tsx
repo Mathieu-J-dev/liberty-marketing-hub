@@ -5,8 +5,10 @@ import OpportunityList from '@/components/opportunities/OpportunityList';
 import OpportunityFilters from '@/components/opportunities/OpportunityFilters';
 import OpportunityCTA from '@/components/opportunities/OpportunityCTA';
 import { opportunities } from '@/data/opportunities';
+import { useSeo } from '@/hooks/useSeo';
 
 const Opportunities: React.FC = () => {
+  useSeo({title: "Opportunités d'Affiliation 2025 | Affi-Liberty", description: "Sélection des meilleures opportunités d'affiliation : SaaS, finance, santé, formation. Commissions élevées et programmes vérifiés."});
   // État pour gérer les filtres (à implémenter dans le futur)
   const [filteredOpportunities, setFilteredOpportunities] = useState(opportunities);
   

@@ -6,7 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { useSeo } from '@/hooks/useSeo';
 const Contact = () => {
+  useSeo({title: "Contact | Affi-Liberty", description: "Une question ? Contactez l'équipe Affi-Liberty, nous répondons sous 24h."});
   const {
     toast
   } = useToast();

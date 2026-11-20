@@ -21,3 +21,5 @@ Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
+
+Sitemap: https://liberty-marketing-hub.netlify.app/sitemap.xml

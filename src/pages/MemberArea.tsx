@@ -9,6 +9,7 @@ import ProfileHeader from '@/components/member/ProfileHeader';
 import XPProgressSection from '@/components/member/XPProgressSection';
 import MemberTabs from '@/components/member/MemberTabs';
 import SubscriptionCard from '@/components/subscription/SubscriptionCard';
+import { useSeo } from '@/hooks/useSeo';
 
 type Action = {
   id: string;
@@ -25,6 +26,7 @@ type CompletedAction = {
 };
 
 const MemberArea = () => {
+  useSeo({title: "Espace Membre | Affi-Liberty", noindex: true});
   const { user, logout, loading, isAuthenticated, setUser } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();

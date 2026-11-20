@@ -58,6 +58,7 @@ import genieThumbnail from '@/assets/genie-thumbnail.jpg';
 import quickdrawThumbnail from '@/assets/quickdraw-thumbnail.jpg';
 import logojoyThumbnail from '@/assets/logojoy-thumbnail.jpg';
 import lottieThumbnail from '@/assets/lottie-thumbnail.jpg';
+import { useSeo } from '@/hooks/useSeo';
 
 const aiTools = [
   // Image Generation Tools
@@ -634,6 +635,7 @@ const aiTools = [
 ];
 
 const AITools = () => {
+  useSeo({title: "Outils IA pour l'Affiliation | Affi-Liberty", description: "Sélection des meilleurs outils IA (ChatGPT, Midjourney, Canva…) pour accélérer votre business d'affiliation."});
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedRating, setSelectedRating] = useState(0);
