@@ -4,8 +4,10 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useSeo } from '@/hooks/useSeo';
 
 const NotFound = () => {
+  useSeo({title: "Page introuvable | Affi-Liberty", noindex: true});
   const location = useLocation();
 
   useEffect(() => {

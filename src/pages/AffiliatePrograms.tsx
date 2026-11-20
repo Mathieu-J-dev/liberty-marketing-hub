@@ -18,8 +18,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Plus, Loader2, Upload, Download, Globe } from 'lucide-react';
+import { useSeo } from '@/hooks/useSeo';
 
 const AffiliatePrograms = () => {
+  useSeo({title: "Programmes d'Affiliation | Affi-Liberty", description: "Catalogue des programmes d'affiliation vérifiés : commissions, conditions et stratégies de promotion."});
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showRecurringOnly, setShowRecurringOnly] = useState(false);

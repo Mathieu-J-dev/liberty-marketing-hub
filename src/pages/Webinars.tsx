@@ -5,8 +5,10 @@ import { Calendar, Clock, Users, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useSeo } from '@/hooks/useSeo';
 
 const Webinars = () => {
+  useSeo({title: "Webinars - Formations Affiliation | Affi-Liberty", description: "Webinaires et formations en direct pour progresser en affiliation et marketing digital."});
   const upcomingWebinars = [
     {
       id: 1,

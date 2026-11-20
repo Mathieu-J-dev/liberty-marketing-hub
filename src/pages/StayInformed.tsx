@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import stayInformedHero from '@/assets/stay-informed-hero.jpg';
+import { useSeo } from '@/hooks/useSeo';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -19,6 +20,7 @@ const formSchema = z.object({
 });
 
 const StayInformed = () => {
+  useSeo({title: "Restez Informé - Newsletter Affiliation | Affi-Liberty", description: "Inscrivez-vous à la newsletter Affi-Liberty : opportunités, outils IA et stratégies chaque semaine."});
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

@@ -9,10 +9,45 @@ import {
 } from '@/components/ui/accordion';
 import ChatbotSupport from '@/components/ChatbotSupport';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useSeo } from '@/hooks/useSeo';
 
 const FAQ = () => {
+  useSeo({title: "FAQ - Questions Fréquentes sur l'Affiliation | Affi-Liberty", description: "Réponses aux questions fréquentes sur l'affiliation : démarrage, outils, programmes et conversion."});
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Comment démarrer en affiliation ?',
+        acceptedAnswer: { '@type': 'Answer', text: "Pour démarrer en affiliation : choisissez une niche qui vous passionne, recherchez des programmes pertinents, créez une plateforme (blog, YouTube, Instagram), produisez du contenu de qualité, intégrez stratégiquement vos liens d'affiliation, puis analysez vos résultats et ajustez votre stratégie." },
+      },
+      {
+        '@type': 'Question',
+        name: "Quel outil choisir pour mon business d'affiliation ?",
+        acceptedAnswer: { '@type': 'Answer', text: "Les indispensables : Jasper AI, ChatGPT ou Notion AI pour la création de contenu, Systeme.io pour l'automatisation, Google Analytics pour l'analyse, GetResponse ou ActiveCampaign pour l'email marketing, et SEMrush ou Ahrefs pour le SEO." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Quels sont les meilleurs programmes d\'affiliation en 2025 ?',
+        acceptedAnswer: { '@type': 'Answer', text: "Les secteurs les plus rentables en 2025 : SaaS et outils numériques (commissions récurrentes), finance et investissement, santé et bien-être, éducation en ligne et marketing digital." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Comment augmenter mon taux de conversion ?',
+        acceptedAnswer: { '@type': 'Answer', text: "Ciblez une audience qualifiée, créez des avis et tests honnêtes, utilisez des call-to-action clairs, proposez des bonus exclusifs, optimisez vos pages d'atterrissage avec des témoignages et testez différentes approches." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Comment éviter les arnaques en affiliation ?',
+        acceptedAnswer: { '@type': 'Answer', text: "Vérifiez la réputation du programme et les conditions de paiement, méfiez-vous des promesses de gains extraordinaires, préférez les plateformes établies (Amazon, Awin, CJ Affiliate), testez le produit vous-même et contactez le support pour tester leur réactivité." },
+      },
+    ],
+  };
   return (
     <Layout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div id="top"></div>
       <div className="section py-16">
         <div className="container mx-auto px-4">

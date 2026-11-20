@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
+import { useSeo } from '@/hooks/useSeo';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -19,6 +20,7 @@ const formSchema = z.object({
 });
 
 const ActionPlan = () => {
+  useSeo({title: "Plan d'Action pour Réussir en Affiliation | Affi-Liberty", description: "Votre feuille de route étape par étape pour construire un business d'affiliation rentable."});
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
