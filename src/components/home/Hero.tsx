@@ -9,7 +9,7 @@ const Hero = () => {
     <div className="relative bg-gradient-to-r from-liberty-blue/5 to-liberty-gold/5 py-20 lg:py-32">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
         <div className="lg:w-1/2 space-y-6 animate-fade-in">
-          <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
+          <h1 className="text-4xl lg:text-5xl font-bold leading-tight gradient-text">
             Bienvenue chez <span className="gradient-text">Affi-Liberty</span>
           </h1>
           <p className="text-lg text-gray-600">

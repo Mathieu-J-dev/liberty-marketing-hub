@@ -6,7 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { useSeo } from '@/hooks/useSeo';
 const Contact = () => {
+  useSeo({title: "Contact | Affi-Liberty", description: "Une question ? Contactez l'équipe Affi-Liberty, nous répondons sous 24h."});
   const {
     toast
   } = useToast();
@@ -22,7 +24,7 @@ const Contact = () => {
       <div className="section">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4">Contactez-nous</h1>
+            <h1 className="text-4xl font-bold mb-4 gradient-text">Contactez-nous</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Une question sur nos programmes d'affiliation? Notre équipe est disponible pour vous aider à toute étape de votre parcours.
             </p>
@@ -30,7 +32,7 @@ const Contact = () => {
           
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div>
-              <h2 className="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
+              <h2 className="text-2xl font-bold mb-6 text-liberty-blue">Envoyez-nous un message</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -66,7 +68,7 @@ const Contact = () => {
             </div>
             
             <div className="rounded-md">
-              <h2 className="text-2xl font-bold mb-6">Nos coordonnées</h2>
+              <h2 className="text-2xl font-bold mb-6 text-liberty-blue">Nos coordonnées</h2>
               
               <div className="bg-gray-50 p-6 rounded-lg mb-6">
                 <div className="flex items-start space-x-4 mb-6">

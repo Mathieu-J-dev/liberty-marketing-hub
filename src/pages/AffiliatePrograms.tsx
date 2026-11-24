@@ -18,8 +18,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Plus, Loader2, Upload, Download, Globe } from 'lucide-react';
+import { useSeo } from '@/hooks/useSeo';
 
 const AffiliatePrograms = () => {
+  useSeo({title: "Programmes d'Affiliation | Affi-Liberty", description: "Catalogue des programmes d'affiliation vérifiés : commissions, conditions et stratégies de promotion."});
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showRecurringOnly, setShowRecurringOnly] = useState(false);
@@ -114,7 +116,7 @@ const AffiliatePrograms = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-4xl font-bold">Programmes d'Affiliation</h1>
+              <h1 className="text-4xl font-bold gradient-text">Programmes d'Affiliation</h1>
               {user && (
                 <div className="flex gap-2">
                   <Button onClick={() => setShowAddModal(true)}>

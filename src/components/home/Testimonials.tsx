@@ -31,7 +31,7 @@ const Testimonials = () => {
     <section className="section bg-white">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Ce que nos clients disent</h2>
+          <h2 className="text-3xl font-bold mb-4 text-liberty-blue">Ce que nos clients disent</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Découvrez les témoignages de ceux qui ont transformé leur activité en ligne grâce à notre plateforme.
           </p>

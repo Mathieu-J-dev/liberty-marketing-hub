@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import stayInformedHero from '@/assets/stay-informed-hero.jpg';
+import { useSeo } from '@/hooks/useSeo';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -19,6 +20,7 @@ const formSchema = z.object({
 });
 
 const StayInformed = () => {
+  useSeo({title: "Restez Informé - Newsletter Affiliation | Affi-Liberty", description: "Inscrivez-vous à la newsletter Affi-Liberty : opportunités, outils IA et stratégies chaque semaine."});
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,7 +42,7 @@ const StayInformed = () => {
       <div className="py-20 bg-gradient-to-r from-liberty-blue/5 to-liberty-gold/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl lg:text-4xl font-bold mb-6 text-center">
+            <h1 className="text-3xl lg:text-4xl font-bold mb-6 text-center gradient-text">
               Resté <span className="gradient-text">informés</span>
             </h1>
             
@@ -56,7 +58,7 @@ const StayInformed = () => {
             {/* Formulaire */}
             <div className="bg-white rounded-lg shadow-lg p-8">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold mb-4">Reste informé</h2>
+                <h2 className="text-2xl font-bold mb-4 text-liberty-blue">Reste informé</h2>
                 <p className="text-gray-600">
                   Reçois chaque semaine les meilleures stratégies & outils pour booster tes revenus d'affiliation.
                 </p>

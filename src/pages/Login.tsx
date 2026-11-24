@@ -10,8 +10,10 @@ import { useAuth } from '@/auth'; // Import modifié
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lock, UserCheck, UserPlus } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useSeo } from '@/hooks/useSeo';
 
 const Login = () => {
+  useSeo({title: "Connexion | Affi-Liberty", noindex: true});
   const { toast } = useToast();
   const { login, signup, resetPassword, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();

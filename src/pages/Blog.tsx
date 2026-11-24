@@ -3,8 +3,10 @@ import Layout from '@/components/layout/Layout';
 import { CalendarDays, User, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useSeo } from '@/hooks/useSeo';
 
 const Blog = () => {
+  useSeo({title: "Blog - Conseils Affiliation et Web Marketing | Affi-Liberty", description: "Articles et conseils pratiques pour développer vos revenus en affiliation et web marketing."});
   const blogPosts = [
     {
       id: 1,

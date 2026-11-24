@@ -43,7 +43,7 @@ const ContentManager: React.FC = () => {
     <div className="space-y-6">
       {/* Bouton d'ajout */}
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Gestion du contenu</h2>
+        <h2 className="text-2xl font-bold text-liberty-blue">Gestion du contenu</h2>
         <Button 
           onClick={() => setShowUploader(!showUploader)}
           className="bg-liberty-blue hover:bg-liberty-blue/90"

@@ -7,6 +7,10 @@ import { Badge } from '@/components/ui/badge';
 import { BrainCircuit, Zap, Sparkles, Bot, Lightbulb, Star } from 'lucide-react';
 import AIToolsFilters from '@/components/tools/AIToolsFilters';
 
+// Netlify Image CDN : conversion WebP + redimensionnement à la volée
+const cdnImage = (src: string, width = 640) =>
+  `/.netlify/images?url=${encodeURIComponent(src)}&width=${width}&format=webp&quality=75`;
+
 // Import des miniatures
 import chatgptThumbnail from '@/assets/chatgpt-thumbnail.jpg';
 import geminiThumbnail from '@/assets/gemini-thumbnail.jpg';
@@ -54,6 +58,7 @@ import genieThumbnail from '@/assets/genie-thumbnail.jpg';
 import quickdrawThumbnail from '@/assets/quickdraw-thumbnail.jpg';
 import logojoyThumbnail from '@/assets/logojoy-thumbnail.jpg';
 import lottieThumbnail from '@/assets/lottie-thumbnail.jpg';
+import { useSeo } from '@/hooks/useSeo';
 
 const aiTools = [
   // Image Generation Tools
@@ -630,6 +635,7 @@ const aiTools = [
 ];
 
 const AITools = () => {
+  useSeo({title: "Outils IA pour l'Affiliation | Affi-Liberty", description: "Sélection des meilleurs outils IA (ChatGPT, Midjourney, Canva…) pour accélérer votre business d'affiliation."});
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedRating, setSelectedRating] = useState(0);
@@ -690,8 +696,12 @@ const AITools = () => {
                 {/* Miniature en en-tête */}
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src={tool.thumbnail} 
+                    src={cdnImage(tool.thumbnail)} 
                     alt={`Aperçu de ${tool.name}`}
+                    width={640}
+                    height={360}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform hover:scale-105"
                   />
                   <div className="absolute top-4 right-4">
@@ -746,7 +756,7 @@ const AITools = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <h2 className="text-2xl font-bold mb-4">Comment utiliser l'IA pour booster vos revenus d'affiliation ?</h2>
+            <h2 className="text-2xl font-bold mb-4 text-liberty-blue">Comment utiliser l'IA pour booster vos revenus d'affiliation ?</h2>
             <p className="text-gray-600 max-w-3xl mx-auto mb-8">
               L'intelligence artificielle est devenue un levier incontournable pour les affiliés qui souhaitent 
               se démarquer et optimiser leur temps. Utilisez ces outils pour créer du contenu de qualité, 

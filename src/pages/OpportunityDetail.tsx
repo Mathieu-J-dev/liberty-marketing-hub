@@ -7,10 +7,16 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Star, ArrowLeft, CheckCircle, DollarSign, Users, TrendingUp, Calendar, Zap, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSeo } from '@/hooks/useSeo';
 
 const OpportunityDetail: React.FC = () => {
   const { id } = useParams();
   const opportunity = opportunities.find(opp => opp.id === parseInt(id || '0'));
+
+  useSeo({
+    title: opportunity ? `${opportunity.title} | Affi-Liberty` : 'Opportunité | Affi-Liberty',
+    description: opportunity ? opportunity.description : undefined,
+  });
 
   if (!opportunity) {
     return <Navigate to="/opportunities" replace />;

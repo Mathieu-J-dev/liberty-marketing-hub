@@ -2,6 +2,7 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Gavel, FileText, Shield, AlertTriangle } from 'lucide-react';
+import { useSeo } from '@/hooks/useSeo';
 
 const LegalCard = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
   <div className="bg-card p-6 rounded-lg border border-border flex items-start space-x-4 animate-fade-in">
@@ -14,6 +15,7 @@ const LegalCard = ({ icon, title, children }: { icon: React.ReactNode; title: st
 );
 
 const Terms = () => {
+  useSeo({title: "Conditions Générales d'Utilisation | Affi-Liberty", description: "Conditions générales d'utilisation du site Affi-Liberty."});
   return (
     <Layout>
       <div id="top"></div>

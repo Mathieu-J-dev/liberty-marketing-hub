@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Plus, Loader2, Upload, Download, Globe, Shield } from 'lucide-react';
+import { useSeo } from '@/hooks/useSeo';
 
 const AccessDenied = () => {
   return (
@@ -143,7 +144,7 @@ const AdminDashboard = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold flex items-center gap-3">
+              <h1 className="text-3xl font-bold flex items-center gap-3 gradient-text">
                 <Shield className="h-8 w-8 text-primary" />
                 Administration - Programmes d'Affiliation
               </h1>
@@ -231,6 +232,7 @@ const AdminDashboard = () => {
 };
 
 const Admin = () => {
+  useSeo({title: "Administration | Affi-Liberty", noindex: true});
   const { user, isAuthenticated } = useAuth();
   const [hasAdminRole, setHasAdminRole] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);

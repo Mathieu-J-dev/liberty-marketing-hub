@@ -4,8 +4,10 @@ import { TrendingUp, DollarSign, Users, Target } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { useSeo } from '@/hooks/useSeo';
 
 const CaseStudies = () => {
+  useSeo({title: "Études de Cas - Réussites en Affiliation | Affi-Liberty", description: "Études de cas concrètes : comment des affiliés ont développé leurs revenus en ligne."});
   const caseStudies = [
     {
       id: 1,
@@ -87,7 +89,7 @@ const CaseStudies = () => {
                       <Badge variant="secondary" className="mb-2">
                         {study.industry}
                       </Badge>
-                      <h2 className="text-2xl font-bold mb-2">{study.title}</h2>
+                      <h2 className="text-2xl font-bold mb-2 text-liberty-blue">{study.title}</h2>
                       <p className="text-muted-foreground">
                         {study.client} • {study.duration}
                       </p>

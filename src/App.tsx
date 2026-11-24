@@ -1,4 +1,5 @@
 
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,27 +7,29 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./auth"; // Import modifié
 import Index from "./pages/Index";
-import Capture from "./pages/Capture";
-import Opportunities from "./pages/Opportunities";
-import OpportunityDetail from "./pages/OpportunityDetail";
-import Contact from "./pages/Contact";
-import Admin from "./pages/Admin";
-import NotFound from "./pages/NotFound";
-import ActionPlan from "./pages/ActionPlan";
-import AffiliatePrograms from "./pages/AffiliatePrograms";
-import AITools from "./pages/AITools";
-import Login from "./pages/Login";
-import MemberArea from "./pages/MemberArea";
-import FAQ from "./pages/FAQ";
-import Terms from "./pages/Terms";
-import Privacy from "./pages/Privacy";
-import Cookies from "./pages/Cookies";
-import Blog from "./pages/Blog";
-import Webinars from "./pages/Webinars";
-import Tutorials from "./pages/Tutorials";
-import CaseStudies from "./pages/CaseStudies";
-import StayInformed from "./pages/StayInformed";
 import ScrollToTop from "./components/ScrollToTop";
+
+// Chaque page est chargée à la demande pour alléger le bundle initial
+const Capture = lazy(() => import("./pages/Capture"));
+const Opportunities = lazy(() => import("./pages/Opportunities"));
+const OpportunityDetail = lazy(() => import("./pages/OpportunityDetail"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Admin = lazy(() => import("./pages/Admin"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ActionPlan = lazy(() => import("./pages/ActionPlan"));
+const AffiliatePrograms = lazy(() => import("./pages/AffiliatePrograms"));
+const AITools = lazy(() => import("./pages/AITools"));
+const Login = lazy(() => import("./pages/Login"));
+const MemberArea = lazy(() => import("./pages/MemberArea"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Terms = lazy(() => import("./pages/Terms"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Cookies = lazy(() => import("./pages/Cookies"));
+const Blog = lazy(() => import("./pages/Blog"));
+const Webinars = lazy(() => import("./pages/Webinars"));
+const Tutorials = lazy(() => import("./pages/Tutorials"));
+const CaseStudies = lazy(() => import("./pages/CaseStudies"));
+const StayInformed = lazy(() => import("./pages/StayInformed"));
 
 const queryClient = new QueryClient();
 
@@ -38,6 +41,11 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-liberty-blue" />
+            </div>
+          }>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/capture" element={<Capture />} />
@@ -62,6 +70,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>
