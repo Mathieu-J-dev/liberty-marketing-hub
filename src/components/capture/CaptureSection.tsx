@@ -9,7 +9,7 @@ const CaptureSection = () => {
         <div className="max-w-6xl mx-auto">
           
           {/* En-tête avec titre principal */}
-          <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight gradient-text">
               Découvrez Comment Générer{' '}
               <span className="gradient-text text-liberty-gold">1500€/mois</span>{' '}
               en Affiliation

@@ -150,7 +150,7 @@ const Tutorials = () => {
             {tutorialCategories.map((category) => (
               <div key={category.id}>
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold mb-2">{category.title}</h2>
+                  <h2 className="text-2xl font-bold mb-2 text-liberty-blue">{category.title}</h2>
                   <p className="text-muted-foreground">{category.description}</p>
                 </div>
                 
@@ -203,7 +203,7 @@ const Tutorials = () => {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
               <Target className="text-liberty-gold mr-3" size={32} />
-              <h2 className="text-3xl font-bold">Votre Plan d'Action Personnalisé</h2>
+              <h2 className="text-3xl font-bold text-liberty-blue">Votre Plan d'Action Personnalisé</h2>
             </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Suivez votre progression et atteignez vos objectifs avec notre plan d'action étape par étape.

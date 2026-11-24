@@ -116,7 +116,7 @@ const AffiliatePrograms = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-4xl font-bold">Programmes d'Affiliation</h1>
+              <h1 className="text-4xl font-bold gradient-text">Programmes d'Affiliation</h1>
               {user && (
                 <div className="flex gap-2">
                   <Button onClick={() => setShowAddModal(true)}>

@@ -8,7 +8,7 @@ const CTA = () => {
   return (
     <section className="section bg-gradient-to-r from-liberty-blue to-liberty-blue-light text-white">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Prêt à transformer votre activité d'affiliation?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-liberty-blue">Prêt à transformer votre activité d'affiliation?</h2>
         <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
           Rejoignez notre communauté d'entrepreneurs qui génèrent déjà des revenus passifs grâce à notre plateforme.
         </p>

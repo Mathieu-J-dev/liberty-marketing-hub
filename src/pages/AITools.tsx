@@ -756,7 +756,7 @@ const AITools = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <h2 className="text-2xl font-bold mb-4">Comment utiliser l'IA pour booster vos revenus d'affiliation ?</h2>
+            <h2 className="text-2xl font-bold mb-4 text-liberty-blue">Comment utiliser l'IA pour booster vos revenus d'affiliation ?</h2>
             <p className="text-gray-600 max-w-3xl mx-auto mb-8">
               L'intelligence artificielle est devenue un levier incontournable pour les affiliés qui souhaitent 
               se démarquer et optimiser leur temps. Utilisez ces outils pour créer du contenu de qualité, 

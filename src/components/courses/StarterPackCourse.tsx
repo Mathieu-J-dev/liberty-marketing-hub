@@ -622,7 +622,7 @@ const StarterPackCourse: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <h1 className="text-4xl font-bold mb-2 gradient-text">
           Starter Pack Affi-Liberty
         </h1>
         <p className="text-muted-foreground">

@@ -62,7 +62,7 @@ const Webinars = () => {
 
           {/* Webinaires à venir */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">Webinaires à venir</h2>
+            <h2 className="text-2xl font-bold mb-6 text-liberty-blue">Webinaires à venir</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {upcomingWebinars.map((webinar) => (
                 <Card key={webinar.id} className="border-l-4 border-l-primary">
@@ -107,7 +107,7 @@ const Webinars = () => {
 
           {/* Replays */}
           <div>
-            <h2 className="text-2xl font-bold mb-6">Replays disponibles</h2>
+            <h2 className="text-2xl font-bold mb-6 text-liberty-blue">Replays disponibles</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {pastWebinars.map((webinar) => (
                 <Card key={webinar.id}>

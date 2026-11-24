@@ -345,7 +345,7 @@ const ScalingBusinessCourse = () => {
             >
               ← Retour aux modules
             </Button>
-            <h2 className="text-2xl font-bold">{activeModule.title}</h2>
+            <h2 className="text-2xl font-bold text-liberty-blue">{activeModule.title}</h2>
           </div>
 
           <Tabs defaultValue="content" className="w-full">

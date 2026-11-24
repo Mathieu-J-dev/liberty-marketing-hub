@@ -144,7 +144,7 @@ const AdminDashboard = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold flex items-center gap-3">
+              <h1 className="text-3xl font-bold flex items-center gap-3 gradient-text">
                 <Shield className="h-8 w-8 text-primary" />
                 Administration - Programmes d'Affiliation
               </h1>

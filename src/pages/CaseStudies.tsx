@@ -89,7 +89,7 @@ const CaseStudies = () => {
                       <Badge variant="secondary" className="mb-2">
                         {study.industry}
                       </Badge>
-                      <h2 className="text-2xl font-bold mb-2">{study.title}</h2>
+                      <h2 className="text-2xl font-bold mb-2 text-liberty-blue">{study.title}</h2>
                       <p className="text-muted-foreground">
                         {study.client} • {study.duration}
                       </p>

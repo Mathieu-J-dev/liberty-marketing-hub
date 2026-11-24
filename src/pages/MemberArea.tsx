@@ -104,7 +104,7 @@ const MemberArea = () => {
       <div id="top"></div>
         <div className="section py-16">
           <div className="container mx-auto text-center">
-            <h2 className="text-2xl font-bold">Chargement de votre espace membre...</h2>
+            <h2 className="text-2xl font-bold text-liberty-blue">Chargement de votre espace membre...</h2>
             <p className="mt-2">Veuillez patienter pendant que nous vérifions votre identité.</p>
           </div>
         </div>

@@ -40,7 +40,7 @@ const ProfileHeader = ({ user, onLogout, onProfileUpdate }: ProfileHeaderProps) 
             <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
           </Avatar>
           <div>
-            <h1 className="text-3xl font-bold">{user.name}</h1>
+            <h1 className="text-3xl font-bold gradient-text">{user.name}</h1>
             <p className="text-gray-600">{user.email}</p>
             <div className="flex items-center mt-1">
               <span className="text-sm bg-liberty-blue text-white px-2 py-0.5 rounded-full">

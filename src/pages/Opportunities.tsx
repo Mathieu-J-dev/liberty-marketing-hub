@@ -24,7 +24,7 @@ const Opportunities: React.FC = () => {
       <div className="section bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4">Opportunités d'Affiliation Premium</h1>
+            <h1 className="text-4xl font-bold mb-4 gradient-text">Opportunités d'Affiliation Premium</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Découvrez notre sélection des programmes d'affiliation les plus rentables de 2025, vérifiés et approuvés par notre équipe d'experts.
             </p>

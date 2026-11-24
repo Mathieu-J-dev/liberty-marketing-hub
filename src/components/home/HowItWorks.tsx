@@ -30,7 +30,7 @@ const HowItWorks = () => {
     <section className="section bg-gray-50">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Comment Ça Marche</h2>
+          <h2 className="text-3xl font-bold mb-4 text-liberty-blue">Comment Ça Marche</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Un processus simple en 4 étapes pour démarrer votre activité d'affiliation et générer des revenus.
           </p>
